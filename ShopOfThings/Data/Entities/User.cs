@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    internal class User
+    public class User
     {
+        public int Id { set; get; }
+        public string Name { set; get; }
+        public string Email { set; get; }
+        public string Password { set; get; }
+        public string SecondName { set; get; }
+        public DateTime BirthDate { set; get; }
+
     }
 }
