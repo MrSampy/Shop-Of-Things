@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class StorageType
+    public class StorageType: BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
 
     }

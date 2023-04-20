@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class User
+    public class User: BaseEntity
     {
-        public int Id { set; get; }
         public string Name { set; get; }
         public string Email { set; get; }
         public string Password { set; get; }

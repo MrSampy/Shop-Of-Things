@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class ReceiptDetail
+    public class ReceiptDetail: BaseEntity
     {
-        public int Id { get; set; }
-
         public Receipt Receipt {set; get;}
 
         public Product Product { get; set; }

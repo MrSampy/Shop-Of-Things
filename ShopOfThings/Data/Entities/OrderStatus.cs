@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class OrderStatus
+    public class OrderStatus: BaseEntity
     {
-        public int Id { set; get; }
-
         public string StatusName { set; get; }
 
     }
