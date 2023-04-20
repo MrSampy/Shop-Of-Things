@@ -16,6 +16,7 @@ namespace Data.Interfaces
         IReceiptDetailRepository ReceiptDetailRepository { get; }
         IStorageTypeRepository StorageTypeRepository { get; }
         IUserRepository UserRepository { get; }
+        IUserStatusRepository UserStatusRepository { get; }
 
         public Task SaveAsync();
     }
