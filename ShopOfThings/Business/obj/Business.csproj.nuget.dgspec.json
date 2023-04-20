@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {}
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {}
   },
   "projects": {
-    "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
-        "packagesPath": "C:\\Users\\sergiy.kolosov\\.nuget\\packages\\",
-        "outputPath": "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\obj\\",
+        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
+        "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sergiy.kolosov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

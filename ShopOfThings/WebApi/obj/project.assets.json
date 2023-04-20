@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\sergiy.kolosov\\.nuget\\packages\\": {}
+    "C:\\Users\\Сергей\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\sergiy.kolosov\\.nuget\\packages\\",
-      "outputPath": "D:\\Custom\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\obj\\",
+      "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sergiy.kolosov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
