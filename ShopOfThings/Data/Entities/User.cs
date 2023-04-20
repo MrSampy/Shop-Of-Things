@@ -14,5 +14,6 @@ namespace Data.Entities
         public string SecondName { set; get; }
         public DateTime BirthDate { set; get; }
 
+        public UserStatus UserStatus { set; get; }
     }
 }
