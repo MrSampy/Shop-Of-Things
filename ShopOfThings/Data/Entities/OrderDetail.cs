@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class OrderDetails: BaseEntity
+    public class OrderDetail: BaseEntity
     {
         public Product Product { set; get; }
 

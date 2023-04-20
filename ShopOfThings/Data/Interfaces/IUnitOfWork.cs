@@ -8,7 +8,7 @@ namespace Data.Interfaces
 {
     public interface IUnitOfWork
     {
-        IOrderDetailsRepository OrderDetailsRepository { get; }
+        IOrderDetailRepository OrderDetailRepository { get; }
         IOrderRepository OrderRepository { get; }
         IOrderStatusRepository OrderStatusRepository { get; }
         IProductRepository ProductRepository { get; }
