@@ -11,5 +11,10 @@ namespace Data.Entities
         public Receipt Receipt {set; get;}
 
         public Product Product { get; set; }
+
+        public StorageType StorageType { get; set; }
+
+        public decimal Amount { get; set; }
+
     }
 }
