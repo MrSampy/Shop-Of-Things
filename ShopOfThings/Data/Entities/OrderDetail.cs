@@ -14,7 +14,7 @@ namespace Data.Entities
 
         public decimal Quantity { set; get; }
 
-        public decimal UnuitPrice { set; get; }
+        public decimal UnitPrice { set; get; }
 
     }
 }
