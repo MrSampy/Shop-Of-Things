@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cvdGGGfcxnvwNKrkOqRaDGo4J031ayW5Xwkn6+JU5DGFIz+d4KlEvAkIgRqWrSvsbpA0U2Y7G+8a88FqhNiD3g==",
+  "dgSpecHash": "osoxutoD+kAZuFPjMXRnCKLzduOFLVxE6fRGtTNpDgovTAUo3XZKaryFDgL/TB5rcHTWZXr6DBwOm6rF2OsYzQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Сергей\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

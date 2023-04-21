@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\obj\\",
         "projectStyle": "PackageReference",

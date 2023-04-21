@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1I2+l524QqBXQnR/0KQCUYUzteVyIgfNj93zpGl1HgSkfKZFhhK2h8bDZjAh+m4M1W3vYAsqguh5k/9kdbQL8g==",
+  "dgSpecHash": "+zT8efJuQikkE37VYVb/71RBKBzESica7rqBa6taybA7g3SzSQW4kEDMg/8DQSbtMOoo/IIiZZCc43e+6xkTSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
+  "projectFilePath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.5\\microsoft.data.sqlite.core.7.0.5.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
