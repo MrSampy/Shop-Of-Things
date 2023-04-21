@@ -12,7 +12,7 @@ namespace Data.Data
     {
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<OrderDetail> OrderDetails => Set<OrderDetail>();
-        public DbSet<OrderStatus> OrderStatuss => Set<OrderStatus>();
+        public DbSet<OrderStatus> OrderStatuses => Set<OrderStatus>();
         public DbSet<Product> Products => Set<Product>();
         public DbSet<Receipt> Receipts => Set<Receipt>();
         public DbSet<ReceiptDetail> ReceiptDetails => Set<ReceiptDetail>();
