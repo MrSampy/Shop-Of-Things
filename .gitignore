@@ -1,2 +1,3 @@
-/.vs
-/ShopOfThings/.vs
+.vs/
+bin/
+obj/
