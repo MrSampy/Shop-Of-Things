@@ -44,7 +44,8 @@ namespace Data.Repositories
         {
             return await context.ReceiptDetails
                  .Include(x => x.Product)
-                 .Include(x => x.Receipt).ToListAsync();
+                 .Include(x => x.Receipt)
+                 .Include(x => x.StorageType).ToListAsync();
         }
 
         public async Task<ReceiptDetail> GetByIdAsync(int id)
@@ -56,7 +57,8 @@ namespace Data.Repositories
         {
             return await context.ReceiptDetails
                 .Include(x => x.Product)
-                .Include(x => x.Receipt).FirstAsync(x => x.Id.Equals(id));
+                .Include(x => x.Receipt)
+                .Include(x => x.StorageType).FirstAsync(x => x.Id.Equals(id));
         }
 
         public void Update(ReceiptDetail entity)
