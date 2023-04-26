@@ -32,32 +32,32 @@ namespace Data.Data
         private UserStatusRepository userStatusRepository;
 
 
-        public IOrderDetailRepository OrderDetailRepository => orderDetailRepository ??= new OrderDetailRepository(d);
+        public IOrderDetailRepository OrderDetailRepository => orderDetailRepository ??= new OrderDetailRepository(dbContext);
 
-        public IOrderRepository OrderRepository => orderRepository;
+        public IOrderRepository OrderRepository => orderRepository ??= new OrderRepository(dbContext);
 
-        public IOrderStatusRepository OrderStatusRepository => orderStatusRepository;
+        public IOrderStatusRepository OrderStatusRepository => orderStatusRepository ??= new OrderStatusRepository(dbContext);
 
-        public IProductRepository ProductRepository => productRepository;
+        public IProductRepository ProductRepository => productRepository ??= new ProductRepository(dbContext);
 
-        public IReceiptRepository ReceiptRepository => receiptRepository;
+        public IReceiptRepository ReceiptRepository => receiptRepository ??= new ReceiptRepository(dbContext);
 
-        public IReceiptDetailRepository ReceiptDetailRepository => receiptDetailRepository;
+        public IReceiptDetailRepository ReceiptDetailRepository => receiptDetailRepository ??= new ReceiptDetailRepository(dbContext);
 
-        public IStorageTypeRepository StorageTypeRepository => storageTypeRepository;
+        public IStorageTypeRepository StorageTypeRepository => storageTypeRepository ??= new StorageTypeRepository(dbContext);
 
-        public IUserRepository UserRepository => userRepository;
+        public IUserRepository UserRepository => userRepository ??= new UserRepository(dbContext);
 
-        public IUserStatusRepository UserStatusRepository => userStatusRepository;
+        public IUserStatusRepository UserStatusRepository => userStatusRepository ??= new UserStatusRepository(dbContext);
 
         public UnitOfWork(ShopOfThingsDBContext shopOfThingsDBContext)
         {
             this.dbContext = shopOfThingsDBContext;
         }
 
-        public Task SaveAsync()
+        public async Task SaveAsync()
         {
-            throw new NotImplementedException();
+            await dbContext.SaveChangesAsync();
         }
     }
 }
