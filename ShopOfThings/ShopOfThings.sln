@@ -10,11 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{4004D742-02C5-4A30-B6C8-E5398B96B8E9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOfThings.Tests", "ShopOfThings.Tests\ShopOfThings.Tests.csproj", "{20EEAF18-F001-4422-B666-45ADEB792832}"
-	ProjectSection(ProjectDependencies) = postProject
-		{132DCBE2-7BF5-4C74-86A7-F16AE6498E5D} = {132DCBE2-7BF5-4C74-86A7-F16AE6498E5D}
-		{4004D742-02C5-4A30-B6C8-E5398B96B8E9} = {4004D742-02C5-4A30-B6C8-E5398B96B8E9}
-		{BC2B196D-616F-43DC-894D-1CCD1C7B9B18} = {BC2B196D-616F-43DC-894D-1CCD1C7B9B18}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

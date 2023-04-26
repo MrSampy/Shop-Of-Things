@@ -2303,6 +2303,42 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Business.dll": {}
+        }
+      },
+      "Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Sqlite": "7.0.5"
+        },
+        "compile": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data.dll": {}
+        }
+      },
+      "WebApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/WebApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApi.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -7500,14 +7536,32 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "Business/1.0.0": {
+      "type": "project",
+      "path": "../Business/Business.csproj",
+      "msbuildProject": "../Business/Business.csproj"
+    },
+    "Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/Data.csproj",
+      "msbuildProject": "../Data/Data.csproj"
+    },
+    "WebApi/1.0.0": {
+      "type": "project",
+      "path": "../WebApi/WebApi.csproj",
+      "msbuildProject": "../WebApi/WebApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Business >= 1.0.0",
+      "Data >= 1.0.0",
       "MSTest.TestAdapter >= 2.2.8",
       "MSTest.TestFramework >= 2.2.8",
       "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.5",
       "Microsoft.NET.Test.Sdk >= 17.1.0",
+      "WebApi >= 1.0.0",
       "coverlet.collector >= 3.1.2"
     ]
   },
@@ -7537,7 +7591,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
+              "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj"
+            },
+            "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj"
+            },
+            "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
+              "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
