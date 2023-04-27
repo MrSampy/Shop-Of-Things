@@ -8,11 +8,11 @@ namespace Data.Entities
 {
     public class Order: BaseEntity
     {
-        public string Name { get; set; }
-
         public DateTime OperationDate { get; set; }
 
         public OrderStatus OrderStatus { set; get; }
+
+        public User MasterOfOrder { get; set; }
 
     }
 }
