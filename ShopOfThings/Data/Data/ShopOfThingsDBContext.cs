@@ -20,12 +20,15 @@ namespace Data.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<UserStatus> UserStatuses => Set<UserStatus>();
 
-        public ShopOfThingsDBContext() 
+        public ShopOfThingsDBContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         } 
         public ShopOfThingsDBContext(DbContextOptions<ShopOfThingsDBContext> options) : base(options)
         {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
