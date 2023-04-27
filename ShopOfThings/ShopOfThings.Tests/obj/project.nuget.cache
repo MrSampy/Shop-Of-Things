@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QW491dR8Gf33EbbsFktk6zxpx+czbLljzIQNEvxSj44mkpiq23mE9pEUxhFwJ1ml9a4/JeBAi66OgF1+fiqfkw==",
+  "dgSpecHash": "gMV5KO/IlaSuKBnMXV49ENxj8DMaMrUyi+SSkBmaFjeyTf5scJ6x5NO87Fn8s/a2KolAvKsxpB4/bntYfuL2bQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+    "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.5\\microsoft.entityframeworkcore.inmemory.7.0.5.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.5\\microsoft.entityframeworkcore.relational.7.0.5.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.5\\microsoft.entityframeworkcore.sqlite.7.0.5.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.5\\microsoft.entityframeworkcore.sqlite.core.7.0.5.nupkg.sha512",
