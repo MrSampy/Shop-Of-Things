@@ -8,6 +8,6 @@ namespace Data.Entities
 {
     public class UserStatus:BaseEntity
     {
-        public string StatusName { set; get; }
+        public string UserStatusName { set; get; }
     }
 }

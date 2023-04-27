@@ -8,7 +8,7 @@ namespace Data.Entities
 {
     public class StorageType: BaseEntity
     {
-        public string Name { get; set; }
+        public string StorageTypeName { get; set; }
 
     }
 }

@@ -8,7 +8,7 @@ namespace Data.Entities
 {
     public class OrderStatus: BaseEntity
     {
-        public string StatusName { set; get; }
+        public string OrderStatusName { set; get; }
 
     }
 }
