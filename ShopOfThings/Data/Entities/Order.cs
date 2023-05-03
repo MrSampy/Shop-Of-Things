@@ -9,10 +9,10 @@ namespace Data.Entities
     public class Order: BaseEntity
     {
         public DateTime OperationDate { get; set; }
-
+        public int OrderStatusId { set; get; }
         public OrderStatus OrderStatus { set; get; }
-
-        public User MasterOfOrder { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
 
     }
 }

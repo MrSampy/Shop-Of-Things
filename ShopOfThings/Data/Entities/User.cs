@@ -13,6 +13,7 @@ namespace Data.Entities
         public string Password { set; get; }
         public string SecondName { set; get; }
         public DateTime BirthDate { set; get; }
+        public int UserStatusId { set; get; }
         public UserStatus UserStatus { set; get; }
     }
 }

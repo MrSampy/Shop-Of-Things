@@ -8,6 +8,8 @@ namespace Data.Entities
 {
     public class Receipt: BaseEntity
     {
+        public int UserId { get; set; }
+
         public User User { get; set; }
         
         public string ReceiptName { get; set; }
