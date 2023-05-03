@@ -44,7 +44,7 @@ namespace Data.Repositories
         public async Task<IEnumerable<Product>> GetAllWithDetailsAsync()
         {
             return await context.Products
-                 .Include(x => x.ProductOwner)
+                 .Include(x => x.User)
                  .Include(x => x.StorageType).ToListAsync();
         }
 
@@ -56,7 +56,7 @@ namespace Data.Repositories
         public async Task<Product> GetByIdWithDetailsAsync(int id)
         {
             return await context.Products
-                .Include(x => x.ProductOwner)
+                .Include(x => x.User)
                  .Include(x => x.StorageType).FirstAsync(x => x.Id.Equals(id));
         }
 
