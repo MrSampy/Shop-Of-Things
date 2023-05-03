@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Data.Data
 {
@@ -29,12 +30,8 @@ namespace Data.Data
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Data Source=shopofthings.db");
-        }
 
+        }
 
     }
 }
