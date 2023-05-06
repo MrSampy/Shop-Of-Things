@@ -21,17 +21,20 @@ namespace Data.Repositories
         public Task AddAsync(StorageType entity)
         {
             context.StorageTypes.Add(entity);
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
         public void Delete(StorageType entity)
         {
             context.StorageTypes.Remove(entity);
+            context.SaveChanges();
         }
 
         public Task DeleteByIdAsync(int id)
         {
             context.StorageTypes.Remove(context.StorageTypes.First(x => x.Id.Equals(id)));
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -47,7 +50,9 @@ namespace Data.Repositories
 
         public void Update(StorageType entity)
         {
-            context.StorageTypes.Update(entity);
+            var updateEntity = context.StorageTypes.First(x => x.Id.Equals(entity.Id));
+            updateEntity.StorageTypeName = entity.StorageTypeName;
+            context.SaveChanges();
         }
     }
 }
