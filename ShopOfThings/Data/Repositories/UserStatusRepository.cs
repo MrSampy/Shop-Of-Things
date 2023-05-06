@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,17 +22,21 @@ namespace Data.Repositories
         public Task AddAsync(UserStatus entity)
         {
             context.UserStatuses.Add(entity);
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
         public void Delete(UserStatus entity)
         {
             context.UserStatuses.Remove(entity);
+            context.SaveChanges();
+
         }
 
         public Task DeleteByIdAsync(int id)
         {
             context.UserStatuses.Remove(context.UserStatuses.First(x => x.Id.Equals(id)));
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -47,7 +52,9 @@ namespace Data.Repositories
 
         public void Update(UserStatus entity)
         {
-            context.UserStatuses.Update(entity);
+            var updateEntity = context.UserStatuses.First(x=>x.Id.Equals(entity.Id));
+            updateEntity.UserStatusName = entity.UserStatusName;
+            context.SaveChanges();            
         }
     }
 }
