@@ -22,17 +22,20 @@ namespace Data.Repositories
         public Task AddAsync(Product entity)
         {
             context.Products.Add(entity);
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
         public void Delete(Product entity)
         {
             context.Products.Remove(entity);
+            context.SaveChanges();
         }
 
         public Task DeleteByIdAsync(int id)
         {
             context.Products.Remove(context.Products.First(x => x.Id.Equals(id)));
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -62,7 +65,16 @@ namespace Data.Repositories
 
         public void Update(Product entity)
         {
-            context.Products.Update(entity);
+            var updateEntity = context.Products.First(x => x.Id.Equals(entity.Id));
+            updateEntity.Price = entity.Price;
+            updateEntity.ProductName = entity.ProductName;
+            updateEntity.ProductDescription = entity.ProductDescription;
+            updateEntity.Amount = entity.Amount;
+            updateEntity.StorageType = entity.StorageType;
+            updateEntity.StorageTypeId = entity.StorageTypeId;
+            updateEntity.User = entity.User;
+            updateEntity.UserId = entity.UserId;
+            context.SaveChanges();
         }
     }
 }
