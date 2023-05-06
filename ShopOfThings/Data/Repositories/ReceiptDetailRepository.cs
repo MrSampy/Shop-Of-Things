@@ -21,17 +21,20 @@ namespace Data.Repositories
         public Task AddAsync(ReceiptDetail entity)
         {
             context.ReceiptDetails.Add(entity);
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
         public void Delete(ReceiptDetail entity)
         {
             context.ReceiptDetails.Remove(entity);
+            context.SaveChanges();
         }
 
         public Task DeleteByIdAsync(int id)
         {
             context.ReceiptDetails.Remove(context.ReceiptDetails.First(x => x.Id.Equals(id)));
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -63,7 +66,13 @@ namespace Data.Repositories
 
         public void Update(ReceiptDetail entity)
         {
-            context.ReceiptDetails.Update(entity);
+            var updateEntity = context.ReceiptDetails.First(x => x.Id.Equals(entity.Id));
+            updateEntity.Amount = entity.Amount;
+            updateEntity.Product = entity.Product;
+            updateEntity.ProductId = entity.ProductId;
+            updateEntity.Receipt = entity.Receipt;
+            updateEntity.ReceiptId = entity.ReceiptId;
+            context.SaveChanges();
         }
     }
 }
