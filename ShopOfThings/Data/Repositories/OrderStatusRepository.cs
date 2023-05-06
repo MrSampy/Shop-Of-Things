@@ -21,17 +21,20 @@ namespace Data.Repositories
         public Task AddAsync(OrderStatus entity)
         {
             context.OrderStatuses.Add(entity);
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
         public void Delete(OrderStatus entity)
         {
             context.OrderStatuses.Remove(entity);
+            context.SaveChanges();
         }
 
         public Task DeleteByIdAsync(int id)
         {
             context.OrderStatuses.Remove(context.OrderStatuses.First(x => x.Id.Equals(id)));
+            context.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -47,7 +50,9 @@ namespace Data.Repositories
 
         public void Update(OrderStatus entity)
         {
-            context.OrderStatuses.Update(entity);
+            var updateEntity = context.OrderStatuses.First(x => x.Id.Equals(entity.Id));
+            updateEntity.OrderStatusName = entity.OrderStatusName;
+            context.SaveChanges();
         }
     }
 }
