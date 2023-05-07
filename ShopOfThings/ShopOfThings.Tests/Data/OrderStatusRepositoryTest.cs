@@ -27,7 +27,7 @@ namespace ShopOfThings.Tests.Data
         [DataTestMethod]
         [DataRow("Payment_received", 2)]
         [DataRow("Sent", 3)]
-        public async Task StorageTypeRepository_GetByIdAsync(string expected, int id)
+        public async Task OrderStatusRepository_GetByIdAsync(string expected, int id)
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -39,7 +39,7 @@ namespace ShopOfThings.Tests.Data
         }
 
         [TestMethod]
-        public async Task StorageTypeRepository_GetAllAsync()
+        public async Task OrderStatusRepository_GetAllAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -52,7 +52,7 @@ namespace ShopOfThings.Tests.Data
 
 
         [TestMethod]
-        public async Task StorageTypeRepository_AddAsync()
+        public async Task OrderStatusRepository_AddAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -66,7 +66,7 @@ namespace ShopOfThings.Tests.Data
         }
 
         [TestMethod]
-        public async Task StorageTypeRepository_UpdateAsync()
+        public async Task OrderStatusRepository_UpdateAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -83,7 +83,7 @@ namespace ShopOfThings.Tests.Data
         }
 
         [TestMethod]
-        public async Task StorageTypeRepository_DeleteAsync()
+        public async Task OrderStatusRepository_DeleteAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -100,7 +100,7 @@ namespace ShopOfThings.Tests.Data
         }
 
         [TestMethod]
-        public async Task StorageTypeRepository_DeleteByIdAsync()
+        public async Task OrderStatusRepository_DeleteByIdAsync()
         {
             //Arrange
             var userStatusRepository = await CreateRepositoryAsync();
