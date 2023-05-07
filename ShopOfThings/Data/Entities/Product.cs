@@ -16,5 +16,9 @@ namespace Data.Entities
         public int StorageTypeId { get; set; }
         public StorageType StorageType { get; set; }
         public decimal Amount { get; set; }
+        public ICollection<OrderDetail>? OrderDetails { get; set; }
+        public ICollection<ReceiptDetail>? ReceiptDetails { get; set; }
+
+
     }
 }

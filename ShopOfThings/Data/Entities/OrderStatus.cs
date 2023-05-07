@@ -10,5 +10,7 @@ namespace Data.Entities
     {
         public string OrderStatusName { set; get; }
 
+        public ICollection<Order>? Orders { get; set; }
+
     }
 }

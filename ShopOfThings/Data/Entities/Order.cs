@@ -13,6 +13,7 @@ namespace Data.Entities
         public OrderStatus OrderStatus { set; get; }
         public int UserId { get; set; }
         public User User { get; set; }
+        public ICollection<OrderDetail>? OrderDetails { get; set; }
 
     }
 }

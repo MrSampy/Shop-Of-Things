@@ -15,5 +15,8 @@ namespace Data.Entities
         public string ReceiptName { get; set; }
 
         public string ReceiptDescription { set; get; }
+
+        public ICollection<ReceiptDetail>? ReceiptDetails { get; set; }
+
     }
 }
