@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ShopOfThings.Tests.Data
 {
     [TestClass]
-    public class OrderStatusTest
+    public class OrderStatusRepositoryTest
     {
         public async Task<OrderStatusRepository> CreateRepositoryAsync()
         {
