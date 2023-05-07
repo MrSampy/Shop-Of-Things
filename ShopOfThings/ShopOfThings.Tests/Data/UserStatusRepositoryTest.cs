@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ShopOfThings.Tests.UnitTestHelpers;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Data.Interfaces;
 
 
 namespace ShopOfThings.Tests.Data
@@ -105,13 +106,13 @@ namespace ShopOfThings.Tests.Data
         public async Task UserStatusRepository_DeleteByIdAsync()
         {
             //Arrange
-            var userStatusRepository = await CreateRepositoryAsync();
+            var repository = await CreateRepositoryAsync();
 
             var expectedLen = 1;
 
-            await userStatusRepository.DeleteByIdAsync(1);
+            await repository.DeleteByIdAsync(1);
             //Act
-            var actual = await userStatusRepository.GetAllAsync();
+            var actual = await repository.GetAllAsync();
             //Assert
             Assert.AreEqual(expectedLen, actual.Count());
         }

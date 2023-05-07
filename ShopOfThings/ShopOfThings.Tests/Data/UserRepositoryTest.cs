@@ -113,13 +113,13 @@ namespace ShopOfThings.Tests.Data
         public async Task UserRepository_DeleteByIdAsync()
         {
             //Arrange
-            var userStatusRepository = await CreateRepositoryAsync();
+            var repository = await CreateRepositoryAsync();
 
             var expectedLen = 2;
 
-            await userStatusRepository.DeleteByIdAsync(2);
+            await repository.DeleteByIdAsync(2);
             //Act
-            var actual = await userStatusRepository.GetAllAsync();
+            var actual = await repository.GetAllAsync();
             //Assert
             Assert.AreEqual(expectedLen, actual.Count());
         }
