@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class OrderStatusRepository : IOrderStatusRepository
+    public class OrderStatusRepository : IRepository<OrderStatus>
     {
         private readonly ShopOfThingsDBContext context;
 

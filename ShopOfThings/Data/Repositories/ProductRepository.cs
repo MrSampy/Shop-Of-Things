@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : IRepository<Product>
     {
         private readonly ShopOfThingsDBContext context;
 
@@ -44,23 +44,9 @@ namespace Data.Repositories
             return await context.Products.ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetAllWithDetailsAsync()
-        {
-            return await context.Products
-                 .Include(x => x.User)
-                 .Include(x => x.StorageType).ToListAsync();
-        }
-
         public async Task<Product> GetByIdAsync(int id)
         {
             return await context.Products.FirstAsync(x => x.Id.Equals(id));
-        }
-
-        public async Task<Product> GetByIdWithDetailsAsync(int id)
-        {
-            return await context.Products
-                .Include(x => x.User)
-                 .Include(x => x.StorageType).FirstAsync(x => x.Id.Equals(id));
         }
 
         public void Update(Product entity)

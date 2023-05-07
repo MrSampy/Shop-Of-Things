@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class StorageTypeRepository : IStorageTypeRepository
+    public class StorageTypeRepository : IRepository<StorageType>
     {
         private readonly ShopOfThingsDBContext context;
 

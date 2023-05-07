@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class UserStatusRepository : IUserStatusRepository
+    public class UserStatusRepository : IRepository<UserStatus>
     {
         private readonly ShopOfThingsDBContext context;
 

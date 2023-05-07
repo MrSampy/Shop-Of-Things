@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IRepository<User>
     {
         private readonly ShopOfThingsDBContext context;
 
@@ -44,20 +44,9 @@ namespace Data.Repositories
             return await context.Users.ToListAsync();
         }
 
-        public async Task<IEnumerable<User>> GetAllWithDetailsAsync()
-        {
-            return await context.Users
-                .Include(x=>x.UserStatus).ToListAsync();
-        }
-
         public async Task<User> GetByIdAsync(int id)
         {
             return await context.Users.FirstAsync(x=>x.Id.Equals(id));
-        }
-
-        public async Task<User> GetByIdWithDetailsAsync(int id)
-        {
-            return await context.Users.Include(x => x.UserStatus).FirstAsync(x => x.Id.Equals(id));
         }
 
         public void Update(User entity)
