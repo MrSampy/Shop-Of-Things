@@ -25,15 +25,15 @@ namespace ShopOfThings.Tests.Data
         }
 
         [DataTestMethod]
-        [DataRow(2, 1)]
-        [DataRow(10.8, 3)]
-        public async Task ReceiptDetailRepository_GetByIdAsync(decimal expected, int id)
+        [DataRow(1, 1)]
+        [DataRow(2, 3)]
+        public async Task ReceiptDetailRepository_GetByIdAsync(int expected, int id)
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
             //Act
             var actualEntity = await repository.GetByIdAsync(id);
-            var actual = actualEntity.Amount;
+            var actual = actualEntity.ReceiptId;
             //Assert
             Assert.AreEqual(expected, actual);
 
