@@ -57,9 +57,9 @@ namespace ShopOfThings.Tests.Data
             //Arrange
             var repository = await CreateRepositoryAsync();
             int expectedLength = 3;
-            var newStartus = new StorageType { StorageTypeName = "New" };
+            var newType = new StorageType { StorageTypeName = "New" };
             //Act
-            await repository.AddAsync(newStartus);
+            await repository.AddAsync(newType);
             var actual = await repository.GetAllAsync();
             //Assert
             Assert.AreEqual(expectedLength, actual.Count());
@@ -73,11 +73,11 @@ namespace ShopOfThings.Tests.Data
 
             string expectedStatusName = "New";
 
-            var newStatus = new StorageType { Id = 1, StorageTypeName = expectedStatusName };
+            var newType = new StorageType { Id = 1, StorageTypeName = expectedStatusName };
 
-            repository.Update(newStatus);
+            repository.Update(newType);
             //Act
-            var actual = await repository.GetByIdAsync(newStatus.Id);
+            var actual = await repository.GetByIdAsync(newType.Id);
             //Assert
             Assert.AreEqual(expectedStatusName, actual.StorageTypeName);
         }
