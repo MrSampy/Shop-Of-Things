@@ -1,4 +1,5 @@
-﻿using Data.Interfaces;
+﻿using Data.Entities;
+using Data.Interfaces;
 using Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -32,23 +33,23 @@ namespace Data.Data
         private UserStatusRepository userStatusRepository;
 
 
-        public IOrderDetailRepository OrderDetailRepository => orderDetailRepository ??= new OrderDetailRepository(dbContext);
+        public IRepository<OrderDetail> OrderDetailRepository => orderDetailRepository ??= new OrderDetailRepository(dbContext);
 
-        public IOrderRepository OrderRepository => orderRepository ??= new OrderRepository(dbContext);
+        public IRepository<Order> OrderRepository => orderRepository ??= new OrderRepository(dbContext);
 
-        public IOrderStatusRepository OrderStatusRepository => orderStatusRepository ??= new OrderStatusRepository(dbContext);
+        public IRepository<OrderStatus> OrderStatusRepository => orderStatusRepository ??= new OrderStatusRepository(dbContext);
 
-        public IProductRepository ProductRepository => productRepository ??= new ProductRepository(dbContext);
+        public IRepository<Product> ProductRepository => productRepository ??= new ProductRepository(dbContext);
 
-        public IReceiptRepository ReceiptRepository => receiptRepository ??= new ReceiptRepository(dbContext);
+        public IRepository<Receipt> ReceiptRepository => receiptRepository ??= new ReceiptRepository(dbContext);
 
-        public IReceiptDetailRepository ReceiptDetailRepository => receiptDetailRepository ??= new ReceiptDetailRepository(dbContext);
+        public IRepository<ReceiptDetail> ReceiptDetailRepository => receiptDetailRepository ??= new ReceiptDetailRepository(dbContext);
 
-        public IStorageTypeRepository StorageTypeRepository => storageTypeRepository ??= new StorageTypeRepository(dbContext);
+        public IRepository<StorageType> StorageTypeRepository => storageTypeRepository ??= new StorageTypeRepository(dbContext);
 
-        public IUserRepository UserRepository => userRepository ??= new UserRepository(dbContext);
+        public IRepository<User> UserRepository => userRepository ??= new UserRepository(dbContext);
 
-        public IUserStatusRepository UserStatusRepository => userStatusRepository ??= new UserStatusRepository(dbContext);
+        public IRepository<UserStatus> UserStatusRepository => userStatusRepository ??= new UserStatusRepository(dbContext);
 
         public UnitOfWork(ShopOfThingsDBContext shopOfThingsDBContext)
         {
