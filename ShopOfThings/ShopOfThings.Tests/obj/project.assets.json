@@ -2320,7 +2320,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "AutoMapper": "12.0.1"
+          "AutoMapper": "12.0.1",
+          "Data": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Business.dll": {}
