@@ -10,10 +10,10 @@ namespace Data.Entities
     {
         public int ProductId { set; get; }
 
-        public Product Product { set; get; }
+        public Product? Product { set; get; }
         public int OrderId { set; get; }
 
-        public Order Order { set; get; }
+        public Order? Order { set; get; }
 
         public decimal Quantity { set; get; }
 
