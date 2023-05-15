@@ -4,7 +4,5 @@
     {
         public int Id { set; get; }
         public string StorageTypeName { get; set; }
-        public ICollection<int>? ProductsIds { get; set; }
-
     }
 }
