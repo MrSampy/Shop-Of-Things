@@ -9,6 +9,6 @@ namespace Business.Models
         public int OrderStatusId { set; get; }
         public int UserId { get; set; }
         public string OrderStatusName { set; get; }
-        public ICollection<OrderDetailModel>? OrderDetails { get; set; }
+        public ICollection<int>? OrderDetailsIds { get; set; }
     }
 }

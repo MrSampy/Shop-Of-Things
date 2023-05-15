@@ -11,7 +11,7 @@ namespace Business.Models
 
         public string ReceiptDescription { set; get; }
 
-        public ICollection<ReceiptDetailModel>? ReceiptDetails { get; set; }
+        public ICollection<int>? ReceiptDetailsIds { get; set; }
 
     }
 }

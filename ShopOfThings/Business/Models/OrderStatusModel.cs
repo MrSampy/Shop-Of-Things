@@ -5,6 +5,6 @@
         public int Id { set; get; }
         public string OrderStatusName { set; get; }
 
-        public ICollection<OrderModel>? Orders { get; set; }
+        public ICollection<int>? OrdersIds { get; set; }
     }
 }
