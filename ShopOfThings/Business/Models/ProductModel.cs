@@ -12,6 +12,7 @@ namespace Business.Models
         public int UserId { get; set; }
         public decimal Price { get; set; }
         public int StorageTypeId { get; set; }
+        public string StorageTypeName { get; set; }
         public decimal Amount { get; set; }
         public ICollection<OrderDetailModel>? OrderDetails { get; set; }
         public ICollection<ReceiptDetailModel>? ReceiptDetails { get; set; }

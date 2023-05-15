@@ -1,4 +1,6 @@
-﻿namespace Business.Models
+﻿using Data.Entities;
+
+namespace Business.Models
 {
     public class UserModel
     {
@@ -9,6 +11,7 @@
         public string SecondName { set; get; }
         public DateTime BirthDate { set; get; }
         public int UserStatusId { set; get; }
+        public string UserStatusName { set; get; }
         public virtual ICollection<OrderModel>? Orders { get; set; }
         public ICollection<ProductModel>? Products { get; set; }
         public ICollection<ReceiptModel>? Receipts { get; set; }
