@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3kWCxmy8+DVLAYW2DxXXMtNxTDhKlXOCUlKbUM50M8ZSaQwatuhzude0xmGjL5PHGHJCVMSzaggeAQ09rDsWZw==",
+  "dgSpecHash": "Uf8UPNADhDABJie01ZNAtpIRwru+T6+cXuM6iyHcI5XXr7AMrwtE8tcJJTAkDG9mUH0CdxPoB8jR58Qjj7NUXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Сергей\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Сергей\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
