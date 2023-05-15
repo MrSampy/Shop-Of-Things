@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "x5S9tY+iE61AmvjCHoUor9AKlmgqltSegrd0C+ViwczIbNd0JNAOzgNG7V8zG+HR4R12mmRmpuutwnUr1PwWog==",
+  "dgSpecHash": "Gvg74q1EKpo+5SfoBlkIL8fXeZJG+HfDny1eShR+j8b7gCdBZEvn8qjY2yhm488o0Ds0tl0nVx4u/WZEiS16Kg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Сергей\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Сергей\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
