@@ -9,5 +9,7 @@ namespace Data.Entities
     public class UserStatus:BaseEntity
     {
         public string UserStatusName { set; get; }
+
+        public ICollection<User>? Users { get; set; }
     }
 }

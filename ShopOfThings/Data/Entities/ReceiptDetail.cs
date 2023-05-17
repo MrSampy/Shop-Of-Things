@@ -8,10 +8,10 @@ namespace Data.Entities
 {
     public class ReceiptDetail: BaseEntity
     {
-        public int ReceiptId { set; get; }
+        public Guid?  ReceiptId { set; get; }
 
         public Receipt? Receipt {set; get;}
-        public int ProductId { get; set; }
+        public Guid? ProductId { get; set; }
 
         public Product? Product { get; set; }
 
