@@ -1,8 +1,11 @@
-﻿namespace Business.Models
+﻿using Data.Entities;
+
+namespace Business.Models
 {
     public class StorageTypeModel
     {
-        public int Id { set; get; }
+        public Guid Id { set; get; }
         public string StorageTypeName { get; set; }
+        public ICollection<Guid>? ProductsIds { get; set; }
     }
 }

@@ -1,8 +1,11 @@
-﻿namespace Business.Models
+﻿using Data.Entities;
+
+namespace Business.Models
 {
     public class OrderStatusModel
     {
-        public int Id { set; get; }
+        public Guid Id { set; get; }
         public string OrderStatusName { set; get; }
+        public ICollection<Guid>? OrdersIds { get; set; }
     }
 }

@@ -5,9 +5,9 @@ namespace Business.Models
 {
     public class OrderDetailModel
     {
-        public int Id { set; get; }
+        public Guid Id { set; get; }
 
-        public int ProductId { set; get; }
+        public Guid ProductId { set; get; }
 
         public int OrderId { set; get; }
 

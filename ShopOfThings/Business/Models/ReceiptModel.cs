@@ -3,15 +3,15 @@ namespace Business.Models
 {
     public class ReceiptModel
     {
-        public int Id { set; get; }
+        public Guid Id { set; get; }
 
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         
         public string ReceiptName { get; set; }
 
         public string ReceiptDescription { set; get; }
 
-        public ICollection<int>? ReceiptDetailsIds { get; set; }
+        public ICollection<Guid>? ReceiptDetailsIds { get; set; }
 
     }
 }

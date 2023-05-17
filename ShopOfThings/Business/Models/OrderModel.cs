@@ -4,11 +4,11 @@ namespace Business.Models
 {
     public class OrderModel
     {
-        public int Id { set; get; }
+        public Guid Id { set; get; }
         public DateTime OperationDate { get; set; }
-        public int OrderStatusId { set; get; }
-        public int UserId { get; set; }
+        public Guid OrderStatusId { set; get; }
+        public Guid UserId { get; set; }
         public string OrderStatusName { set; get; }
-        public ICollection<int>? OrderDetailsIds { get; set; }
+        public ICollection<Guid>? OrderDetailsIds { get; set; }
     }
 }
