@@ -24,16 +24,14 @@ namespace ShopOfThings.Tests.Data
 
         }
 
-        [DataTestMethod]
-        [DataRow("Produict1 ProductDescription1", 1)]
-        [DataRow("Produict3 ProductDescription3", 3)]
-        public async Task ProductRepository_GetByIdAsync(string expected, int id)
+        [TestMethod]
+        public async Task ProductRepository_GetByIdAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
             //Act
-            var actualEntity = await repository.GetByIdAsync(id);
-            var actual = string.Format("{0} {1}", actualEntity.ProductName,actualEntity.ProductDescription);
+            var expected = repository.GetAllAsync().Result.First();
+            var actual = await repository.GetByIdAsync(expected.Id);
             //Assert
             Assert.AreEqual(expected, actual);
 
@@ -63,9 +61,7 @@ namespace ShopOfThings.Tests.Data
                 ProductName = string.Empty,
                 ProductDescription = string.Empty,
                 Price = 1,
-                Amount = 4,
-                UserId = 1,
-                StorageTypeId = 2
+                Amount = 4
             };
             //Act
             await repository.AddAsync(newEntity);
@@ -82,11 +78,14 @@ namespace ShopOfThings.Tests.Data
 
             string expectedProperty = "New";
 
-            var newStatus = await repository.GetByIdAsync(1);
-            newStatus.ProductName = expectedProperty;
-            repository.Update(newStatus);
             //Act
-            var actual = await repository.GetByIdAsync(newStatus.Id);
+            var entityToUpdate = repository.GetAllAsync().Result.Last();
+
+            entityToUpdate.ProductName = expectedProperty;
+
+            repository.Update(entityToUpdate);
+
+            var actual = await repository.GetByIdAsync(entityToUpdate.Id);
             //Assert
             Assert.AreEqual(expectedProperty, actual.ProductName);
         }
@@ -99,7 +98,7 @@ namespace ShopOfThings.Tests.Data
 
             var expectedLen = 2;
 
-            var entitToDelete = await repository.GetByIdAsync(1);
+            var entitToDelete = repository.GetAllAsync().Result.Last();
 
             repository.Delete(entitToDelete);
             //Act
@@ -116,7 +115,9 @@ namespace ShopOfThings.Tests.Data
 
             var expectedLen = 2;
 
-            await repository.DeleteByIdAsync(1);
+            var entitToDelete = repository.GetAllAsync().Result.First();
+
+            await repository.DeleteByIdAsync(entitToDelete.Id);
             //Act
             var actual = await repository.GetAllAsync();
             //Assert

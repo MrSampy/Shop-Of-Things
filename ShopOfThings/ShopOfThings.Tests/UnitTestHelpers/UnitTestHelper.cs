@@ -17,53 +17,103 @@ namespace ShopOfThings.Tests.UnitTestHelpers
         public async static Task SeedData(ShopOfThingsDBContext context)
         {
             await context.UserStatuses.AddRangeAsync(
-                new UserStatus { Id = 1, UserStatusName = "Admin" },
-                new UserStatus { Id = 2, UserStatusName = "Customer" });
+                new UserStatus { UserStatusName = "Admin" },
+                new UserStatus { UserStatusName = "Customer" });
             await context.OrderStatuses.AddRangeAsync(
-                new OrderStatus { Id = 1, OrderStatusName = "New" },
-                new OrderStatus { Id = 2, OrderStatusName = "Payment_received" },
-                new OrderStatus { Id = 3, OrderStatusName = "Sent" },
-                new OrderStatus { Id = 4, OrderStatusName = "Received" },
-                new OrderStatus { Id = 5, OrderStatusName = "Completed" },
-                new OrderStatus { Id = 6, OrderStatusName = "Canceled_by_user" },
-                new OrderStatus { Id = 7, OrderStatusName = "Canceled_by_the_administrator" }
+                new OrderStatus { OrderStatusName = "New" },
+                new OrderStatus { OrderStatusName = "Payment_received" },
+                new OrderStatus { OrderStatusName = "Sent" },
+                new OrderStatus { OrderStatusName = "Received" },
+                new OrderStatus { OrderStatusName = "Completed" },
+                new OrderStatus { OrderStatusName = "Canceled_by_user" },
+                new OrderStatus { OrderStatusName = "Canceled_by_the_administrator" }
                 );
             await context.StorageTypes.AddRangeAsync(
-                new StorageType { Id = 1, StorageTypeName = "kg" },
-                new StorageType { Id = 2, StorageTypeName = "thing" }
+                new StorageType { StorageTypeName = "kg" }, 
+                new StorageType { StorageTypeName = "thing" }
                 );
 
             await context.Users.AddRangeAsync(
-                new User { Id = 1, Name = "Test1", SecondName = "TestN", Email = "123@test.com", Password = "123", BirthDate = DateTime.Today.AddYears(-20), UserStatusId = 1 },
-                new User { Id = 2, Name = "Test2", SecondName = "TestN2", Email = "1423@test.com", Password = "1423", BirthDate = DateTime.Today.AddYears(-22), UserStatusId = 2 },
-                new User { Id = 3, Name = "Test3", SecondName = "TestN4", Email = "14263@test.com", Password = "14523", BirthDate = DateTime.Today.AddYears(-25), UserStatusId = 2 }
+                new User { Name = "Test1", SecondName = "TestN", Email = "123@test.com", Password = "123", BirthDate = DateTime.Today.AddYears(-20) }, 
+                new User { Name = "Test2", SecondName = "TestN2", Email = "1423@test.com", Password = "1423", BirthDate = DateTime.Today.AddYears(-22) }, 
+                new User { Name = "Test3", SecondName = "TestN4", Email = "14263@test.com", Password = "14523", BirthDate = DateTime.Today.AddYears(-25) }
                 );
             await context.Products.AddRangeAsync(
-                new Product { Id = 1, ProductName = "Produict1", ProductDescription = "ProductDescription1", Price = 12.5M, Amount = 4, StorageTypeId = 1, UserId = 3 },
-                new Product { Id = 2, ProductName = "Produict2", ProductDescription = "ProductDescription2", Price = 10.9M, Amount = 0, StorageTypeId = 2, UserId = 3 },
-                new Product { Id = 3, ProductName = "Produict3", ProductDescription = "ProductDescription3", Price = 16, Amount = 1, StorageTypeId = 1, UserId = 2 }
+                new Product { ProductName = "Produict1", ProductDescription = "ProductDescription1", Price = 12.5M, Amount = 4 }, 
+                new Product { ProductName = "Produict2", ProductDescription = "ProductDescription2", Price = 10.9M, Amount = 0 },
+                new Product { ProductName = "Produict3", ProductDescription = "ProductDescription3", Price = 16, Amount = 1 }
                 );
             await context.Orders.AddRangeAsync(
-                new Order { Id = 1, OperationDate = DateTime.Today.AddDays(-5), UserId = 3, OrderStatusId = 2 },
-                new Order { Id = 2, OperationDate = DateTime.Today.AddDays(-6), UserId = 2, OrderStatusId = 4 }
+                new Order { OperationDate = DateTime.Today.AddDays(-5) },
+                new Order { OperationDate = DateTime.Today.AddDays(-6) }
                 );
             await context.OrderDetails.AddRangeAsync(
-                new OrderDetail { Id = 1, OrderId = 1, ProductId = 1, Quantity = 3.4M },
-                new OrderDetail { Id = 2, OrderId = 1, ProductId = 3, Quantity = 6 },
-                new OrderDetail { Id = 3, OrderId = 2, ProductId = 2, Quantity = 10 }
+                new OrderDetail { Quantity = 3.4M },
+                new OrderDetail { Quantity = 6 },
+                new OrderDetail { Quantity = 10 }
                 );
             await context.Receipts.AddRangeAsync(
-                new Receipt { Id = 1, ReceiptName = "R1", ReceiptDescription = "D1", UserId = 2 },
-                new Receipt { Id = 2, ReceiptName = "R2", ReceiptDescription = "D2", UserId = 3 }
+                new Receipt { ReceiptName = "R1", ReceiptDescription = "D1" },
+                new Receipt { ReceiptName = "R2", ReceiptDescription = "D2" }
                 );
             await context.ReceiptDetails.AddRangeAsync(
-                new ReceiptDetail { Id = 1, Amount = 2, ReceiptId = 1, ProductId = 1, },
-                new ReceiptDetail { Id = 2, Amount = 4.3M, ReceiptId = 1, ProductId = 3 },
-                new ReceiptDetail { Id = 3, Amount = 10.8M, ReceiptId = 2, ProductId = 2 }
+                new ReceiptDetail { Amount = 2 },
+                new ReceiptDetail { Amount = 4.3M },
+                new ReceiptDetail { Amount = 10.8M }
                 );
+
             await context.SaveChangesAsync();
+
+            await AddDependencies(context);
         }
 
+        public async static Task AddDependencies(ShopOfThingsDBContext context) 
+        {
+            var userStatuses = await context.UserStatuses.ToListAsync();
+            var orderStatuses = await context.OrderStatuses.ToListAsync();
+            var storageTypes = await context.StorageTypes.ToListAsync();
+            var users = await context.Users.ToListAsync();
+            var products = await context.Products.ToListAsync();
+            var orders = await context.Orders.ToListAsync();
+            var orderDetails = await context.OrderDetails.ToListAsync();
+            var receipts = await context.Receipts.ToListAsync();
+            var receiptDetails = await context.ReceiptDetails.ToListAsync();
+
+            users[0].UserStatusId = userStatuses[0].Id;
+            users[1].UserStatusId = userStatuses[1].Id;
+            users[2].UserStatusId = userStatuses[1].Id;
+
+            products[0].UserId = users[2].Id;
+            products[1].UserId = users[2].Id;
+            products[2].UserId = users[1].Id;
+            products[0].StorageTypeId = storageTypes[0].Id;
+            products[1].StorageTypeId = storageTypes[1].Id;
+            products[2].StorageTypeId = storageTypes[0].Id;
+
+            orders[0].UserId = users[2].Id;
+            orders[1].UserId = users[1].Id;
+            orders[0].OrderStatusId = orderStatuses[1].Id;
+            orders[1].OrderStatusId = orderStatuses[3].Id;
+
+            orderDetails[0].OrderId = orders[0].Id;
+            orderDetails[1].OrderId = orders[0].Id;
+            orderDetails[2].OrderId = orders[1].Id;
+            orderDetails[0].ProductId = products[0].Id;
+            orderDetails[1].ProductId = products[2].Id;
+            orderDetails[2].ProductId = products[1].Id;
+
+            receipts[0].UserId = users[1].Id;
+            receipts[1].UserId = users[2].Id;
+
+            receiptDetails[0].ReceiptId = receipts[0].Id;
+            receiptDetails[1].ReceiptId = receipts[0].Id;
+            receiptDetails[2].ReceiptId = receipts[1].Id;
+            receiptDetails[0].ProductId = products[0].Id;
+            receiptDetails[1].ProductId = products[2].Id;
+            receiptDetails[2].ProductId = products[1].Id;
+
+            await context.SaveChangesAsync();
+        }
 
     }
 }
