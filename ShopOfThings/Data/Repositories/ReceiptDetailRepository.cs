@@ -31,7 +31,7 @@ namespace Data.Repositories
             context.SaveChanges();
         }
 
-        public Task DeleteByIdAsync(int id)
+        public Task DeleteByIdAsync(Guid id)
         {
             context.ReceiptDetails.Remove(context.ReceiptDetails.First(x => x.Id.Equals(id)));
             context.SaveChanges();
@@ -43,7 +43,7 @@ namespace Data.Repositories
             return await context.ReceiptDetails.ToListAsync();
         }
 
-        public async Task<ReceiptDetail> GetByIdAsync(int id)
+        public async Task<ReceiptDetail> GetByIdAsync(Guid id)
         {
             return await context.ReceiptDetails.FirstAsync(x => x.Id.Equals(id));
         }

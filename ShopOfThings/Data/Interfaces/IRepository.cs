@@ -11,13 +11,13 @@ namespace Data.Interfaces
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
 
-        Task<TEntity> GetByIdAsync(int id);
+        Task<TEntity> GetByIdAsync(Guid id);
 
         Task AddAsync(TEntity entity);
 
         void Delete(TEntity entity);
 
-        Task DeleteByIdAsync(int id);
+        Task DeleteByIdAsync(Guid id);
 
         void Update(TEntity entity);
     }

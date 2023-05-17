@@ -31,7 +31,7 @@ namespace Data.Repositories
             context.SaveChanges();
         }
 
-        public Task DeleteByIdAsync(int id)
+        public Task DeleteByIdAsync(Guid id)
         {
             context.StorageTypes.Remove(context.StorageTypes.First(x => x.Id.Equals(id)));
             context.SaveChanges();
@@ -43,7 +43,7 @@ namespace Data.Repositories
             return await context.StorageTypes.ToListAsync();
         }
 
-        public async Task<StorageType> GetByIdAsync(int id)
+        public async Task<StorageType> GetByIdAsync(Guid id)
         {
             return await context.StorageTypes.FirstAsync(x => x.Id.Equals(id));
         }

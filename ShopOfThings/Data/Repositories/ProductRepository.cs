@@ -32,7 +32,7 @@ namespace Data.Repositories
             context.SaveChanges();
         }
 
-        public Task DeleteByIdAsync(int id)
+        public Task DeleteByIdAsync(Guid id)
         {
             context.Products.Remove(context.Products.First(x => x.Id.Equals(id)));
             context.SaveChanges();
@@ -44,7 +44,7 @@ namespace Data.Repositories
             return await context.Products.ToListAsync();
         }
 
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(Guid id)
         {
             return await context.Products.FirstAsync(x => x.Id.Equals(id));
         }
