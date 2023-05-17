@@ -12,6 +12,6 @@ namespace Business.Interfaces
         Task<IEnumerable<UserStatusModel>> GetAllUserStatusesAsync();
         Task AddUserStatusAsync(UserStatusModel userStatusModel);
         Task UpdatUserStatusAsync(UserStatusModel UuserStatusModel);
-        Task RemoveUserStatusAsync(int userStatus);
+        Task RemoveUserStatusAsync(Guid userStatusId);
     }
 }

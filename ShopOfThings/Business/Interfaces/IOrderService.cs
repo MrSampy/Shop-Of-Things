@@ -3,14 +3,12 @@ using Data.Entities;
 
 namespace Business.Interfaces
 {
-    public interface IOrderService:ICrud<Order>
+    public interface IOrderService:ICrud<OrderModel>
     {
-        Task AddProductAsync(int productId, int ordertId, int quantity);
+        Task AddProductAsync(Guid productId, Guid ordertId, decimal quantity);
 
-        Task RemoveProductAsync(int productId, int ordertId, int quantity);
-        Task<IEnumerable<OrderDetailModel>> GetOrderDetailsAsync(int ordertId);
-
-        Task ChangeOrderStatus(int ordertId, int orderStatusId);
+        Task RemoveProductAsync(Guid productId, Guid ordertId, decimal quantity);
+        Task<IEnumerable<OrderDetailModel>> GetOrderDetailsAsync(Guid ordertId);
 
         Task<IEnumerable<ReceiptModel>> GetOrdersByPeriodAsync(DateTime startDate, DateTime endDate);
 
@@ -20,6 +18,6 @@ namespace Business.Interfaces
 
         Task UpdatOrderStatusAsync(OrderStatusModel orderStatusModel);
 
-        Task RemoveOrderStatusAsync(int orderStatusId);
+        Task RemoveOrderStatusAsync(Guid orderStatusId);
     }
 }

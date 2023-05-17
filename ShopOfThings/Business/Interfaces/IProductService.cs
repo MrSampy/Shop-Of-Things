@@ -14,7 +14,7 @@ namespace Business.Interfaces
         Task<IEnumerable<StorageTypeModel>> GetAllStorageTypesAsync();
         Task AddStorageTypeAsync(StorageTypeModel storageTypeModel);
         Task UpdatStorageTypeAsync(StorageTypeModel storageTypeModel);
-        Task RemoveStorageTypeAsync(int storageTypeId);
+        Task RemoveStorageTypeAsync(Guid storageTypeId);
 
 
     }
