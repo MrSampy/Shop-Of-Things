@@ -8,9 +8,18 @@ namespace Business
     {
         public AutomapperProfile() 
         {
-            CreateMap<UserStatus, UserStatusModel>().ReverseMap();
-            CreateMap<StorageType, StorageTypeModel>().ReverseMap();
-            CreateMap<OrderStatus, OrderStatusModel>().ReverseMap();
+            CreateMap<UserStatus, UserStatusModel>()
+                .ForMember(userStatusModel => userStatusModel.UsersIds,
+                userStatus => userStatus.MapFrom(x => x.Users.Select(user => user.Id)))
+                .ReverseMap();
+            CreateMap<StorageType, StorageTypeModel>()
+                .ForMember(storageTypeModel => storageTypeModel.ProductsIds,
+                storageType => storageType.MapFrom(x => x.Products.Select(product => product.Id)))
+                .ReverseMap();
+            CreateMap<OrderStatus, OrderStatusModel>()
+                .ForMember(orderStatusModel => orderStatusModel.OrdersIds,
+                orderStatus => orderStatus.MapFrom(x => x.Orders.Select(order => order.Id)))
+                .ReverseMap();
             CreateMap<OrderDetail, OrderDetailModel>().ReverseMap();
             CreateMap<ReceiptDetail, ReceiptDetailModel>().ReverseMap();
             CreateMap<Receipt, ReceiptModel>()
@@ -20,6 +29,10 @@ namespace Business
             CreateMap<Product, ProductModel>()
                 .ForMember(productModel=>productModel.StorageTypeName,
                 product=>product.MapFrom(x=>x.StorageType.StorageTypeName))
+                .ForMember(productModel => productModel.ReceiptDetailsIds,
+                product => product.MapFrom(x => x.ReceiptDetails.Select(receiptDetail => receiptDetail.Id)))
+                .ForMember(productModel => productModel.OrderDetailsIds,
+                product => product.MapFrom(x => x.OrderDetails.Select(orderDetail => orderDetail.Id)))
                 .ReverseMap();
             CreateMap<Order, OrderModel>()
                 .ForMember(orderModel => orderModel.OrderStatusName,
