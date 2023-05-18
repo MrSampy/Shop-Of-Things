@@ -5,12 +5,14 @@ namespace Business.Interfaces
 {
     public interface IOrderService:ICrud<OrderModel>
     {
-        Task AddProductAsync(Guid productId, Guid ordertId, decimal quantity);
+        Task AddProductAsync(Guid productId, Guid orderId, decimal quantity);
 
-        Task RemoveProductAsync(Guid productId, Guid ordertId, decimal quantity);
+        Task RemoveProductAsync(Guid productId, Guid orderId, decimal quantity);
+        Task ChangeStatusOrder(Guid orderId, Guid orderStatusid);
+
         Task<IEnumerable<OrderDetailModel>> GetOrderDetailsAsync(Guid ordertId);
 
-        Task<IEnumerable<ReceiptModel>> GetOrdersByPeriodAsync(DateTime startDate, DateTime endDate);
+        Task<IEnumerable<OrderModel>> GetOrdersByPeriodAsync(DateTime startDate, DateTime endDate);
 
         Task<IEnumerable<OrderStatusModel>> GetAlldOrderStatusesAsync();
 
