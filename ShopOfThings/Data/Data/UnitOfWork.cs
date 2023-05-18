@@ -56,9 +56,5 @@ namespace Data.Data
             this.dbContext = shopOfThingsDBContext;
         }
 
-        public async Task SaveAsync()
-        {
-            await dbContext.SaveChangesAsync();
-        }
     }
 }
