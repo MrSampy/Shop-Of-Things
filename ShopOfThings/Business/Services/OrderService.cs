@@ -179,6 +179,23 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Order not found!");
             }
+            if (model.UserId == null || model.OrderStatusId == null || model.OperationDate == DateTime.MinValue) 
+            {
+                throw new ShopOfThingsException("Wrong data for order!");
+            }
+            var orderStatus = await UnitOfWork.OrderStatusRepository.GetByIdAsync((Guid)model.OrderStatusId);
+            if (orderStatus == null) 
+            {
+                throw new ShopOfThingsException("Order status not found!");
+            }
+            var user = await UnitOfWork.UserRepository.GetByIdAsync((Guid)model.UserId);
+            if (user == null)
+            {
+                throw new ShopOfThingsException("User not found!");
+            }
+            order.OperationDate = model.OperationDate;
+            order.OrderStatusId = model.OrderStatusId;
+            order.UserId = model.UserId;
             UnitOfWork.OrderRepository.Update(order);
         }
 
@@ -189,6 +206,11 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Order status not found!");
             }
+            if (string.IsNullOrEmpty(orderStatusModel.OrderStatusName)) 
+            {
+                throw new ShopOfThingsException("Wrong data for order status!");
+            }
+            orderStatus.OrderStatusName = orderStatusModel.OrderStatusName;
             UnitOfWork.OrderStatusRepository.Update(orderStatus);
         }
 
