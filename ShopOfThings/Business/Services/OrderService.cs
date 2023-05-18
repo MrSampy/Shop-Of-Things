@@ -57,7 +57,7 @@ namespace Business.Services
             }
             if (quantity <= 0)
             {
-                throw new ShopOfThingsException("Quantity should be less than 0!");
+                throw new ShopOfThingsException("Quantity should be more than 0!");
             }
             if (order.OrderDetails is null || !order.OrderDetails.Any(x => x.ProductId.Equals(productId)))
             {
@@ -75,9 +75,8 @@ namespace Business.Services
             {
                 var orderDetailModel = UnitOfWork.OrderDetailRepository.GetAllAsync().Result.First(x=>x.ProductId.Equals(product.Id));
                 orderDetailModel.Quantity += quantity;
-                UnitOfWork.OrderDetailRepository.Update(Mapper.Map<OrderDetail>(orderDetailModel));
-            }
-            
+                UnitOfWork.OrderDetailRepository.Update(orderDetailModel);
+            }            
         }
 
         public async Task DeleteAsync(Guid modelId)
@@ -152,7 +151,7 @@ namespace Business.Services
             }
             if (quantity <= 0)
             {
-                throw new ShopOfThingsException("Quantity should be less than 0!");
+                throw new ShopOfThingsException("Quantity should be more than 0!");
             }
             if (order.OrderDetails != null && order.OrderDetails.Any(x => x.ProductId.Equals(productId))) 
             {
@@ -168,8 +167,6 @@ namespace Business.Services
                     UnitOfWork.OrderDetailRepository.Update(orderDetail);
                 }
             }
-
-
         }
 
         public async Task UpdateAsync(OrderModel model)
@@ -192,11 +189,8 @@ namespace Business.Services
             if (user == null)
             {
                 throw new ShopOfThingsException("User not found!");
-            }
-            order.OperationDate = model.OperationDate;
-            order.OrderStatusId = model.OrderStatusId;
-            order.UserId = model.UserId;
-            UnitOfWork.OrderRepository.Update(order);
+            }           
+            UnitOfWork.OrderRepository.Update(Mapper.Map<Order>(model));
         }
 
         public async Task UpdatOrderStatusAsync(OrderStatusModel orderStatusModel)
@@ -210,8 +204,7 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Wrong data for order status!");
             }
-            orderStatus.OrderStatusName = orderStatusModel.OrderStatusName;
-            UnitOfWork.OrderStatusRepository.Update(orderStatus);
+            UnitOfWork.OrderStatusRepository.Update(Mapper.Map<OrderStatus>(orderStatusModel));
         }
 
         public async Task ChangeStatusOrder(Guid orderId, Guid orderStatusId)
@@ -228,6 +221,25 @@ namespace Business.Services
             }
             order.OrderStatusId = orderStatus.Id;
             UnitOfWork.OrderRepository.Update(order);
+        }
+
+        public async Task RemoveProductByIdAsync(Guid productId, Guid orderId)
+        {
+            var order = await UnitOfWork.OrderRepository.GetByIdAsync(orderId);
+            if (order == null)
+            {
+                throw new ShopOfThingsException("Order not found!");
+            }
+            var product = await UnitOfWork.ProductRepository.GetByIdAsync(productId);
+            if (product == null)
+            {
+                throw new ShopOfThingsException("Product not found!");
+            }
+            if (order.OrderDetails != null && order.OrderDetails.Any(x => x.ProductId.Equals(productId)))
+            {
+                var orderDetail = order.OrderDetails.First(x => x.ProductId.Equals(productId));
+                UnitOfWork.OrderDetailRepository.Delete(orderDetail);
+            }
         }
     }
 }
