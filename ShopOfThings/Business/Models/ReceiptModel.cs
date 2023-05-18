@@ -3,7 +3,7 @@ namespace Business.Models
 {
     public class ReceiptModel
     {
-        public Guid? Id { set; get; }
+        public Guid Id { set; get; }
 
         public Guid? UserId { get; set; }
         
