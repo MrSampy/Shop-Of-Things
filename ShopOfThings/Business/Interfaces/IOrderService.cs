@@ -8,6 +8,7 @@ namespace Business.Interfaces
         Task AddProductAsync(Guid productId, Guid orderId, decimal quantity);
 
         Task RemoveProductAsync(Guid productId, Guid orderId, decimal quantity);
+        Task RemoveProductByIdAsync(Guid productId, Guid orderId);
         Task ChangeStatusOrder(Guid orderId, Guid orderStatusid);
 
         Task<IEnumerable<OrderDetailModel>> GetOrderDetailsAsync(Guid ordertId);
