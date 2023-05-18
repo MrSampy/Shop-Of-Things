@@ -10,7 +10,7 @@ namespace Business.Models
         public string Password { set; get; }
         public string SecondName { set; get; }
         public DateTime BirthDate { set; get; }
-        public Guid UserStatusId { set; get; }
+        public Guid? UserStatusId { set; get; }
         public string UserStatusName { set; get; }
         public virtual ICollection<Guid>? OrdersIds { get; set; }
         public ICollection<Guid>? ProductsIds { get; set; }
