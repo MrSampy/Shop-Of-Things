@@ -86,7 +86,7 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Order not found!");
             }
-            UnitOfWork.OrderRepository.Update(Mapper.Map<Order>(order));
+            UnitOfWork.OrderRepository.Delete(Mapper.Map<Order>(order));
         }
 
         public async Task<IEnumerable<OrderModel>> GetAllAsync()
