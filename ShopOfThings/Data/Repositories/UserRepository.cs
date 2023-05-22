@@ -59,6 +59,7 @@ namespace Data.Repositories
             updateEntity.Name = entity.Name;
             updateEntity.SecondName = entity.SecondName;
             updateEntity.Email = entity.Email;
+            updateEntity.NickName = entity.NickName;
             context.SaveChanges();
         }
     }

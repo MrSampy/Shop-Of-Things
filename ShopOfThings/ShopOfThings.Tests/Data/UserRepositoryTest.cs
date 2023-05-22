@@ -58,6 +58,7 @@ namespace ShopOfThings.Tests.Data
             int expectedLength = 4;
             var newEntity = new User
             {
+                NickName = string.Empty,
                 Name = string.Empty,
                 SecondName = string.Empty,
                 Email = string.Empty,
