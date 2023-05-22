@@ -14,7 +14,6 @@ namespace ShopOfThings.Tests.UnitTestHelpers
 {
     public class UnitTestHelper
     {
-
         public async static Task SeedData(ShopOfThingsDBContext context)
         {
             await context.UserStatuses.AddRangeAsync(
@@ -35,9 +34,9 @@ namespace ShopOfThings.Tests.UnitTestHelpers
                 );
 
             await context.Users.AddRangeAsync(
-                new User { Name = "Test1", SecondName = "TestN", Email = "123@test.com", Password = SecurePasswordHasher.Hash("123"), BirthDate = DateTime.Today.AddYears(-20) }, 
-                new User { Name = "Test2", SecondName = "TestN2", Email = "1423@test.com", Password = SecurePasswordHasher.Hash("1423"), BirthDate = DateTime.Today.AddYears(-22) }, 
-                new User { Name = "Test3", SecondName = "TestN4", Email = "14263@test.com", Password = SecurePasswordHasher.Hash("14523"), BirthDate = DateTime.Today.AddYears(-25) }
+                new User {NickName = "123",  Name = "Test1", SecondName = "TestN", Email = "123@test.com", Password = SecurePasswordHasher.Hash("123"), BirthDate = DateTime.Today.AddYears(-20) }, 
+                new User { NickName = "asdff", Name = "Test2", SecondName = "TestN2", Email = "1423@test.com", Password = SecurePasswordHasher.Hash("1423"), BirthDate = DateTime.Today.AddYears(-22) }, 
+                new User { NickName = "dagf", Name = "Test3", SecondName = "TestN4", Email = "14263@test.com", Password = SecurePasswordHasher.Hash("14523"), BirthDate = DateTime.Today.AddYears(-25) }
                 );
             await context.Products.AddRangeAsync(
                 new Product { ProductName = "Produict1", ProductDescription = "ProductDescription1", Price = 12.5M, Amount = 4 }, 
