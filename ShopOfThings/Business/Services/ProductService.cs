@@ -84,7 +84,7 @@ namespace Business.Services
             }
             if (filterSearch.MaxPrice != null)
             {
-                products = products.Where(product => product.Price <= filterSearch.MaxPrice));
+                products = products.Where(product => product.Price <= filterSearch.MaxPrice);
             }
             return Mapper.Map<IEnumerable<ProductModel>>(products);
         }
@@ -99,7 +99,7 @@ namespace Business.Services
             return Mapper.Map<ProductModel>(product);
         }
 
-        public async Task RemoveStorageTypeAsync(Guid storageTypeId)
+        public async Task DeleteStorageTypeAsync(Guid storageTypeId)
         {
             var storageType = await UnitOfWork.StorageTypeRepository.GetByIdAsync(storageTypeId);
             if (storageType == null)

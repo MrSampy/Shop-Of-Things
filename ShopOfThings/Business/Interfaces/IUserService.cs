@@ -9,9 +9,10 @@ namespace Business.Interfaces
 {
     public interface IUserService:ICrud<UserModel>
     {
+        Task<bool> VerifyPassword(Guid userId, string password);
         Task<IEnumerable<UserStatusModel>> GetAllUserStatusesAsync();
         Task AddUserStatusAsync(UserStatusModel userStatusModel);
-        Task UpdatUserStatusAsync(UserStatusModel UuserStatusModel);
-        Task RemoveUserStatusAsync(Guid userStatusId);
+        Task UpdatUserStatusAsync(UserStatusModel userStatusModel);
+        Task DeleteUserStatusAsync(Guid userStatusId);
     }
 }
