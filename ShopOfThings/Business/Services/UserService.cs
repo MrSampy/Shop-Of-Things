@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Validation;
 using Data.Entities;
+using System.Text.RegularExpressions;
 
 namespace Business.Services
 {
@@ -24,7 +25,8 @@ namespace Business.Services
         public async Task AddAsync(UserModel model)
         {
             if (model.UserStatusId == null || string.IsNullOrEmpty(model.Email)
-                || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName) || string.IsNullOrEmpty(model.NickName)) 
+                || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName)
+                || string.IsNullOrEmpty(model.NickName) || string.IsNullOrEmpty(model.Password)) 
             {
                 throw new ShopOfThingsException("Wrong data for user!");
             }
@@ -33,16 +35,27 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Wrong birth date for user!");
             }
+            var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            var match = regex.Match(model.Email);
+            if (!match.Success)
+            {
+                throw new ShopOfThingsException("Incorrect email address!");
+            }
             var isAlreadyExixsts = UnitOfWork.UserRepository.GetAllAsync().Result.Any(x=>x.NickName.Equals(model.NickName) || x.Email.Equals(model.Email));
             if (isAlreadyExixsts) 
             {
                 throw new ShopOfThingsException("User with such nickname or email already exists!");
             }
             var userStatus = await UnitOfWork.UserStatusRepository.GetByIdAsync((Guid)model.UserStatusId);
-            if (userStatus == null) 
+            if (userStatus == null)
             {
                 throw new ShopOfThingsException("User status not found!");
             }
+            if (!userStatus.UserStatusName.Equals(model.UserStatusName)) 
+            {
+                throw new ShopOfThingsException("User status name not found!");
+            }                       
+            model.Password = SecurePasswordHasher.Hash(model.Password);
             await UnitOfWork.UserRepository.AddAsync(Mapper.Map<User>(model));
 
         }
@@ -111,7 +124,8 @@ namespace Business.Services
                 throw new ShopOfThingsException("User not found!");
             }
             if (model.UserStatusId == null || string.IsNullOrEmpty(model.Email)
-               || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName) || string.IsNullOrEmpty(model.NickName))
+                || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName)
+                || string.IsNullOrEmpty(model.NickName) || string.IsNullOrEmpty(model.Password))
             {
                 throw new ShopOfThingsException("Wrong data for user!");
             }
@@ -119,6 +133,12 @@ namespace Business.Services
             if (age <= 0 || age >= 150)
             {
                 throw new ShopOfThingsException("Wrong birth date for user!");
+            }
+            var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            var match = regex.Match(model.Email);
+            if (!match.Success)
+            {
+                throw new ShopOfThingsException("Incorrect email address!");
             }
             var isAlreadyExixsts = UnitOfWork.UserRepository.GetAllAsync().Result.Any( x=>
                !x.Id.Equals(model.Id) && (x.NickName.Equals(model.NickName) || x.Email.Equals(model.Email)));
@@ -130,6 +150,14 @@ namespace Business.Services
             if (userStatus == null)
             {
                 throw new ShopOfThingsException("User status not found!");
+            }
+            if (!userStatus.UserStatusName.Equals(model.UserStatusName))
+            {
+                throw new ShopOfThingsException("User status name can`t be empty!");
+            }           
+            if (!model.Password.Equals(user.Password)) 
+            {
+                model.Password = SecurePasswordHasher.Hash(model.Password);
             }
             UnitOfWork.UserRepository.Update(Mapper.Map<User>(model));
         }
