@@ -7638,6 +7638,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AutoMapper >= 12.0.1",
+      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "Business >= 1.0.0",
       "Data >= 1.0.0",
       "MSTest.TestAdapter >= 2.2.8",
@@ -7698,6 +7700,14 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[12.0.1, )"
+          },
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "[12.0.1, )"
+          },
           "MSTest.TestAdapter": {
             "target": "Package",
             "version": "[2.2.8, )"

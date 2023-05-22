@@ -9,11 +9,32 @@ using Data.Repositories;
 using Data.Entities;
 using System.Runtime.CompilerServices;
 using Business.Validation;
+using AutoMapper;
+using Data.Interfaces;
+using System.Security.Cryptography;
 
 namespace ShopOfThings.Tests.UnitTestHelpers
 {
     public class UnitTestHelper
     {
+        public static Guid GetWrongId() 
+        {
+            byte[] bytes;
+            new RNGCryptoServiceProvider().GetBytes(bytes = new byte[16]);
+            return new Guid(bytes);
+        }
+        public static IUnitOfWork CreateUnitOfWork(ShopOfThingsDBContext context) 
+        {
+            var unitOfWork = new UnitOfWork(context);
+            return unitOfWork;
+        }
+        public static IMapper CreateMapper() 
+        {
+            var myProfile = new AutomapperProfile();
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));
+
+            return new Mapper(configuration);
+        }
         public async static Task SeedData(ShopOfThingsDBContext context)
         {
             await context.UserStatuses.AddRangeAsync(
@@ -36,7 +57,7 @@ namespace ShopOfThings.Tests.UnitTestHelpers
             await context.Users.AddRangeAsync(
                 new User {NickName = "123",  Name = "Test1", SecondName = "TestN", Email = "123@test.com", Password = SecurePasswordHasher.Hash("123"), BirthDate = DateTime.Today.AddYears(-20) }, 
                 new User { NickName = "asdff", Name = "Test2", SecondName = "TestN2", Email = "1423@test.com", Password = SecurePasswordHasher.Hash("1423"), BirthDate = DateTime.Today.AddYears(-22) }, 
-                new User { NickName = "dagf", Name = "Test3", SecondName = "TestN4", Email = "14263@test.com", Password = SecurePasswordHasher.Hash("14523"), BirthDate = DateTime.Today.AddYears(-25) }
+                new User { NickName = "Nick", Name = "Test3", SecondName = "TestN4", Email = "14263@test.com", Password = SecurePasswordHasher.Hash("14523"), BirthDate = DateTime.Today.AddYears(-25) }
                 );
             await context.Products.AddRangeAsync(
                 new Product { ProductName = "Produict1", ProductDescription = "ProductDescription1", Price = 12.5M, Amount = 4 }, 
