@@ -46,7 +46,7 @@ namespace Data.Repositories
 
         public async Task<User> GetByIdAsync(Guid id)
         {
-            return await context.Users.FirstAsync(x=>x.Id.Equals(id));
+            return await context.Users.FirstOrDefaultAsync(x=>x.Id.Equals(id));
         }
 
         public void Update(User entity)

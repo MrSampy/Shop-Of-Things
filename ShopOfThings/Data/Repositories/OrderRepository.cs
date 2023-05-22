@@ -45,7 +45,7 @@ namespace Data.Repositories
 
         public async Task<Order> GetByIdAsync(Guid id)
         {
-            return await context.Orders.FirstAsync(x => x.Id.Equals(id));
+            return await context.Orders.FirstOrDefaultAsync(x => x.Id.Equals(id));
         }
 
         public void Update(Order entity)

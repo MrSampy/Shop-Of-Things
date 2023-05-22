@@ -45,7 +45,7 @@ namespace Data.Repositories
 
         public async Task<StorageType> GetByIdAsync(Guid id)
         {
-            return await context.StorageTypes.FirstAsync(x => x.Id.Equals(id));
+            return await context.StorageTypes.FirstOrDefaultAsync(x => x.Id.Equals(id));
         }
 
         public void Update(StorageType entity)

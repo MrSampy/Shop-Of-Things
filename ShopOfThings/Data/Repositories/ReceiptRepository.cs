@@ -45,7 +45,7 @@ namespace Data.Repositories
 
         public async Task<Receipt> GetByIdAsync(Guid id)
         {
-            return await context.Receipts.FirstAsync(x => x.Id.Equals(id));
+            return await context.Receipts.FirstOrDefaultAsync(x => x.Id.Equals(id));
         }
 
         public void Update(Receipt entity)
