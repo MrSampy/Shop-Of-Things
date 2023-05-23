@@ -256,7 +256,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
