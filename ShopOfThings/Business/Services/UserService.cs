@@ -191,5 +191,16 @@ namespace Business.Services
             }
             return SecurePasswordHasher.Verify(password,user.Password);
         }
+
+        public async Task<bool> LogIn(string nickName, string password) 
+        {
+            var user = UnitOfWork.UserRepository.GetAllAsync().Result.FirstOrDefault(x=>x.NickName.Equals(nickName));
+            if (user == null)
+            {
+                throw new ShopOfThingsException("User not found!");
+            }
+            return await VerifyPassword(user.Id,password);
+        }
+
     }
 }
