@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj": {}
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
+        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\obj\\",
+        "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj"
+              "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj"
               }
             }
           }
@@ -69,18 +69,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\obj\\",
+        "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -130,18 +130,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj": {
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
         "projectName": "ShopOfThings.Tests",
-        "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
+        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\obj\\",
+        "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -158,14 +158,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
-                "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj"
+              "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj"
               },
-              "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj"
+              "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj"
               },
-              "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
-                "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj"
+              "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
+                "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj"
               }
             }
           }
@@ -229,18 +229,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -251,14 +251,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
-                "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj"
+              "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Business\\Business.csproj"
               }
             }
           }
@@ -313,7 +314,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

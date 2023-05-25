@@ -180,30 +180,6 @@ namespace ShopOfThings.Tests.Business
         }
 
         [DataTestMethod]
-        [DataRow("14523")]
-        [DataRow(null)]
-        public async Task UserService_AddAsync_UserStatusNameNotFoundException(string? userStatusName)
-        {
-            //Arrange
-            var service = await CreateService();
-            //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
-            var userModel = new UserModel
-            {
-                NickName = "N",
-                Name = "test",
-                SecondName = "seconf",
-                Email = "tests@mail.com",
-                BirthDate = DateTime.Now.AddYears(-20),
-                Password = "123",
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatusName
-            };
-            //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "User status name not found!");
-        }
-
-        [DataTestMethod]
         [DataRow("","1234","1234","1234","1234")]
         [DataRow("14523", "", "1234", "1234", "1234")]
         [DataRow("14523", "1234", "", "1234", "1234")]
@@ -230,27 +206,6 @@ namespace ShopOfThings.Tests.Business
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "Wrong data for user!");
         }
 
-        [TestMethod]
-        public async Task UserService_AddAsync_WrongDataUserStatusIdException()
-        {
-            //Arrange
-            var service = await CreateService();
-            //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
-            var userModel = new UserModel
-            {
-                NickName = "N",
-                Name = "test",
-                SecondName = "seconf",
-                Email = "tests@mail.com",
-                BirthDate = DateTime.Now.AddYears(-20),
-                Password = "123",
-                UserStatusId = null,
-                UserStatusName = userStatus.UserStatusName
-            };
-            //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "Wrong data for user!");
-        }
 
         [TestMethod]
         public async Task UserService_AddAsync_WrongBirthDateException()

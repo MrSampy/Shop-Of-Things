@@ -46,15 +46,13 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("User with such nickname or email already exists!");
             }
-            var userStatus = await UnitOfWork.UserStatusRepository.GetByIdAsync((Guid)model.UserStatusId);
-            if (userStatus == null)
+            var userStatus = UnitOfWork.UserStatusRepository.GetAllAsync().Result.FirstOrDefault(x=>x.UserStatusName.Equals("Customer"));
+            if (userStatus == null) 
             {
-                throw new ShopOfThingsException("User status not found!");
+                throw new ShopOfThingsException("Status not found!");
             }
-            if (!userStatus.UserStatusName.Equals(model.UserStatusName)) 
-            {
-                throw new ShopOfThingsException("User status name not found!");
-            }                       
+            model.UserStatusName = userStatus.UserStatusName;
+            model.UserStatusId = userStatus.Id;
             model.Password = SecurePasswordHasher.Hash(model.Password);
             await UnitOfWork.UserRepository.AddAsync(Mapper.Map<User>(model));
 
