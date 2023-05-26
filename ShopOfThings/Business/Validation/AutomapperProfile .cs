@@ -12,6 +12,10 @@ namespace Business.Validation
                 .ForMember(userStatusModel => userStatusModel.UsersIds,
                 userStatus => userStatus.MapFrom(x => x.Users.Select(user => user.Id)))
                 .ReverseMap();
+            CreateMap<ProductCategory, ProductCategoryModel>()
+                .ForMember(productCategoryModel => productCategoryModel.ProductsIds,
+                productCategory => productCategory.MapFrom(x => x.Products.Select(product => product.Id)))
+                .ReverseMap();
             CreateMap<StorageType, StorageTypeModel>()
                 .ForMember(storageTypeModel => storageTypeModel.ProductsIds,
                 storageType => storageType.MapFrom(x => x.Products.Select(product => product.Id)))
@@ -29,6 +33,8 @@ namespace Business.Validation
             CreateMap<Product, ProductModel>()
                 .ForMember(productModel => productModel.StorageTypeName,
                 product => product.MapFrom(x => x.StorageType.StorageTypeName))
+                 .ForMember(productModel => productModel.ProductCategoryName,
+                product => product.MapFrom(x => x.ProductCategory.ProductCategoryyName))
                 .ForMember(productModel => productModel.ReceiptDetailsIds,
                 product => product.MapFrom(x => x.ReceiptDetails.Select(receiptDetail => receiptDetail.Id)))
                 .ForMember(productModel => productModel.OrderDetailsIds,
@@ -41,15 +47,16 @@ namespace Business.Validation
                 order => order.MapFrom(x => x.OrderDetails.Select(orderDetail => orderDetail.Id)))
                 .ReverseMap();
             CreateMap<User, UserModel>()
-                .ForMember(userModel => userModel.UserStatusName,
+                .ForMember(userModel => userModel.UserStatusId,
                 user => user.MapFrom(x => x.UserStatus.UserStatusName))
-                .ForMember(userModel => userModel.ProductsIds,
+                .ForMember(userModel => userModel.UserStatusName,
                 user => user.MapFrom(x => x.Products.Select(product => product.Id)))
                 .ForMember(userModel => userModel.ReceiptsIds,
                 user => user.MapFrom(x => x.Receipts.Select(receipt => receipt.Id)))
                 .ForMember(userModel => userModel.OrdersIds,
                 user => user.MapFrom(x => x.Orders.Select(order => order.Id)))
                 .ReverseMap();
+
         }
     }
 }
