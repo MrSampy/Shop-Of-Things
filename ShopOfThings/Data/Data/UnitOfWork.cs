@@ -32,6 +32,7 @@ namespace Data.Data
 
         private UserStatusRepository userStatusRepository;
 
+        private ProductCategoryRepository productCategoryRepository;
 
         public IRepository<OrderDetail> OrderDetailRepository => orderDetailRepository ??= new OrderDetailRepository(dbContext);
 
@@ -50,6 +51,8 @@ namespace Data.Data
         public IRepository<User> UserRepository => userRepository ??= new UserRepository(dbContext);
 
         public IRepository<UserStatus> UserStatusRepository => userStatusRepository ??= new UserStatusRepository(dbContext);
+
+        public IRepository<ProductCategory> ProductCategoryRepository => productCategoryRepository ??= new ProductCategoryRepository(dbContext);
 
         public UnitOfWork(ShopOfThingsDBContext shopOfThingsDBContext)
         {

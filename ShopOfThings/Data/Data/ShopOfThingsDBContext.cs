@@ -20,7 +20,7 @@ namespace Data.Data
         public DbSet<StorageType> StorageTypes => Set<StorageType>();
         public DbSet<User> Users => Set<User>();
         public DbSet<UserStatus> UserStatuses => Set<UserStatus>();
-
+        public DbSet<ProductCategory> ProductCategories => Set<ProductCategory>();
         public ShopOfThingsDBContext()
         {
             Database.EnsureDeleted();
