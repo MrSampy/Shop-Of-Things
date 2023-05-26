@@ -47,9 +47,9 @@ namespace Business.Validation
                 order => order.MapFrom(x => x.OrderDetails.Select(orderDetail => orderDetail.Id)))
                 .ReverseMap();
             CreateMap<User, UserModel>()
-                .ForMember(userModel => userModel.UserStatusId,
-                user => user.MapFrom(x => x.UserStatus.UserStatusName))
                 .ForMember(userModel => userModel.UserStatusName,
+                user => user.MapFrom(x => x.UserStatus.UserStatusName))
+                .ForMember(userModel => userModel.ProductsIds,
                 user => user.MapFrom(x => x.Products.Select(product => product.Id)))
                 .ForMember(userModel => userModel.ReceiptsIds,
                 user => user.MapFrom(x => x.Receipts.Select(receipt => receipt.Id)))

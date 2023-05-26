@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t5Rdj2cFyjt2ozBk6coiUXwCv1gp6+5MtBg9GzvANWtatodId86bxAA1bK3Yd6QiFuBtJUt5KGzmoYpzv8Ydrg==",
+  "dgSpecHash": "lKnnSmXeRLd4vOTxzFvjAkQbP7a+rTI/iWiRPAjtTQml0zYQ2ls78QPpM7Yw006RdOKE/tnKPEqA78eEW/otHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\ShopOfThings.Tests\\ShopOfThings.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Сергей\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Сергей\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

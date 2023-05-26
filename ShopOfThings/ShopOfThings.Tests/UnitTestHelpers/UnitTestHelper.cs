@@ -40,6 +40,9 @@ namespace ShopOfThings.Tests.UnitTestHelpers
             await context.UserStatuses.AddRangeAsync(
                 new UserStatus { UserStatusName = "Admin" },
                 new UserStatus { UserStatusName = "Customer" });
+            await context.ProductCategories.AddRangeAsync(
+                new ProductCategory { ProductCategoryyName = "Liquid" },
+                new ProductCategory { ProductCategoryyName = "Meat" });
             await context.OrderStatuses.AddRangeAsync(
                 new OrderStatus { OrderStatusName = "New" },
                 new OrderStatus { OrderStatusName = "Payment_received" },
@@ -99,6 +102,7 @@ namespace ShopOfThings.Tests.UnitTestHelpers
             var orderDetails = await context.OrderDetails.ToListAsync();
             var receipts = await context.Receipts.ToListAsync();
             var receiptDetails = await context.ReceiptDetails.ToListAsync();
+            var productCategories = await context.ProductCategories.ToListAsync();
 
             users[0].UserStatusId = userStatuses[0].Id;
             users[1].UserStatusId = userStatuses[1].Id;
@@ -110,6 +114,9 @@ namespace ShopOfThings.Tests.UnitTestHelpers
             products[0].StorageTypeId = storageTypes[0].Id;
             products[1].StorageTypeId = storageTypes[1].Id;
             products[2].StorageTypeId = storageTypes[0].Id;
+            products[0].ProductCategoryId = productCategories[0].Id;
+            products[1].ProductCategoryId = productCategories[1].Id;
+            products[2].ProductCategoryId = productCategories[0].Id;
 
             orders[0].UserId = users[2].Id;
             orders[1].UserId = users[1].Id;

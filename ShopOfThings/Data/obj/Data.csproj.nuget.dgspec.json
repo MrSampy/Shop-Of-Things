@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {}
+    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
+    "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Сергей\\Source\\Repos\\Shop-Of-Things\\ShopOfThings\\Data\\obj\\",
+        "outputPath": "C:\\Users\\Сергей\\source\\repos\\Shop-Of-Things\\ShopOfThings\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",

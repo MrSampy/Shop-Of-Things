@@ -392,25 +392,6 @@ namespace ShopOfThings.Tests.Business
         }
 
         [TestMethod]
-        public async Task UserService_UpdateAsync_WrongDataUserStatusIdException()
-        {
-            var service = await CreateService();
-            //Act
-            var userModel = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
-            userModel.NickName = "New";
-            userModel.Name = "New";
-            userModel.SecondName = "New";
-            userModel.Email = "tests@mail.com";
-            userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = null;
-            userModel.UserStatusName = userStatus.UserStatusName;
-            userModel.Password = "321";
-            //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "Wrong data for user!");
-        }
-
-        [TestMethod]
         public async Task UserService_UpdateAsync_WrongBirthDateException()
         {
             var service = await CreateService();

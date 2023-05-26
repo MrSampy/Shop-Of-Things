@@ -57,6 +57,10 @@ namespace WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseSwagger();
+
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
@@ -66,10 +70,6 @@ namespace WebApi
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI();//path:/swagger/
         }
     }
 }

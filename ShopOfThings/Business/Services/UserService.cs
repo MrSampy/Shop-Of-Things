@@ -24,7 +24,7 @@ namespace Business.Services
         }
         public async Task AddAsync(UserModel model)
         {
-            if (model.UserStatusId == null || string.IsNullOrEmpty(model.Email)
+            if (string.IsNullOrEmpty(model.Email)
                 || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName)
                 || string.IsNullOrEmpty(model.NickName) || string.IsNullOrEmpty(model.Password)) 
             {
