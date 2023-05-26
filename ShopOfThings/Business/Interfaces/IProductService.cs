@@ -15,7 +15,10 @@ namespace Business.Interfaces
         Task AddStorageTypeAsync(StorageTypeModel storageTypeModel);
         Task UpdatStorageTypeAsync(StorageTypeModel storageTypeModel);
         Task DeleteStorageTypeAsync(Guid storageTypeId);
-
+        Task<IEnumerable<ProductCategoryModel>> GetAllProductCategoriesAsync();
+        Task AddProductCategoryAsync(ProductCategoryModel productCategoryModel);
+        Task UpdatProductCategoryAsync(ProductCategoryModel productCategoryModel);
+        Task DeleteProductCategoryAsync(Guid productCategoryId);
 
     }
 }
