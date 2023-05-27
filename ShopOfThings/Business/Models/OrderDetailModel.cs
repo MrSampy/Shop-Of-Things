@@ -13,6 +13,5 @@ namespace Business.Models
 
         public decimal Quantity { set; get; }
 
-        public decimal? UnitPrice { set; get; }
     }
 }

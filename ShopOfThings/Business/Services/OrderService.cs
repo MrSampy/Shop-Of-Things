@@ -66,7 +66,6 @@ namespace Business.Services
                     ProductId = product.Id,
                     OrderId = order.Id,
                     Quantity = quantity,
-                    UnitPrice = quantity * product.Price
                 };
 
                 await UnitOfWork.OrderDetailRepository.AddAsync(Mapper.Map<OrderDetail>(orderDetailModel));

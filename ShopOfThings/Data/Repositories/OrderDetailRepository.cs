@@ -56,7 +56,6 @@ namespace Data.Repositories
             updateEntity.Product = entity.Product;
             updateEntity.Order = entity.Order;
             updateEntity.OrderId = entity.OrderId;
-            updateEntity.UnitPrice = updateEntity.UnitPrice;
             context.SaveChanges();
         }
     }
