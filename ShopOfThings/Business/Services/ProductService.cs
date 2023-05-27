@@ -58,6 +58,14 @@ namespace Business.Services
             }
             await UnitOfWork.ProductRepository.DeleteByIdAsync(modelId);
         }
+        public async Task AddProductCategoryAsync(ProductCategoryModel productCategoryModel)
+        {
+            if (string.IsNullOrEmpty(productCategoryModel.ProductCategoryName))
+            {
+                throw new ShopOfThingsException("Wrong data for product category!");
+            }
+            await UnitOfWork.ProductCategoryRepository.AddAsync(Mapper.Map<ProductCategory>(productCategoryModel));
+        }
 
         public async Task<IEnumerable<ProductModel>> GetAllAsync()
         {
@@ -70,6 +78,11 @@ namespace Business.Services
             var result = await UnitOfWork.StorageTypeRepository.GetAllAsync();
             return Mapper.Map<IEnumerable<StorageTypeModel>>(result);
         }
+        public async Task<IEnumerable<ProductCategoryModel>> GetAllProductCategoriesAsync()
+        {
+            var result = await UnitOfWork.ProductCategoryRepository.GetAllAsync();
+            return Mapper.Map<IEnumerable<ProductCategoryModel>>(result);
+        }
 
         public async Task<IEnumerable<ProductModel>> GetByFilterAsync(ProductFilterSearchModel filterSearch)
         {
@@ -77,6 +90,10 @@ namespace Business.Services
             if (filterSearch.StorageTypeId != null) 
             {
                 products = products.Where(product=>product.StorageTypeId.Equals(filterSearch.StorageTypeId));
+            }
+            if (filterSearch.ProductCategoryId != null)
+            {
+                products = products.Where(product => product.ProductCategoryId.Equals(filterSearch.ProductCategoryId));
             }
             if (filterSearch.MinPrice != null)
             {
@@ -107,6 +124,15 @@ namespace Business.Services
                 throw new ShopOfThingsException("Storage type not found!");
             }
             await UnitOfWork.StorageTypeRepository.DeleteByIdAsync(storageTypeId);
+        }
+        public async Task DeleteProductCategoryAsync(Guid productCategoryId)
+        {
+            var productCategory = await UnitOfWork.StorageTypeRepository.GetByIdAsync(productCategoryId);
+            if (productCategory == null)
+            {
+                throw new ShopOfThingsException("Product category not found!");
+            }
+            await UnitOfWork.ProductCategoryRepository.DeleteByIdAsync(productCategoryId);
         }
 
         public async Task UpdateAsync(ProductModel model)
@@ -148,20 +174,6 @@ namespace Business.Services
 
         }
 
-        public async Task<IEnumerable<ProductCategoryModel>> GetAllProductCategoriesAsync()
-        {
-            var result = await UnitOfWork.ProductCategoryRepository.GetAllAsync();
-            return Mapper.Map<IEnumerable<ProductCategoryModel>>(result);
-        }
-
-        public async Task AddProductCategoryAsync(ProductCategoryModel productCategoryModel)
-        {
-            if (string.IsNullOrEmpty(productCategoryModel.ProductCategoryName))
-            {
-                throw new ShopOfThingsException("Wrong data for product category!");
-            }
-            await UnitOfWork.ProductCategoryRepository.AddAsync(Mapper.Map<ProductCategory>(productCategoryModel));
-        }
 
         public async Task UpdatProductCategoryAsync(ProductCategoryModel productCategoryModel)
         {
@@ -170,21 +182,12 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Product category type not found!");
             }
-            if (string.IsNullOrEmpty(productCategory.ProductCategoryyName))
+            if (string.IsNullOrEmpty(productCategory.ProductCategoryName))
             {
                 throw new ShopOfThingsException("Wrong data for product category!");
             }
             UnitOfWork.ProductCategoryRepository.Update(Mapper.Map<ProductCategory>(productCategory));
         }
 
-        public async Task DeleteProductCategoryAsync(Guid productCategoryId)
-        {
-            var productCategory = await UnitOfWork.StorageTypeRepository.GetByIdAsync(productCategoryId);
-            if (productCategory == null)
-            {
-                throw new ShopOfThingsException("Product category not found!");
-            }
-            await UnitOfWork.ProductCategoryRepository.DeleteByIdAsync(productCategoryId);
-        }
     }
 }
