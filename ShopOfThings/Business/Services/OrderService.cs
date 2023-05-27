@@ -43,7 +43,7 @@ namespace Business.Services
             await UnitOfWork.OrderStatusRepository.AddAsync(Mapper.Map<OrderStatus>(orderStatusModel));
         }
 
-        public async Task AddProductAsync(Guid productId, Guid orderId, decimal quantity)
+        public async Task AddProductAsync(Guid orderId, Guid productId, decimal quantity)
         {
             var order = await UnitOfWork.OrderRepository.GetByIdAsync(orderId);
             if (order == null) 
@@ -127,7 +127,7 @@ namespace Business.Services
             return Mapper.Map<IEnumerable<OrderModel>>(result);
         }
 
-        public async Task RemoveOrderStatusAsync(Guid orderStatusId)
+        public async Task DeleteOrderStatusAsync(Guid orderStatusId)
         {
             var result = await UnitOfWork.OrderStatusRepository.GetByIdAsync(orderStatusId);
             if (result == null)
@@ -137,7 +137,7 @@ namespace Business.Services
             UnitOfWork.OrderStatusRepository.Delete(result);
         }
 
-        public async Task RemoveProductAsync(Guid productId, Guid orderId, decimal quantity)
+        public async Task RemoveProductAsync(Guid orderId, Guid productId, decimal quantity)
         {
             var order = await UnitOfWork.OrderRepository.GetByIdAsync(orderId);
             if (order == null)
@@ -207,7 +207,7 @@ namespace Business.Services
             UnitOfWork.OrderStatusRepository.Update(Mapper.Map<OrderStatus>(orderStatusModel));
         }
 
-        public async Task ChangeStatusOrder(Guid orderId, Guid orderStatusId)
+        public async Task ChangeOrderStatus(Guid orderId, Guid orderStatusId)
         {
             var order = await UnitOfWork.OrderRepository.GetByIdAsync(orderId);
             if (order == null)

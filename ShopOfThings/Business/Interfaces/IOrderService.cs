@@ -5,11 +5,10 @@ namespace Business.Interfaces
 {
     public interface IOrderService:ICrud<OrderModel>
     {
-        Task AddProductAsync(Guid productId, Guid orderId, decimal quantity);
-
-        Task RemoveProductAsync(Guid productId, Guid orderId, decimal quantity);
+        Task AddProductAsync(Guid orderId, Guid productId, decimal quantity);
+        Task RemoveProductAsync(Guid orderId, Guid productId, decimal quantity);
         Task RemoveProductByIdAsync(Guid productId, Guid orderId);
-        Task ChangeStatusOrder(Guid orderId, Guid orderStatusid);
+        Task ChangeOrderStatus(Guid orderId, Guid orderStatusid);
 
         Task<IEnumerable<OrderDetailModel>> GetOrderDetailsAsync(Guid ordertId);
 
@@ -21,6 +20,6 @@ namespace Business.Interfaces
 
         Task UpdatOrderStatusAsync(OrderStatusModel orderStatusModel);
 
-        Task RemoveOrderStatusAsync(Guid orderStatusId);
+        Task DeleteOrderStatusAsync(Guid orderStatusId);
     }
 }
