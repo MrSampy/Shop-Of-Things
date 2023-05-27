@@ -240,5 +240,30 @@ namespace Business.Services
                 UnitOfWork.OrderDetailRepository.Delete(orderDetail);
             }
         }
+
+        public async Task<OrderPriceModel> GetOrderFullPrice(Guid orderId)
+        {
+            var order = await UnitOfWork.OrderRepository.GetByIdAsync(orderId);
+            if (order == null)
+            {
+                throw new ShopOfThingsException("Order not found!");
+            }
+            var orderDetailsUnitPrices = new List<OrderDetailPriceModel>();
+            foreach (OrderDetail orderDetail in order.OrderDetails) 
+            {
+                orderDetailsUnitPrices.Add(new OrderDetailPriceModel
+                {
+                    OrderDetailId = orderDetail.Id,
+                    UnitPrice = orderDetail.Quantity * orderDetail.Product.Price
+                }
+                );
+            }
+            var result = new OrderPriceModel 
+            {
+                FullPrice = orderDetailsUnitPrices.Select(x=>x.UnitPrice).Sum(),
+                OrderDetailPrices = orderDetailsUnitPrices
+            };
+            return result;
+        }
     }
 }

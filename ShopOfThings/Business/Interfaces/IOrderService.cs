@@ -9,7 +9,7 @@ namespace Business.Interfaces
         Task RemoveProductAsync(Guid orderId, Guid productId, decimal quantity);
         Task RemoveProductByIdAsync(Guid productId, Guid orderId);
         Task ChangeOrderStatus(Guid orderId, Guid orderStatusid);
-
+        Task<OrderPriceModel> GetOrderFullPrice(Guid orderId);
         Task<IEnumerable<OrderDetailModel>> GetOrderDetailsAsync(Guid ordertId);
 
         Task<IEnumerable<OrderModel>> GetOrdersByPeriodAsync(DateTime startDate, DateTime endDate);
