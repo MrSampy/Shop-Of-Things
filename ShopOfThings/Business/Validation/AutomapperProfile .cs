@@ -34,7 +34,7 @@ namespace Business.Validation
                 .ForMember(productModel => productModel.StorageTypeName,
                 product => product.MapFrom(x => x.StorageType.StorageTypeName))
                  .ForMember(productModel => productModel.ProductCategoryName,
-                product => product.MapFrom(x => x.ProductCategory.ProductCategoryyName))
+                product => product.MapFrom(x => x.ProductCategory.ProductCategoryName))
                 .ForMember(productModel => productModel.ReceiptDetailsIds,
                 product => product.MapFrom(x => x.ReceiptDetails.Select(receiptDetail => receiptDetail.Id)))
                 .ForMember(productModel => productModel.OrderDetailsIds,

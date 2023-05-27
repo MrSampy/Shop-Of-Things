@@ -51,7 +51,7 @@ namespace Data.Repositories
         public void Update(ProductCategory entity)
         {
             var updateEntity = context.ProductCategories.First(x => x.Id.Equals(entity.Id));
-            updateEntity.ProductCategoryyName = entity.ProductCategoryyName;
+            updateEntity.ProductCategoryName = entity.ProductCategoryName;
             context.SaveChanges();
         }
     }

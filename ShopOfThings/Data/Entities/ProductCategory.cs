@@ -8,7 +8,7 @@ namespace Data.Entities
 {
     public class ProductCategory:BaseEntity
     {
-        public string ProductCategoryyName { get; set; }
+        public string ProductCategoryName { get; set; }
 
         public ICollection<Product> Products { get; set; }
     }

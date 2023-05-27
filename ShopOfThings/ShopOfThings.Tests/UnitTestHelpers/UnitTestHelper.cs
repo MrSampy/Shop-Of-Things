@@ -41,8 +41,8 @@ namespace ShopOfThings.Tests.UnitTestHelpers
                 new UserRole { UserRoleName = "Admin" },
                 new UserRole { UserRoleName = "Customer" });
             await context.ProductCategories.AddRangeAsync(
-                new ProductCategory { ProductCategoryyName = "Liquid" },
-                new ProductCategory { ProductCategoryyName = "Meat" });
+                new ProductCategory { ProductCategoryName = "Liquid" },
+                new ProductCategory { ProductCategoryName = "Meat" });
             await context.OrderStatuses.AddRangeAsync(
                 new OrderStatus { OrderStatusName = "New" },
                 new OrderStatus { OrderStatusName = "Payment_received" },

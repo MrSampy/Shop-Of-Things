@@ -57,7 +57,7 @@ namespace ShopOfThings.Tests.Data
             //Arrange
             ProductCategoryRepository repository = await CreateRepositoryAsync();
             int expectedLength = 3;
-            ProductCategory newCategory = new ProductCategory { ProductCategoryyName = "New" };
+            ProductCategory newCategory = new ProductCategory { ProductCategoryName = "New" };
             //Act
             await repository.AddAsync(newCategory);
             var actual = await repository.GetAllAsync();
@@ -75,13 +75,13 @@ namespace ShopOfThings.Tests.Data
             //Act
             var entityToUpdate = repository.GetAllAsync().Result.Last();
 
-            entityToUpdate.ProductCategoryyName = expectedCategoryName;
+            entityToUpdate.ProductCategoryName = expectedCategoryName;
 
             repository.Update(entityToUpdate);
 
             var actual = await repository.GetByIdAsync(entityToUpdate.Id);
             //Assert
-            Assert.AreEqual(expectedCategoryName, actual.ProductCategoryyName);
+            Assert.AreEqual(expectedCategoryName, actual.ProductCategoryName);
         }
 
         [TestMethod]
