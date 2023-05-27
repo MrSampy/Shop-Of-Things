@@ -10,9 +10,8 @@ namespace Business.Interfaces
 {
     public interface IReceiptService:ICrud<ReceiptModel>
     {
-        Task AddProductAsync(Guid productId, Guid receiptId, decimal amount);
-
-        Task RemoveProductAsync(Guid productId, Guid receiptId, decimal amount);
+        Task AddProductAsync(Guid receiptId, Guid productId, decimal amount);
+        Task RemoveProductAsync(Guid receiptId, Guid productId, decimal amount);
         Task RemoveProductByIdAsync(Guid productId, Guid receiptId);
         Task<IEnumerable<ReceiptDetailModel>> GetReceiptDetailsAsync(Guid receiptId);
 

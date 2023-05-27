@@ -36,7 +36,7 @@ namespace Business.Services
             await UnitOfWork.ReceiptRepository.AddAsync(Mapper.Map<Receipt>(model));
         }
 
-        public async Task AddProductAsync(Guid productId, Guid receiptId, decimal amount)
+        public async Task AddProductAsync(Guid receiptId, Guid productId, decimal amount)
         {
             var receipt = await UnitOfWork.ReceiptRepository.GetByIdAsync(receiptId);
             if (receipt == null)
@@ -106,7 +106,7 @@ namespace Business.Services
             return Mapper.Map<IEnumerable<ReceiptDetailModel>>(receipt);
         }
 
-        public async Task RemoveProductAsync(Guid productId, Guid receiptId, decimal amount)
+        public async Task RemoveProductAsync(Guid receiptId, Guid productId, decimal amount)
         {
             var receipt = await UnitOfWork.ReceiptRepository.GetByIdAsync(receiptId);
             if (receipt == null)
