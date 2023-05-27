@@ -46,13 +46,13 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Post: api/receipt/id/product/add/productId/amount
+        // Post: api/receipt/id/products/add/productId/amount
         [HttpPost("{id:Guid}/products/add/{productId:Guid}/{amount:decimal}")]
-        public async Task<ActionResult> AddProductToReceipt(Guid receiptId, Guid productId, decimal amount)
+        public async Task<ActionResult> AddProductToReceipt(Guid id, Guid productId, decimal amount)
         {
             try
             {
-                await receiptService.AddProductAsync(receiptId,productId,amount);
+                await receiptService.AddProductAsync(id, productId,amount);
             }
             catch (Exception ex)
             {
@@ -61,13 +61,13 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Post: api/receipt/id/product/remove/productId/amount
+        // Post: api/receipt/id/products/remove/productId/amount
         [HttpPost("{id:Guid}/products/remove/{productId:Guid}/{amount:decimal}")]
-        public async Task<ActionResult> RemoveAmountOfProductFromReceipt(Guid receiptId, Guid productId, decimal amount)
+        public async Task<ActionResult> RemoveAmountOfProductFromReceipt(Guid id, Guid productId, decimal amount)
         {
             try
             {
-                await receiptService.AddProductAsync(receiptId, productId, amount);
+                await receiptService.RemoveProductAsync(id, productId, amount);
             }
             catch (Exception ex)
             {
@@ -98,13 +98,13 @@ namespace WebApi.Controllers
             return new ObjectResult(await receiptService.GetReceiptDetailsAsync(id));
         }
 
-        // Post: api/receipt/id/product/remove/productId
+        // Delete: api/receipt/id/product/remove/productId
         [HttpDelete("{id:Guid}/products/remove/{productId:Guid}")]
-        public async Task<ActionResult> RemoveProductFromReceipt(Guid receiptId, Guid productId)
+        public async Task<ActionResult> RemoveProductFromReceipt(Guid id, Guid productId)
         {
             try
             {
-                await receiptService.RemoveProductByIdAsync(receiptId, productId);
+                await receiptService.RemoveProductByIdAsync(id, productId);
             }
             catch (Exception ex)
             {
