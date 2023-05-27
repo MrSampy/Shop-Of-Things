@@ -38,6 +38,13 @@ namespace WebApi.Controllers
             return new ObjectResult(await orderService.GetByIdAsync(id));
         }
 
+        // GET: api/order/id/fullPrice
+        [HttpGet("{id:Guid}/fullPrice")]
+        public async Task<ActionResult<OrderPriceModel>> GetFullPrice(Guid id)
+        {
+            return new ObjectResult(await orderService.GetOrderFullPrice(id));
+        }
+
         // GET: api/order/id/details
         [HttpGet("{id:Guid}/details")]
         public async Task<ActionResult<OrderModel>> GetOrderDetails(Guid id)
