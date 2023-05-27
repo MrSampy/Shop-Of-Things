@@ -52,8 +52,8 @@ namespace Data.Repositories
         public void Update(User entity)
         {
             var updateEntity = context.Users.First(x => x.Id.Equals(entity.Id));
-            updateEntity.UserStatus = entity.UserStatus;
-            updateEntity.UserStatusId = entity.UserStatusId;
+            updateEntity.UserRole = entity.UserRole;
+            updateEntity.UserRoleId = entity.UserRoleId;
             updateEntity.Password = entity.Password;
             updateEntity.BirthDate = entity.BirthDate;
             updateEntity.Name = entity.Name;

@@ -40,14 +40,14 @@ namespace ShopOfThings.Tests.Business
         }
 
         [TestMethod]
-        public async Task UserService_GetAllUserStatusesAsync()
+        public async Task UserService_GetAllUserRoleAsync()
         {
             //Arrange
             var service = await CreateService();
             const int expected = 2;
             //Act
-            var userStatuses = await service.GetAllUserStatusesAsync();
-            var actual = userStatuses.Count();
+            var userRoles = await service.GetAllUserRolesAsync();
+            var actual = userRoles.Count();
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -105,28 +105,28 @@ namespace ShopOfThings.Tests.Business
         }
 
         [TestMethod]
-        public async Task UserService_DeleteUserStatusAsync()
+        public async Task UserService_DeleteUserRoleAsync()
         {
             //Arrange
             var service = await CreateService();
             const int expected = 1;
             //Act
-            var userStatuseId = service.GetAllUserStatusesAsync().Result.First().Id;
-            await service.DeleteUserStatusAsync(userStatuseId);
-            var actual = service.GetAllUserStatusesAsync().Result.Count();
+            var userRoleId = service.GetAllUserRolesAsync().Result.First().Id;
+            await service.DeleteUserRoleAsync(userRoleId);
+            var actual = service.GetAllUserRolesAsync().Result.Count();
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public async Task UserService_DeleteUserStatusAsync_NotFoundException()
+        public async Task UserService_DeleteUserRoleAsync_NotFoundException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatusId = UnitTestHelper.GetWrongId();
+            var userRoleId = UnitTestHelper.GetWrongId();
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.DeleteUserStatusAsync(userStatusId), "User status not found!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.DeleteUserRoleAsync(userRoleId), "User role not found!");
         }
 
         [TestMethod]
@@ -136,8 +136,8 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             const int expected = 2;
             //Act
-            var userStatuseId = service.GetAllAsync().Result.First().Id;
-            await service.DeleteAsync(userStatuseId);
+            var userRoleId = service.GetAllAsync().Result.First().Id;
+            await service.DeleteAsync(userRoleId);
             var actual = service.GetAllAsync().Result.Count();
             //Assert
             Assert.AreEqual(expected, actual);
@@ -161,7 +161,7 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             const int expected = 4;
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = "N",
@@ -170,8 +170,8 @@ namespace ShopOfThings.Tests.Business
                 Email = "tests@mail.com",
                 BirthDate = DateTime.Now.AddYears(-20),
                 Password = "123",
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = userRole.Id,
+                UserRoleName = userRole.UserRoleName
             };
             await service.AddAsync(userModel);
             var actual = service.GetAllAsync().Result.Count();
@@ -190,7 +190,7 @@ namespace ShopOfThings.Tests.Business
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = nickName,
@@ -199,8 +199,8 @@ namespace ShopOfThings.Tests.Business
                 Email = email,
                 BirthDate = DateTime.Now.AddYears(-20),
                 Password = password,
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = userRole.Id,
+                UserRoleName = userRole.UserRoleName
             };
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "Wrong data for user!");
@@ -213,7 +213,7 @@ namespace ShopOfThings.Tests.Business
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = "N",
@@ -222,8 +222,8 @@ namespace ShopOfThings.Tests.Business
                 Email = "tests@mail.com",
                 Password = "123",
                 BirthDate = DateTime.Today.AddYears(-200),
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = userRole.Id,
+                UserRoleName = userRole.UserRoleName
             };
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "Wrong birth date for user!");
@@ -235,7 +235,7 @@ namespace ShopOfThings.Tests.Business
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = "N",
@@ -243,8 +243,8 @@ namespace ShopOfThings.Tests.Business
                 SecondName = "seconf",
                 Email = "tests@mail.com",
                 Password = "123",
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = userRole.Id,
+                UserRoleName = userRole.UserRoleName
             };
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "Wrong birth date for user!");
@@ -258,7 +258,7 @@ namespace ShopOfThings.Tests.Business
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = nickName,
@@ -267,8 +267,8 @@ namespace ShopOfThings.Tests.Business
                 Email = email,
                 BirthDate = DateTime.Now.AddYears(-20),
                 Password = "123",
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = userRole.Id,
+                UserRoleName = userRole.UserRoleName
             };
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "User with such nickname or email already exists!");
@@ -280,7 +280,7 @@ namespace ShopOfThings.Tests.Business
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = "N",
@@ -289,20 +289,20 @@ namespace ShopOfThings.Tests.Business
                 Email = "testsmail.com",
                 BirthDate = DateTime.Now.AddYears(-20),
                 Password = "123",
-                UserStatusId = userStatus.Id,
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = userRole.Id,
+                UserRoleName = userRole.UserRoleName
             };
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "Incorrect email address!");
         }
 
         [TestMethod]
-        public async Task UserService_AddAsync_StatusNotFoundException()
+        public async Task UserService_AddAsync_RoleNotFoundException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             var userModel = new UserModel
             {
                 NickName = "N",
@@ -311,11 +311,11 @@ namespace ShopOfThings.Tests.Business
                 Email = "testsmail.com",
                 BirthDate = DateTime.Now.AddYears(-20),
                 Password = "123",
-                UserStatusId = UnitTestHelper.GetWrongId(),
-                UserStatusName = userStatus.UserStatusName
+                UserRoleId = UnitTestHelper.GetWrongId(),
+                UserRoleName = userRole.UserRoleName
             };
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "User status not found!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddAsync(userModel), "User role not found!");
         }
 
         [TestMethod]
@@ -325,14 +325,14 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             //Act
             var expected = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             expected.NickName = "New";
             expected.Name = "New";
             expected.SecondName = "New";
             expected.Email = "tests@mail.com";
             expected.BirthDate = DateTime.Today.AddYears(-21);
-            expected.UserStatusId = userStatus.Id;
-            expected.UserStatusName = userStatus.UserStatusName;
+            expected.UserRoleId = userRole.Id;
+            expected.UserRoleName = userRole.UserRoleName;
             expected.Password = "321";
             await service.UpdateAsync(expected);
             var actual = await service.GetByIdAsync(expected.Id);
@@ -340,31 +340,31 @@ namespace ShopOfThings.Tests.Business
             //Assert
             var isEqual = expected.Name == actual.Name && expected.SecondName == actual.SecondName
                  && expected.NickName == actual.NickName && expected.Email == actual.Email
-                  && expected.BirthDate == actual.BirthDate && expected.UserStatusName == actual.UserStatusName
-                   && expected.UserStatusId == actual.UserStatusId && expected.Password == actual.Password;
+                  && expected.BirthDate == actual.BirthDate && expected.UserRoleName == actual.UserRoleName
+                   && expected.UserRoleId == actual.UserRoleId && expected.Password == actual.Password;
             Assert.IsTrue(isEqual);
         }
 
         [DataTestMethod]
         [DataRow("14523")]
         [DataRow(null)]
-        public async Task UserService_UpdateAsync_UserStatusNameNotFoundException(string? userStatusName)
+        public async Task UserService_UpdateAsync_UserRoleNameNotFoundException(string? userRoleName)
         {
             //Arrange
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             userModel.NickName = "New";
             userModel.Name = "New";
             userModel.SecondName = "New";
             userModel.Email = "tests@mail.com";
             userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = userStatus.Id;
-            userModel.UserStatusName = userStatusName;
+            userModel.UserRoleId = userRole.Id;
+            userModel.UserRoleName = userRoleName;
             userModel.Password = "321";
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "User status name not found!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "User role name not found!");
         }
 
         [DataTestMethod]
@@ -378,14 +378,14 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             userModel.NickName = nickName;
             userModel.Name = name;
             userModel.SecondName = secondName;
             userModel.Email = email;
             userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = userStatus.Id;
-            userModel.UserStatusName = userStatus.UserStatusName;
+            userModel.UserRoleId = userRole.Id;
+            userModel.UserRoleName = userRole.UserRoleName;
             userModel.Password = password;
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "Wrong data for user!");
@@ -397,14 +397,14 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             userModel.NickName = "New";
             userModel.Name = "New";
             userModel.SecondName = "New";
             userModel.Email = "tests@mail.com";
             userModel.BirthDate = DateTime.Today.AddYears(-210);
-            userModel.UserStatusId = userStatus.Id;
-            userModel.UserStatusName = userStatus.UserStatusName;
+            userModel.UserRoleId = userRole.Id;
+            userModel.UserRoleName = userRole.UserRoleName;
             userModel.Password = "321";
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "Wrong birth date for user!");
@@ -418,14 +418,14 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             userModel.NickName = nickName;
             userModel.Name = "New";
             userModel.SecondName = "New";
             userModel.Email = email;
             userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = userStatus.Id;
-            userModel.UserStatusName = userStatus.UserStatusName;
+            userModel.UserRoleId = userRole.Id;
+            userModel.UserRoleName = userRole.UserRoleName;
             userModel.Password = "321";
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "User with such nickname or email already exists!");
@@ -437,35 +437,35 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.Last();
-            var userStatus = service.GetAllUserStatusesAsync().Result.First();
+            var userRole = service.GetAllUserRolesAsync().Result.First();
             userModel.NickName = "New";
             userModel.Name = "New";
             userModel.SecondName = "New";
             userModel.Email = "testsmail.com";
             userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = userStatus.Id;
-            userModel.UserStatusName = userStatus.UserStatusName;
+            userModel.UserRoleId = userRole.Id;
+            userModel.UserRoleName = userRole.UserRoleName;
             userModel.Password = "321";
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "Incorrect email address!");
         }
 
         [TestMethod]
-        public async Task UserService_UpdateAsync_StatusNotFoundException()
+        public async Task UserService_UpdateAsync_RoleNotFoundException()
         {
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.First();
-            var userStatus = service.GetAllUserStatusesAsync().Result.Last();
+            var userRole = service.GetAllUserRolesAsync().Result.Last();
             userModel.NickName = "New";
             userModel.Name = "New";
             userModel.SecondName = "New";
             userModel.Email = "tests@mail.com";
             userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = userStatus.Id;
+            userModel.UserRoleId = userRole.Id;
             userModel.Password = "321";
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "User status not found!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdateAsync(userModel), "User role not found!");
         }
         [TestMethod]
         public async Task UserService_UpdateAsync_UserNotFoundException()
@@ -473,14 +473,14 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             //Act
             var userModel = service.GetAllAsync().Result.First();
-            var userStatus = service.GetAllUserStatusesAsync().Result.Last();
+            var userRole = service.GetAllUserRolesAsync().Result.Last();
             userModel.NickName = "New";
             userModel.Name = "New";
             userModel.SecondName = "New";
             userModel.Email = "tests@mail.com";
             userModel.BirthDate = DateTime.Today.AddYears(-21);
-            userModel.UserStatusId = userStatus.Id;
-            userModel.UserStatusName = userStatus.UserStatusName;
+            userModel.UserRoleId = userRole.Id;
+            userModel.UserRoleName = userRole.UserRoleName;
             userModel.Password = "321";
             userModel.Id = UnitTestHelper.GetWrongId();
             //Assert
@@ -488,101 +488,101 @@ namespace ShopOfThings.Tests.Business
         }
 
         [TestMethod]
-        public async Task UserService_AddUserStatusAsync()
+        public async Task UserService_AddUserRoleAsync()
         {
             //Arrange
             var service = await CreateService();
             const int expected = 3;
             //Act
-            var userModel = new UserStatusModel
+            var userRoleModel = new UserRoleModel
             {
-                UserStatusName = "New"
+                UserRoleName = "New"
             };
-            await service.AddUserStatusAsync(userModel);
-            var actual = service.GetAllUserStatusesAsync().Result.Count();
+            await service.AddUserRoleAsync(userRoleModel);
+            var actual = service.GetAllUserRolesAsync().Result.Count();
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public async Task UserService_AddUserStatusAsync_WrongDataException()
+        public async Task UserService_AddUserRoleAsync_WrongDataException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userModel = new UserStatusModel
+            var userModel = new UserRoleModel
             {
-                UserStatusName = ""
+                UserRoleName = ""
             };
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddUserStatusAsync(userModel), "Wrong data for user status!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddUserRoleAsync(userModel), "Wrong data for user role!");
         }
 
 
         [TestMethod]
-        public async Task UserService_AddUserStatusAsync_AlreadyExistsException()
+        public async Task UserService_AddUserRoleAsync_AlreadyExistsException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userModel = new UserStatusModel
+            var userModel = new UserRoleModel
             {
-                UserStatusName = "Customer"
+                UserRoleName = "Customer"
             };
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddUserStatusAsync(userModel), "User status with such name already exists!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.AddUserRoleAsync(userModel), "User role with such name already exists!");
         }
 
         [TestMethod]
-        public async Task UserService_UpdatUserStatusAsync()
+        public async Task UserService_UpdatUserRoleAsync()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var expected = service.GetAllUserStatusesAsync().Result.First();
-            expected.UserStatusName = "New";
-            await service.UpdatUserStatusAsync(expected);
-            var actual = service.GetAllUserStatusesAsync().Result.First();
+            var expected = service.GetAllUserRolesAsync().Result.First();
+            expected.UserRoleName = "New";
+            await service.UpdatUserRoleAsync(expected);
+            var actual = service.GetAllUserRolesAsync().Result.First();
             //Assert
-            Assert.AreEqual(expected.UserStatusName, actual.UserStatusName);
+            Assert.AreEqual(expected.UserRoleName, actual.UserRoleName);
         }
 
 
         [TestMethod]
-        public async Task UserService_UpdatUserStatusAsync_WrongDataException()
+        public async Task UserService_UpdatUserRoleAsync_WrongDataException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userModel = service.GetAllUserStatusesAsync().Result.First();
-            userModel.UserStatusName = "";
+            var userModel = service.GetAllUserRolesAsync().Result.First();
+            userModel.UserRoleName = "";
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserStatusAsync(userModel), "Wrong data for user status!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserRoleAsync(userModel), "Wrong data for user role!");
         }
 
         [TestMethod]
-        public async Task UserService_UpdatUserStatusAsync_AlreadyExistsException()
+        public async Task UserService_UpdatUserRoleAsync_AlreadyExistsException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userModel = service.GetAllUserStatusesAsync().Result.First();
-            userModel.UserStatusName = "Customer";
+            var userModel = service.GetAllUserRolesAsync().Result.First();
+            userModel.UserRoleName = "Customer";
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserStatusAsync(userModel), "User status with such name already exists!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserRoleAsync(userModel), "User role with such name already exists!");
         }
 
         [TestMethod]
-        public async Task UserService_UpdatUserStatusAsync_NotFoundException()
+        public async Task UserService_UpdatUserRoleAsync_NotFoundException()
         {
             //Arrange
             var service = await CreateService();
             //Act
-            var userModel = service.GetAllUserStatusesAsync().Result.First();
-            userModel.UserStatusName = "123";
+            var userModel = service.GetAllUserRolesAsync().Result.First();
+            userModel.UserRoleName = "123";
             userModel.Id = UnitTestHelper.GetWrongId();
             //Assert
-            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserStatusAsync(userModel), "User status not found!");
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserRoleAsync(userModel), "User role not found!");
         }
 
     }

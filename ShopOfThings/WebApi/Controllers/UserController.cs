@@ -34,11 +34,11 @@ namespace WebApi.Controllers
             return new ObjectResult(await userService.GetByIdAsync(id));
         }
 
-        // GET: api/user/statuses
-        [HttpGet("statuses")]
-        public async Task<ActionResult<IEnumerable<UserStatusModel>>> GetStatuses()
+        // GET: api/user/roles
+        [HttpGet("roles")]
+        public async Task<ActionResult<IEnumerable<UserRoleModel>>> GetRolees()
         {
-            return new ObjectResult(await userService.GetAllUserStatusesAsync());
+            return new ObjectResult(await userService.GetAllUserRolesAsync());
         }
 
         // Post: api/user
@@ -56,13 +56,13 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Post: api/user/statuses
-        [HttpPost("statuses")]
-        public async Task<ActionResult> AddUserStatus([FromBody] UserStatusModel model)
+        // Post: api/user/roles
+        [HttpPost("roles")]
+        public async Task<ActionResult> AddUserRole([FromBody] UserRoleModel model)
         {
             try
             {
-                await userService.AddUserStatusAsync(model);
+                await userService.AddUserRoleAsync(model);
             }
             catch (Exception ex)
             {
@@ -86,13 +86,13 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Put: api/user/statuses
-        [HttpPut("statuses")]
-        public async Task<ActionResult> UpdateUserStatus([FromBody] UserStatusModel model)
+        // Put: api/user/roles
+        [HttpPut("roles")]
+        public async Task<ActionResult> UpdateUserRole([FromBody] UserRoleModel model)
         {
             try
             {
-                await userService.UpdatUserStatusAsync(model);
+                await userService.UpdatUserRoleAsync(model);
             }
             catch (Exception ex)
             {
@@ -116,13 +116,13 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Delete: api/user/statuses
-        [HttpDelete("statuses/{id:Guid}")]
-        public async Task<ActionResult> DeleteUserStatus(Guid id)
+        // Delete: api/user/roles
+        [HttpDelete("roles/{id:Guid}")]
+        public async Task<ActionResult> DeleteUserRole(Guid id)
         {
             try
             {
-                await userService.DeleteUserStatusAsync(id);
+                await userService.DeleteUserRoleAsync(id);
             }
             catch (Exception ex)
             {

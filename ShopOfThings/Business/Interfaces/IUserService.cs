@@ -11,10 +11,10 @@ namespace Business.Interfaces
     {
         Task<bool> LogIn(string nickName, string password);
         Task<bool> VerifyPassword(Guid userId, string password);
-        Task<IEnumerable<UserStatusModel>> GetAllUserStatusesAsync();
-        Task AddUserStatusAsync(UserStatusModel userStatusModel);
-        Task UpdatUserStatusAsync(UserStatusModel userStatusModel);
-        Task DeleteUserStatusAsync(Guid userStatusId);
+        Task<IEnumerable<UserRoleModel>> GetAllUserRolesAsync();
+        Task AddUserRoleAsync(UserRoleModel userRoleModel);
+        Task UpdatUserRoleAsync(UserRoleModel userRoleModel);
+        Task DeleteUserRoleAsync(Guid userRoleId);
 
     }
 }

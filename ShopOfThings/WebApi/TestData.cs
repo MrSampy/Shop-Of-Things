@@ -15,9 +15,9 @@ namespace WebApi
     {
         public async static Task SeedData(ShopOfThingsDBContext context)
         {
-            await context.UserStatuses.AddRangeAsync(
-                new UserStatus { UserStatusName = "Admin" },
-                new UserStatus { UserStatusName = "Customer" });
+            await context.UserRoles.AddRangeAsync(
+                new UserRole { UserRoleName = "Admin" },
+                new UserRole { UserRoleName = "Customer" });
             await context.ProductCategories.AddRangeAsync(
                 new ProductCategory { ProductCategoryyName = "Liquid" },
                 new ProductCategory { ProductCategoryyName = "Meat" });
@@ -71,7 +71,7 @@ namespace WebApi
 
         public async static Task AddDependencies(ShopOfThingsDBContext context)
         {
-            var userStatuses = await context.UserStatuses.ToListAsync();
+            var userRoles = await context.UserRoles.ToListAsync();
             var orderStatuses = await context.OrderStatuses.ToListAsync();
             var storageTypes = await context.StorageTypes.ToListAsync();
             var users = await context.Users.ToListAsync();
@@ -82,9 +82,9 @@ namespace WebApi
             var receiptDetails = await context.ReceiptDetails.ToListAsync();
             var productCategories = await context.ProductCategories.ToListAsync();
 
-            users[0].UserStatusId = userStatuses[0].Id;
-            users[1].UserStatusId = userStatuses[1].Id;
-            users[2].UserStatusId = userStatuses[1].Id;
+            users[0].UserRoleId = userRoles[0].Id;
+            users[1].UserRoleId = userRoles[1].Id;
+            users[2].UserRoleId = userRoles[1].Id;
 
             products[0].UserId = users[2].Id;
             products[1].UserId = users[2].Id;

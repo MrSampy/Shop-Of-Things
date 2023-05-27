@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class UserStatus:BaseEntity
+    public class UserRole:BaseEntity
     {
-        public string UserStatusName { set; get; }
+        public string UserRoleName { set; get; }
 
         public ICollection<User>? Users { get; set; }
     }

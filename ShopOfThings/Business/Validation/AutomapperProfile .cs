@@ -8,8 +8,8 @@ namespace Business.Validation
     {
         public AutomapperProfile()
         {
-            CreateMap<UserStatus, UserStatusModel>()
-                .ForMember(userStatusModel => userStatusModel.UsersIds,
+            CreateMap<UserRole, UserRoleModel>()
+                .ForMember(userRoleModel => userRoleModel.UsersIds,
                 userStatus => userStatus.MapFrom(x => x.Users.Select(user => user.Id)))
                 .ReverseMap();
             CreateMap<ProductCategory, ProductCategoryModel>()
@@ -47,8 +47,8 @@ namespace Business.Validation
                 order => order.MapFrom(x => x.OrderDetails.Select(orderDetail => orderDetail.Id)))
                 .ReverseMap();
             CreateMap<User, UserModel>()
-                .ForMember(userModel => userModel.UserStatusName,
-                user => user.MapFrom(x => x.UserStatus.UserStatusName))
+                .ForMember(userModel => userModel.UserRoleName,
+                user => user.MapFrom(x => x.UserRole.UserRoleName))
                 .ForMember(userModel => userModel.ProductsIds,
                 user => user.MapFrom(x => x.Products.Select(product => product.Id)))
                 .ForMember(userModel => userModel.ReceiptsIds,

@@ -46,30 +46,30 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("User with such nickname or email already exists!");
             }
-            var userStatus = UnitOfWork.UserStatusRepository.GetAllAsync().Result.FirstOrDefault(x=>x.UserStatusName.Equals("Customer"));
-            if (userStatus == null) 
+            var userRole = UnitOfWork.UserRoleRepository.GetAllAsync().Result.FirstOrDefault(x=>x.UserRoleName.Equals("Customer"));
+            if (userRole == null) 
             {
-                throw new ShopOfThingsException("Status not found!");
+                throw new ShopOfThingsException("User role not found!");
             }
-            model.UserStatusName = userStatus.UserStatusName;
-            model.UserStatusId = userStatus.Id;
+            model.UserRoleName = userRole.UserRoleName;
+            model.UserRoleId = userRole.Id;
             model.Password = SecurePasswordHasher.Hash(model.Password);
             await UnitOfWork.UserRepository.AddAsync(Mapper.Map<User>(model));
 
         }
 
-        public async Task AddUserStatusAsync(UserStatusModel userStatusModel)
+        public async Task AddUserRoleAsync(UserRoleModel userRoleModel)
         {
-            if (string.IsNullOrEmpty(userStatusModel.UserStatusName)) 
+            if (string.IsNullOrEmpty(userRoleModel.UserRoleName)) 
             {
-                throw new ShopOfThingsException("Wrong data for user status!");
+                throw new ShopOfThingsException("Wrong data for user role!");
             }
-            var isAlreadyExixsts = UnitOfWork.UserStatusRepository.GetAllAsync().Result.Any(x=>x.UserStatusName.Equals(userStatusModel.UserStatusName));
+            var isAlreadyExixsts = UnitOfWork.UserRoleRepository.GetAllAsync().Result.Any(x=>x.UserRoleName.Equals(userRoleModel.UserRoleName));
             if (isAlreadyExixsts)
             {
-                throw new ShopOfThingsException("User status with such name already exists!");
+                throw new ShopOfThingsException("User role with such name already exists!");
             }
-            await UnitOfWork.UserStatusRepository.AddAsync(Mapper.Map<UserStatus>(userStatusModel));
+            await UnitOfWork.UserRoleRepository.AddAsync(Mapper.Map<UserRole>(userRoleModel));
         }
 
         public async Task DeleteAsync(Guid modelId)
@@ -88,10 +88,10 @@ namespace Business.Services
             return Mapper.Map<IEnumerable<UserModel>>(result);
         }
 
-        public async Task<IEnumerable<UserStatusModel>> GetAllUserStatusesAsync()
+        public async Task<IEnumerable<UserRoleModel>> GetAllUserRolesAsync()
         {
-            var result = await UnitOfWork.UserStatusRepository.GetAllAsync();
-            return Mapper.Map<IEnumerable<UserStatusModel>>(result);
+            var result = await UnitOfWork.UserRoleRepository.GetAllAsync();
+            return Mapper.Map<IEnumerable<UserRoleModel>>(result);
         }
 
         public async Task<UserModel> GetByIdAsync(Guid id)
@@ -104,14 +104,14 @@ namespace Business.Services
             return Mapper.Map<UserModel>(user);
         }
 
-        public async Task DeleteUserStatusAsync(Guid userStatusId)
+        public async Task DeleteUserRoleAsync(Guid usserRoleId)
         {
-            var userStatus = await UnitOfWork.UserStatusRepository.GetByIdAsync(userStatusId);
-            if (userStatus == null)
+            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync(usserRoleId);
+            if (userRole == null)
             {
-                throw new ShopOfThingsException("User status not found!");
+                throw new ShopOfThingsException("User role not found!");
             }
-            await UnitOfWork.UserStatusRepository.DeleteByIdAsync(userStatusId);
+            await UnitOfWork.UserRoleRepository.DeleteByIdAsync(usserRoleId);
         }
 
         public async Task UpdateAsync(UserModel model)
@@ -121,7 +121,7 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("User not found!");
             }
-            if (model.UserStatusId == null || string.IsNullOrEmpty(model.Email)
+            if (model.UserRoleId == null || string.IsNullOrEmpty(model.Email)
                 || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName)
                 || string.IsNullOrEmpty(model.NickName) || string.IsNullOrEmpty(model.Password))
             {
@@ -144,14 +144,14 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("User with such nickname or email already exists!");
             }
-            var userStatus = await UnitOfWork.UserStatusRepository.GetByIdAsync((Guid)model.UserStatusId);
-            if (userStatus == null)
+            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync((Guid)model.UserRoleId);
+            if (userRole == null)
             {
-                throw new ShopOfThingsException("User status not found!");
+                throw new ShopOfThingsException("User role not found!");
             }
-            if (!userStatus.UserStatusName.Equals(model.UserStatusName))
+            if (!userRole.UserRoleName.Equals(model.UserRoleName))
             {
-                throw new ShopOfThingsException("User status name can`t be empty!");
+                throw new ShopOfThingsException("User role name can`t be empty!");
             }           
             if (!model.Password.Equals(user.Password)) 
             {
@@ -160,24 +160,24 @@ namespace Business.Services
             UnitOfWork.UserRepository.Update(Mapper.Map<User>(model));
         }
 
-        public async Task UpdatUserStatusAsync(UserStatusModel userStatusModel)
+        public async Task UpdatUserRoleAsync(UserRoleModel userRoleModel)
         {
-            var userStatus = await UnitOfWork.UserStatusRepository.GetByIdAsync(userStatusModel.Id);
-            if (userStatus == null)
+            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync(userRoleModel.Id);
+            if (userRole == null)
             {
-                throw new ShopOfThingsException("User status not found!");
+                throw new ShopOfThingsException("User role not found!");
             }
-            if (string.IsNullOrEmpty(userStatusModel.UserStatusName))
+            if (string.IsNullOrEmpty(userRoleModel.UserRoleName))
             {
-                throw new ShopOfThingsException("Wrong data for user status!");
+                throw new ShopOfThingsException("Wrong data for user role!");
             }
-            var isAlreadyExixsts = UnitOfWork.UserStatusRepository.GetAllAsync().Result.Any(x => 
-            !x.Id.Equals(userStatusModel.Id) && x.UserStatusName.Equals(userStatusModel.UserStatusName));
+            var isAlreadyExixsts = UnitOfWork.UserRoleRepository.GetAllAsync().Result.Any(x => 
+            !x.Id.Equals(userRoleModel.Id) && x.UserRoleName.Equals(userRoleModel.UserRoleName));
             if (isAlreadyExixsts)
             {
-                throw new ShopOfThingsException("User status with such name already exists!");
+                throw new ShopOfThingsException("User role with such name already exists!");
             }
-            UnitOfWork.UserStatusRepository.Update(Mapper.Map<UserStatus>(userStatusModel));
+            UnitOfWork.UserRoleRepository.Update(Mapper.Map<UserRole>(userRoleModel));
         }
 
         public async Task<bool> VerifyPassword(Guid userId, string password)

@@ -19,7 +19,7 @@ namespace Data.Data
         public DbSet<ReceiptDetail> ReceiptDetails => Set<ReceiptDetail>();
         public DbSet<StorageType> StorageTypes => Set<StorageType>();
         public DbSet<User> Users => Set<User>();
-        public DbSet<UserStatus> UserStatuses => Set<UserStatus>();
+        public DbSet<UserRole> UserRoles => Set<UserRole>();
         public DbSet<ProductCategory> ProductCategories => Set<ProductCategory>();
         public ShopOfThingsDBContext()
         {

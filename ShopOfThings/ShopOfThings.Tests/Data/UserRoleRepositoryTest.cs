@@ -14,24 +14,24 @@ using Data.Interfaces;
 namespace ShopOfThings.Tests.Data
 {
     [TestClass]
-    public class UserStatusRepositoryTest
+    public class UserRoleRepositoryTest
     {
 
-        public async Task<UserStatusRepository> CreateRepositoryAsync()
+        public async Task<UserRoleRepository> CreateRepositoryAsync()
         {
             var context = new ShopOfThingsDBContext(new DbContextOptionsBuilder<ShopOfThingsDBContext>()
                 .EnableSensitiveDataLogging()
                 .UseInMemoryDatabase(databaseName: "Test_Database").Options);
             await UnitTestHelper.SeedData(context);
-            return new UserStatusRepository(context);
+            return new UserRoleRepository(context);
 
         }
 
         [TestMethod]
-        public async Task UserStatusRepository_GetByIdAsync() 
+        public async Task UserRoleRepository_GetByIdAsync() 
         {
             //Arrange
-            UserStatusRepository repository = await CreateRepositoryAsync();
+            UserRoleRepository repository = await CreateRepositoryAsync();
             //Act
             var expected = repository.GetAllAsync().Result.First();
             var actual = await repository.GetByIdAsync(expected.Id);
@@ -41,10 +41,10 @@ namespace ShopOfThings.Tests.Data
         }
 
         [TestMethod]
-        public async Task UserStatusRepository_GetAllAsync() 
+        public async Task UserRoleRepository_GetAllAsync() 
         {
             //Arrange
-            UserStatusRepository userStatusRepository = await CreateRepositoryAsync();
+            UserRoleRepository userStatusRepository = await CreateRepositoryAsync();
             int expectedLength = 2;
             //Act
             var actual = await userStatusRepository.GetAllAsync();
@@ -54,21 +54,21 @@ namespace ShopOfThings.Tests.Data
 
 
         [TestMethod]
-        public async Task UserStatusRepository_AddAsync()
+        public async Task UserRoleRepository_AddAsync()
         {
             //Arrange
-            UserStatusRepository userStatusRepository = await CreateRepositoryAsync();
+            UserRoleRepository userRoleRepository = await CreateRepositoryAsync();
             int expectedLength = 3;
-            UserStatus newStartus = new UserStatus { UserStatusName = "New"};
+            UserRole newStartus = new UserRole { UserRoleName = "New"};
             //Act
-            await userStatusRepository.AddAsync(newStartus);
-            var actual = await userStatusRepository.GetAllAsync();
+            await userRoleRepository.AddAsync(newStartus);
+            var actual = await userRoleRepository.GetAllAsync();
             //Assert
             Assert.AreEqual(expectedLength, actual.Count());
         }
         
         [TestMethod]
-        public async Task UserStatusRepository_UpdateAsync()
+        public async Task UserRoleRepository_UpdateAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -77,17 +77,17 @@ namespace ShopOfThings.Tests.Data
             //Act
             var entityToUpdate = repository.GetAllAsync().Result.Last();
 
-            entityToUpdate.UserStatusName = expectedStatusName;
+            entityToUpdate.UserRoleName = expectedStatusName;
 
             repository.Update(entityToUpdate);
 
             var actual = await repository.GetByIdAsync(entityToUpdate.Id);
             //Assert
-            Assert.AreEqual(expectedStatusName, actual.UserStatusName);
+            Assert.AreEqual(expectedStatusName, actual.UserRoleName);
         }
 
         [TestMethod]
-        public async Task UserStatusRepository_DeleteAsync()
+        public async Task UserRoleRepository_DeleteAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
@@ -104,7 +104,7 @@ namespace ShopOfThings.Tests.Data
         }
 
         [TestMethod]
-        public async Task UserStatusRepository_DeleteByIdAsync()
+        public async Task UserRoleRepository_DeleteByIdAsync()
         {
             //Arrange
             var repository = await CreateRepositoryAsync();

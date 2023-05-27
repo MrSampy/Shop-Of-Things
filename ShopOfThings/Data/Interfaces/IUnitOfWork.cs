@@ -18,7 +18,7 @@ namespace Data.Interfaces
         IRepository<ReceiptDetail> ReceiptDetailRepository { get; }
         IRepository<StorageType> StorageTypeRepository { get; }
         IRepository<User> UserRepository { get; }
-        IRepository<UserStatus> UserStatusRepository { get; }
+        IRepository<UserRole> UserRoleRepository { get; }
         IRepository<ProductCategory> ProductCategoryRepository { get; }
 
     }

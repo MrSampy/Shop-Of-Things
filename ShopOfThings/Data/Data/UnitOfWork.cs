@@ -30,7 +30,7 @@ namespace Data.Data
 
         private UserRepository userRepository;
 
-        private UserStatusRepository userStatusRepository;
+        private UserRoleRepository userRoleRepository;
 
         private ProductCategoryRepository productCategoryRepository;
 
@@ -50,7 +50,7 @@ namespace Data.Data
 
         public IRepository<User> UserRepository => userRepository ??= new UserRepository(dbContext);
 
-        public IRepository<UserStatus> UserStatusRepository => userStatusRepository ??= new UserStatusRepository(dbContext);
+        public IRepository<UserRole> UserRoleRepository => userRoleRepository ??= new UserRoleRepository(dbContext);
 
         public IRepository<ProductCategory> ProductCategoryRepository => productCategoryRepository ??= new ProductCategoryRepository(dbContext);
 
