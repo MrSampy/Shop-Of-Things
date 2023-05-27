@@ -1,5 +1,6 @@
 ﻿using Business.Interfaces;
 using Business.Models;
+using Business.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -101,7 +102,7 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Delete: api/user
+        // Delete: api/user/id
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
@@ -116,7 +117,28 @@ namespace WebApi.Controllers
             return new OkResult();
         }
 
-        // Delete: api/user/roles
+        // GET: api/user/id/receipts
+        [HttpGet("user/{id:Guid}/receipts")]
+        public async Task<ActionResult<IEnumerable<ReceiptModel>>> GetReceiptsByUserId(Guid userId)
+        {
+            return new ObjectResult(await userService.GetReceiptsByUserId(userId));
+        }
+
+        // GET: api/user/id/products
+        [HttpGet("user/{id:Guid}/products")]
+        public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByUserId(Guid userId)
+        {
+            return new ObjectResult(await userService.GetProductsByUserId(userId));
+        }   
+        
+        // GET: api/user/id/orders
+        [HttpGet("user/{id:Guid}/orders")]
+        public async Task<ActionResult<IEnumerable<OrderModel>>> GetOrdersByUserId(Guid userId)
+        {
+            return new ObjectResult(await userService.GetOrdersByUserId(userId));
+        }
+
+        // Delete: api/user/roles/id
         [HttpDelete("roles/{id:Guid}")]
         public async Task<ActionResult> DeleteUserRole(Guid id)
         {

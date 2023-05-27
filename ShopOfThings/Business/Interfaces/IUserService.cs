@@ -9,6 +9,9 @@ namespace Business.Interfaces
 {
     public interface IUserService:ICrud<UserModel>
     {
+        Task<IEnumerable<OrderModel>> GetOrdersByUserId(Guid userId);
+        Task<IEnumerable<ProductModel>> GetProductsByUserId(Guid userId);
+        Task<IEnumerable<ReceiptModel>> GetReceiptsByUserId(Guid userId);
         Task<bool> LogIn(string nickName, string password);
         Task<bool> VerifyPassword(Guid userId, string password);
         Task<IEnumerable<UserRoleModel>> GetAllUserRolesAsync();

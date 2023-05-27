@@ -200,5 +200,34 @@ namespace Business.Services
             return await VerifyPassword(user.Id,password);
         }
 
+        public async Task<IEnumerable<ReceiptModel>> GetReceiptsByUserId(Guid userId)
+        {
+            var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ShopOfThingsException("User not found!");
+            }
+            return Mapper.Map<IEnumerable<ReceiptModel>>(UnitOfWork.ReceiptRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
+        }
+
+        public async Task<IEnumerable<ProductModel>> GetProductsByUserId(Guid userId)
+        {
+            var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ShopOfThingsException("User not found!");
+            }
+            return Mapper.Map<IEnumerable<ProductModel>>(UnitOfWork.ProductRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
+        }
+        public async Task<IEnumerable<OrderModel>> GetOrdersByUserId(Guid userId)
+        {
+            var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ShopOfThingsException("User not found!");
+            }
+            return Mapper.Map<IEnumerable<OrderModel>>(UnitOfWork.OrderRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
+        }
+
     }
 }
