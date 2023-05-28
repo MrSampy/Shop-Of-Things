@@ -584,6 +584,107 @@ namespace ShopOfThings.Tests.Business
             //Assert
             await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.UpdatUserRoleAsync(userModel), "User role not found!");
         }
+        [DataTestMethod]
+        [DataRow("Nick", "14523", true)]
+        [DataRow("Nick", "14523s", false)]
+        public async Task UserService_LogIn(string nickName, string password, bool expected)
+        {
+            //Arrange
+            var service = await CreateService();
+            //Act
+            var actual = await service.LogIn(nickName, password);
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task UserService_LogIn_NotFoundException()
+        {
+            //Arrange
+            var service = await CreateService();
+            //Act
+
+            //Assert
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.LogIn(string.Empty, string.Empty), "User not found!");
+        }
+
+        [TestMethod]
+        public async Task UserService_GetReceiptsByUserId()
+        {
+            //Arrange
+            var service = await CreateService();
+            const int expected = 2;
+            //Act
+            var users = await service.GetAllAsync();
+            var userId = users.Last().Id;
+            var receipts = await service.GetReceiptsByUserId(userId);
+            var actual = receipts.Count();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task UserService_GetProductsByUserId()
+        {
+            //Arrange
+            var service = await CreateService();
+            const int expected = 3;
+            //Act
+            var users = await service.GetAllAsync();
+            var userId = users.Last().Id;
+            var receipts = await service.GetProductsByUserId(userId);
+            var actual = receipts.Count();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task UserService_GetOrdersByUserId()
+        {
+            //Arrange
+            var service = await CreateService();
+            const int expected = 1;
+            //Act
+            var users = await service.GetAllAsync();
+            var userId = users.Last().Id;
+            var receipts = await service.GetOrdersByUserId(userId);
+            var actual = receipts.Count();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task UserService_GetReceiptsByUserId_NotFoundException()
+        {
+            //Arrange
+            var service = await CreateService();
+            //Act
+            var userId = UnitTestHelper.GetWrongId();
+            //Assert
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.GetReceiptsByUserId(userId), "User not found!");
+        }
+
+        [TestMethod]
+        public async Task UserService_GetProductsByUserId_NotFoundException()
+        {
+            //Arrange
+            var service = await CreateService();
+            //Act
+            var userId = UnitTestHelper.GetWrongId();
+            //Assert
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.GetProductsByUserId(userId), "User not found!");
+        }
+
+        [TestMethod]
+        public async Task UserService_GetOrdersByUserId_NotFoundException()
+        {
+            //Arrange
+            var service = await CreateService();
+            //Act
+            var userId = UnitTestHelper.GetWrongId();
+            //Assert
+            await Assert.ThrowsExceptionAsync<ShopOfThingsException>(() => service.GetOrdersByUserId(userId), "User not found!");
+        }
 
     }
 }
