@@ -23,7 +23,9 @@ namespace Business.Services
         }
         public async Task AddAsync(ProductModel model)
         {
-            if (model == null || model.Amount < 0 || string.IsNullOrEmpty(model.ProductName) || string.IsNullOrEmpty(model.ProductDescription) || model.Price <= 0 || model.StorageTypeId == null || model.UserId == null)
+            if (model == null || model.Amount==null || model.Price == null || model.Amount < 0 || string.IsNullOrEmpty(model.ProductName)
+                || string.IsNullOrEmpty(model.ProductDescription) || model.Price <= 0 
+                || model.StorageTypeId == null || model.UserId == null || model.ProductCategoryId == null)
             {
                 throw new ShopOfThingsException("Wrong data for product!");
             }
@@ -35,7 +37,12 @@ namespace Business.Services
             var storageType = await UnitOfWork.StorageTypeRepository.GetByIdAsync((Guid)model.StorageTypeId);
             if (storageType == null) 
             {
-                throw new ShopOfThingsException("Storage Type not found!");
+                throw new ShopOfThingsException("Storage type not found!");
+            }
+            var productCategory = await UnitOfWork.ProductCategoryRepository.GetByIdAsync((Guid)model.ProductCategoryId);
+            if (productCategory == null)
+            {
+                throw new ShopOfThingsException("Product category not found!");
             }
             await UnitOfWork.ProductRepository.AddAsync(Mapper.Map<Product>(model));
         }
@@ -127,7 +134,7 @@ namespace Business.Services
         }
         public async Task DeleteProductCategoryAsync(Guid productCategoryId)
         {
-            var productCategory = await UnitOfWork.StorageTypeRepository.GetByIdAsync(productCategoryId);
+            var productCategory = await UnitOfWork.ProductCategoryRepository.GetByIdAsync(productCategoryId);
             if (productCategory == null)
             {
                 throw new ShopOfThingsException("Product category not found!");
@@ -142,7 +149,9 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("Product not found!");
             }
-            if (model == null || model.Amount < 0 || string.IsNullOrEmpty(model.ProductName) || string.IsNullOrEmpty(model.ProductDescription) || model.Price <= 0 || model.StorageTypeId == null || model.UserId == null)
+            if (model == null || model.Amount == null || model.Price == null || model.Amount < 0 
+                || string.IsNullOrEmpty(model.ProductName) || string.IsNullOrEmpty(model.ProductDescription) 
+                || model.Price <= 0 || model.StorageTypeId == null || model.UserId == null || model.ProductCategoryId == null)
             {
                 throw new ShopOfThingsException("Wrong data for product!");
             }
@@ -155,6 +164,11 @@ namespace Business.Services
             if (storageType == null)
             {
                 throw new ShopOfThingsException("Storage Type not found!");
+            }
+            var productCategory = await UnitOfWork.ProductCategoryRepository.GetByIdAsync((Guid)model.ProductCategoryId);
+            if (productCategory == null)
+            {
+                throw new ShopOfThingsException("Product category not found!");
             }
             UnitOfWork.ProductRepository.Update(Mapper.Map<Product>(model));
         }
