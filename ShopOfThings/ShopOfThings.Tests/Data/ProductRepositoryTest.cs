@@ -42,7 +42,7 @@ namespace ShopOfThings.Tests.Data
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
-            int expectedLength = 3;
+            int expectedLength = 6;
             //Act
             var actual = await repository.GetAllAsync();
             //Assert
@@ -55,7 +55,7 @@ namespace ShopOfThings.Tests.Data
         {
             //Arrange
             var repository = await CreateRepositoryAsync();
-            int expectedLength = 4;
+            int expectedLength = 7;
             var newEntity = new Product
             {
                 ProductName = string.Empty,
@@ -96,7 +96,7 @@ namespace ShopOfThings.Tests.Data
             //Arrange
             var repository = await CreateRepositoryAsync();
 
-            var expectedLen = 2;
+            var expectedLen = 5;
 
             var entitToDelete = repository.GetAllAsync().Result.Last();
 
@@ -113,7 +113,7 @@ namespace ShopOfThings.Tests.Data
             //Arrange
             var repository = await CreateRepositoryAsync();
 
-            var expectedLen = 2;
+            var expectedLen = 5;
 
             var entitToDelete = repository.GetAllAsync().Result.First();
 
