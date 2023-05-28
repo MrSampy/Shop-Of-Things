@@ -7,9 +7,9 @@ namespace Business.Models
     {
         public Guid Id { set; get; }
 
-        public Guid? ProductId { set; get; }
+        public Guid ProductId { set; get; }
 
-        public Guid? OrderId { set; get; }
+        public Guid OrderId { set; get; }
 
         public decimal Quantity { set; get; }
 

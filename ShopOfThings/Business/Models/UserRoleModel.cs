@@ -6,6 +6,6 @@ namespace Business.Models
     {
         public Guid Id { set; get; }
         public string UserRoleName { set; get; }
-        public ICollection<Guid>? UsersIds { get; set; }
+        public ICollection<Guid> UsersIds { get; set; }
     }
 }

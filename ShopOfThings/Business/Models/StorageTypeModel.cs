@@ -6,6 +6,6 @@ namespace Business.Models
     {
         public Guid Id { set; get; }
         public string StorageTypeName { get; set; }
-        public ICollection<Guid>? ProductsIds { get; set; }
+        public ICollection<Guid> ProductsIds { get; set; }
     }
 }
