@@ -51,7 +51,6 @@ namespace Data.Repositories
         public void Update(Receipt entity)
         {
             var updateEntity = context.Receipts.First(x => x.Id.Equals(entity.Id));
-            updateEntity.User = entity.User;
             updateEntity.UserId = entity.UserId;
             updateEntity.ReceiptName = entity.ReceiptName;
             updateEntity.ReceiptDescription = entity.ReceiptDescription;

@@ -56,8 +56,8 @@ namespace Data.Repositories
             updateEntity.ProductName = entity.ProductName;
             updateEntity.ProductDescription = entity.ProductDescription;
             updateEntity.Amount = entity.Amount;
-            updateEntity.StorageType = entity.StorageType;
             updateEntity.StorageTypeId = entity.StorageTypeId;
+            updateEntity.ProductCategoryId = entity.ProductCategoryId;
             updateEntity.User = entity.User;
             updateEntity.UserId = entity.UserId;
             context.SaveChanges();

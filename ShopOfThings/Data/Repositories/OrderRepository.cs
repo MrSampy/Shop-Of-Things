@@ -51,10 +51,8 @@ namespace Data.Repositories
         public void Update(Order entity)
         {
             var updateEntity = context.Orders.First(x => x.Id.Equals(entity.Id));
-            updateEntity.OrderStatus = entity.OrderStatus;
             updateEntity.OrderStatusId = entity.OrderStatusId;
             updateEntity.UserId = entity.UserId;
-            updateEntity.User = entity.User;
             updateEntity.OperationDate = entity.OperationDate;
             context.SaveChanges();
         }

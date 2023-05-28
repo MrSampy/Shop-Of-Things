@@ -53,8 +53,6 @@ namespace Data.Repositories
             var updateEntity = context.OrderDetails.First(x => x.Id.Equals(entity.Id));
             updateEntity.Quantity = entity.Quantity;
             updateEntity.ProductId = entity.ProductId;
-            updateEntity.Product = entity.Product;
-            updateEntity.Order = entity.Order;
             updateEntity.OrderId = entity.OrderId;
             context.SaveChanges();
         }

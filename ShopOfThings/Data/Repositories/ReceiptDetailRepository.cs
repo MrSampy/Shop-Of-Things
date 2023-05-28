@@ -52,9 +52,7 @@ namespace Data.Repositories
         {
             var updateEntity = context.ReceiptDetails.First(x => x.Id.Equals(entity.Id));
             updateEntity.Amount = entity.Amount;
-            updateEntity.Product = entity.Product;
             updateEntity.ProductId = entity.ProductId;
-            updateEntity.Receipt = entity.Receipt;
             updateEntity.ReceiptId = entity.ReceiptId;
             context.SaveChanges();
         }
