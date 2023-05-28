@@ -49,6 +49,8 @@ namespace WebApi
 
             services.AddTransient<IOrderService, OrderService>();
 
+            services.AddTransient<IRecommendationService, RecommendationService>();
+
             services.AddSwaggerGen();
         }
 
