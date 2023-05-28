@@ -15,11 +15,11 @@ namespace Data.Entities
         public string Password { set; get; }
         public string SecondName { set; get; }
         public DateTime BirthDate { set; get; }
-        public Guid? UserRoleId { set; get; }
-        public UserRole? UserRole { set; get; }
-        public ICollection<Order>? Orders { get; set; }
-        public ICollection<Product>? Products { get; set; }
-        public ICollection<Receipt>? Receipts { get; set; }
+        public Guid UserRoleId { set; get; }
+        public UserRole UserRole { set; get; }
+        public ICollection<Order> Orders { get; set; }
+        public ICollection<Product> Products { get; set; }
+        public ICollection<Receipt> Receipts { get; set; }
 
     }
 }
