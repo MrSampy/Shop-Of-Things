@@ -135,15 +135,15 @@ namespace ShopOfThings.Tests.UnitTestHelpers
             products[0].StorageTypeId = storageTypes[0].Id;
             products[1].StorageTypeId = storageTypes[1].Id;
             products[2].StorageTypeId = storageTypes[0].Id;
-            products[3].StorageTypeId = storageTypes[0].Id;
+            products[3].StorageTypeId = storageTypes[1].Id;
             products[4].StorageTypeId = storageTypes[1].Id;
             products[5].StorageTypeId = storageTypes[0].Id;
-            products[0].ProductCategoryId = productCategories[0].Id;
-            products[1].ProductCategoryId = productCategories[1].Id;
-            products[2].ProductCategoryId = productCategories[0].Id;
-            products[3].ProductCategoryId = productCategories[0].Id;
-            products[4].ProductCategoryId = productCategories[1].Id;
-            products[5].ProductCategoryId = productCategories[0].Id;
+            products[0].ProductCategoryId = productCategories[1].Id;
+            products[1].ProductCategoryId = productCategories[0].Id;
+            products[2].ProductCategoryId = productCategories[1].Id;
+            products[3].ProductCategoryId = productCategories[1].Id;
+            products[4].ProductCategoryId = productCategories[0].Id;
+            products[5].ProductCategoryId = productCategories[1].Id;
 
 
             orders[0].UserId = users[2].Id;
