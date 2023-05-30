@@ -107,3 +107,10 @@ C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\
 C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\obj\Debug\net6.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\obj\Debug\net6.0\WebApi.csproj.CopyComplete
 C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Сергей\source\repos\Shop-Of-Things\ShopOfThings\WebApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

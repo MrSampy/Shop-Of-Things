@@ -1,8 +1,10 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
+//using WebApi.Middleware;
 
 namespace WebApi.Controllers
 {
@@ -18,6 +20,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/order
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderModel>>> Get()
         {
