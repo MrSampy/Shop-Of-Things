@@ -229,5 +229,11 @@ namespace Business.Services
             return Mapper.Map<IEnumerable<OrderModel>>(UnitOfWork.OrderRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
         }
 
+        public Task<UserRoleModel> GetUserRoleByUserNickName(string nickName) 
+        {
+            var user = UnitOfWork.UserRepository.GetAllAsync().Result.FirstOrDefault(x=>x.NickName.Equals(nickName)) ?? throw new ShopOfThingsException("User not found!");
+            return Task.FromResult(Mapper.Map<UserRoleModel>(user.UserRole));
+        }
+
     }
 }

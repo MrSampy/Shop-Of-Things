@@ -1,10 +1,12 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+    [Authorize(Roles = "Admin,Customer")]
     [Route("api/user/[controller]")]
     [ApiController]
     public class RecommendationController

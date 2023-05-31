@@ -1,10 +1,12 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class ReceiptController
@@ -25,6 +27,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/receipt/id
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<ReceiptModel>> Get(Guid id)
         {
@@ -32,6 +35,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/receipt
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPost]
         public async Task<ActionResult> AddReceipt([FromBody] ReceiptModel model)
         {
@@ -47,6 +51,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/receipt/id/products/add/productId/amount
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPost("{id:Guid}/products/add/{productId:Guid}/{amount:decimal}")]
         public async Task<ActionResult> AddProductToReceipt(Guid id, Guid productId, decimal amount)
         {
@@ -62,6 +67,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/receipt/id/products/remove/productId/amount
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPost("{id:Guid}/products/remove/{productId:Guid}/{amount:decimal}")]
         public async Task<ActionResult> RemoveAmountOfProductFromReceipt(Guid id, Guid productId, decimal amount)
         {
@@ -77,6 +83,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/receipt/id
+        [Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> DeleteReceipt(Guid id)
         {
@@ -92,6 +99,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/receipt/id/details
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}/details")]
         public async Task<ActionResult<IEnumerable<ReceiptModel>>> GetDetails(Guid id)
         {
@@ -99,6 +107,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/receipt/id/product/remove/productId
+        [Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}/products/remove/{productId:Guid}")]
         public async Task<ActionResult> RemoveProductFromReceipt(Guid id, Guid productId)
         {
@@ -114,6 +123,7 @@ namespace WebApi.Controllers
         }
 
         // Put: api/receipt
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] ReceiptModel receipt) 
         {
@@ -129,6 +139,7 @@ namespace WebApi.Controllers
         }
 
         // Put: api/receipt/details
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPut("details")]
         public async Task<ActionResult> UpdateDetails([FromBody] ReceiptDetailModel receiptDetail)
         {

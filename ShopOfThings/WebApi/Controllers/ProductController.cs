@@ -1,11 +1,13 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
 
 namespace WebApi.Controllers
 {
+    [Authorize(Roles = "Customer")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController
@@ -18,6 +20,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/prdocut
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPost]
         public async Task<ActionResult> AddProduct([FromBody] ProductModel model)
         {
@@ -70,6 +73,7 @@ namespace WebApi.Controllers
         }
 
         // Get: api/prdocut/filter
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet("filter")]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetWithFilter([FromQuery] ProductFilterSearchModel filter)
         {
@@ -91,6 +95,7 @@ namespace WebApi.Controllers
         }
 
         // Put: api/prdocut
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPut]
         public async Task<ActionResult> UpdateProduct([FromBody] ProductModel model)
         {
@@ -136,6 +141,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/prdocut/id
+        [Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> DeleteProduct(Guid id)
         {

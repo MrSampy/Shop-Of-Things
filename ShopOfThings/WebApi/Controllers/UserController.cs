@@ -1,6 +1,7 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController
@@ -73,6 +75,7 @@ namespace WebApi.Controllers
         }
 
         // Put: api/user
+        [Authorize(Roles = "Admin,Customer")]
         [HttpPut]
         public async Task<ActionResult> UpdateUser([FromBody] UserModel model)
         {
@@ -103,6 +106,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/user/id
+        [Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
@@ -118,6 +122,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/user/id/receipts
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet("user/{id:Guid}/receipts")]
         public async Task<ActionResult<IEnumerable<ReceiptModel>>> GetReceiptsByUserId(Guid userId)
         {
@@ -125,13 +130,15 @@ namespace WebApi.Controllers
         }
 
         // GET: api/user/id/products
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet("user/{id:Guid}/products")]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByUserId(Guid userId)
         {
             return new ObjectResult(await userService.GetProductsByUserId(userId));
-        }   
-        
+        }
+
         // GET: api/user/id/orders
+        [Authorize(Roles = "Admin,Customer")]
         [HttpGet("user/{id:Guid}/orders")]
         public async Task<ActionResult<IEnumerable<OrderModel>>> GetOrdersByUserId(Guid userId)
         {
