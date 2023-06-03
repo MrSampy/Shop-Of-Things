@@ -98,7 +98,7 @@ namespace Business.Services
         public async Task UpdateAsync(UserModel model)
         {
             var user = await UnitOfWork.UserRepository.GetByIdAsync(model.Id) ?? throw new ShopOfThingsException("User not found!");
-            if (model.UserRoleId == null || string.IsNullOrEmpty(model.Email)
+            if (model.UserRoleId == Guid.Empty || string.IsNullOrEmpty(model.Email)
                 || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName)
                 || string.IsNullOrEmpty(model.NickName) || string.IsNullOrEmpty(model.Password))
             {

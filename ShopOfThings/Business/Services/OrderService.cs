@@ -19,14 +19,22 @@ namespace Business.Services
 
         public async Task AddAsync(OrderModel model)
         {
-            if (model == null || model.OperationDate == DateTime.MinValue || model.UserId == null) 
+            if (model == null || model.OperationDate == DateTime.MinValue) 
             {
                 throw new ShopOfThingsException("Wrong data for order!");
             
             }
-            var fisrtStatus = UnitOfWork.OrderStatusRepository.GetAllAsync().Result.First();
-            model.OrderStatusName = fisrtStatus.OrderStatusName;
-            model.OrderStatusId = fisrtStatus.Id;
+            _ = await UnitOfWork.UserRepository.GetByIdAsync((Guid)model.UserId) ?? throw new ShopOfThingsException("User not found!");
+            if (model.OrderStatusId == Guid.Empty)
+            {
+                var fisrtStatus = UnitOfWork.OrderStatusRepository.GetAllAsync().Result.First();
+                model.OrderStatusName = fisrtStatus.OrderStatusName;
+                model.OrderStatusId = fisrtStatus.Id;
+            }
+            else 
+            {
+                _ = await UnitOfWork.OrderStatusRepository.GetByIdAsync((Guid)model.OrderStatusId) ?? throw new ShopOfThingsException("Order status not found!");
+            }
             await UnitOfWork.OrderRepository.AddAsync(Mapper.Map<Order>(model));
         }
 
@@ -136,8 +144,8 @@ namespace Business.Services
 
         public async Task UpdateAsync(OrderModel model)
         {
-            var order = await UnitOfWork.OrderRepository.GetByIdAsync(model.Id) ?? throw new ShopOfThingsException("Order not found!");
-            if (model.UserId == null || model.OrderStatusId == null || model.OperationDate == DateTime.MinValue) 
+            _ = await UnitOfWork.OrderRepository.GetByIdAsync(model.Id) ?? throw new ShopOfThingsException("Order not found!");
+            if (model.UserId == Guid.Empty || model.OrderStatusId == Guid.Empty || model.OperationDate == DateTime.MinValue) 
             {
                 throw new ShopOfThingsException("Wrong data for order!");
             }
@@ -171,8 +179,11 @@ namespace Business.Services
             var product = await UnitOfWork.ProductRepository.GetByIdAsync(productId) ?? throw new ShopOfThingsException("Product not found!");
             if (order.OrderDetails != null && order.OrderDetails.Any(x => x.ProductId.Equals(productId)))
             {
-                var orderDetail = order.OrderDetails.First(x => x.ProductId.Equals(productId));
-                UnitOfWork.OrderDetailRepository.Delete(orderDetail);
+                var orderDetail = order.OrderDetails.FirstOrDefault(x => x.ProductId.Equals(productId));
+                if (orderDetail != null) 
+                {
+                    UnitOfWork.OrderDetailRepository.Delete(orderDetail);
+                }
             }
         }
 

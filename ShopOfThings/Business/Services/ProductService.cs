@@ -20,7 +20,7 @@ namespace Business.Services
         {
             if (model == null || model.Amount==null || model.Price == null || model.Amount < 0 || string.IsNullOrEmpty(model.ProductName)
                 || string.IsNullOrEmpty(model.ProductDescription) || model.Price <= 0 
-                || model.StorageTypeId == null || model.UserId == null || model.ProductCategoryId == null)
+                || model.StorageTypeId == Guid.Empty || model.UserId == Guid.Empty || model.ProductCategoryId == Guid.Empty)
             {
                 throw new ShopOfThingsException("Wrong data for product!");
             }
@@ -73,7 +73,7 @@ namespace Business.Services
         public async Task<IEnumerable<ProductModel>> GetByFilterAsync(ProductFilterSearchModel filterSearch)
         {
             var products = await GetAllAsync();
-            if (filterSearch.StorageTypeId != null) 
+            if (filterSearch.StorageTypeId != Guid.Empty) 
             {
                 products = products.Where(product=>product.StorageTypeId.Equals(filterSearch.StorageTypeId));
             }
@@ -114,7 +114,7 @@ namespace Business.Services
             _ = await UnitOfWork.ProductRepository.GetByIdAsync(model.Id) ?? throw new ShopOfThingsException("Product not found!");
             if (model == null || model.Amount == null || model.Price == null || model.Amount < 0 
                 || string.IsNullOrEmpty(model.ProductName) || string.IsNullOrEmpty(model.ProductDescription) 
-                || model.Price <= 0 || model.StorageTypeId == null || model.UserId == null || model.ProductCategoryId == null)
+                || model.Price <= 0 || model.StorageTypeId == Guid.Empty || model.UserId == Guid.Empty || model.ProductCategoryId == Guid.Empty)
             {
                 throw new ShopOfThingsException("Wrong data for product!");
             }

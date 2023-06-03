@@ -18,7 +18,7 @@ namespace Business.Services
         }
         public async Task AddAsync(ReceiptModel model)
         {
-            if (model.UserId == null || string.IsNullOrEmpty(model.ReceiptName) || string.IsNullOrEmpty(model.ReceiptDescription))
+            if (model.UserId == Guid.Empty || string.IsNullOrEmpty(model.ReceiptName) || string.IsNullOrEmpty(model.ReceiptDescription))
             {
                 throw new ShopOfThingsException("Wrong data for receipt!");
             }
@@ -116,7 +116,7 @@ namespace Business.Services
         public async Task UpdateAsync(ReceiptModel model)
         {
             _ = await UnitOfWork.ReceiptRepository.GetByIdAsync(model.Id) ?? throw new ShopOfThingsException("Receipt not found!");
-            if (model.UserId == null || string.IsNullOrEmpty(model.ReceiptName) || string.IsNullOrEmpty(model.ReceiptDescription))
+            if (model.UserId == Guid.Empty || string.IsNullOrEmpty(model.ReceiptName) || string.IsNullOrEmpty(model.ReceiptDescription))
             {
                 throw new ShopOfThingsException("Wrong data for receipt!");
             }
@@ -127,7 +127,7 @@ namespace Business.Services
         public async Task UpdatReceiptDetailAsync(ReceiptDetailModel receiptDetailModel)
         {
             _ = await UnitOfWork.ReceiptDetailRepository.GetByIdAsync(receiptDetailModel.Id) ?? throw new ShopOfThingsException("Receipt detail not found!");
-            if (receiptDetailModel.ProductId == null || receiptDetailModel.ReceiptId == null || receiptDetailModel.Amount <= 0) 
+            if (receiptDetailModel.ProductId == Guid.Empty || receiptDetailModel.ReceiptId == Guid.Empty || receiptDetailModel.Amount <= 0) 
             {
                 throw new ShopOfThingsException("Wrong data for receipt detail!");
             }
