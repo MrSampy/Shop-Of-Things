@@ -1,8 +1,4 @@
-﻿using Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace Business.Models
+﻿namespace Business.Models
 {
     public class ProductModel
     {

@@ -1,7 +1,4 @@
-﻿using Data.Entities;
-using System;
-using System.Collections.Generic;
-namespace Business.Models
+﻿namespace Business.Models
 {
     public class OrderDetailModel
     {

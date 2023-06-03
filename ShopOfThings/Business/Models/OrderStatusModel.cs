@@ -1,6 +1,4 @@
-﻿using Data.Entities;
-
-namespace Business.Models
+﻿namespace Business.Models
 {
     public class OrderStatusModel
     {
