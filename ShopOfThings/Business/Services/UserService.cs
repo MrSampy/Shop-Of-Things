@@ -28,7 +28,7 @@ namespace Business.Services
                 throw new ShopOfThingsException("Wrong data for user!");
             }
             var age = DateTime.Today.Year - model.BirthDate.Year;
-            if (MinAge <= 0 || age >= MaxAge) 
+            if (age <= MinAge || age >= MaxAge) 
             {
                 throw new ShopOfThingsException("Wrong birth date for user!");
             }
