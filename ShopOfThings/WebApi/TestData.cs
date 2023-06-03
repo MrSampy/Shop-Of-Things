@@ -1,12 +1,6 @@
 ﻿using Business.Validation;
 using Data.Data;
 using Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApi
@@ -50,7 +44,7 @@ namespace WebApi
                 );
             await context.Orders.AddRangeAsync(
                 new Order { OperationDate = DateTime.Today.AddDays(-5) },
-                new Order { OperationDate = DateTime.Today.AddDays(-6) }
+                new Order { OperationDate = DateTime.Today.AddDays(-8) }
                 );
             await context.OrderDetails.AddRangeAsync(
                 new OrderDetail { Quantity = 3.4M },
