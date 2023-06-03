@@ -2,15 +2,8 @@
 using Business.Services;
 using Business.Validation;
 using Data.Data;
-using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using ShopOfThings.Tests.UnitTestHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShopOfThings.Tests.Business
 {
@@ -31,10 +24,10 @@ namespace ShopOfThings.Tests.Business
         {
             //Arrange
             var service = await CreateService();
-            const int expected = 6;
+            const int expected = 2;
             //Act
-            var users = await service.GetAllAsync();
-            var actual = users.Count();
+            var products = await service.GetAllAsync();
+            var actual = products.Count();
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -46,8 +39,8 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             const int expected = 2;
             //Act
-            var users = await service.GetAllStorageTypesAsync();
-            var actual = users.Count();
+            var products = await service.GetAllStorageTypesAsync();
+            var actual = products.Count();
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -59,8 +52,8 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             const int expected = 2;
             //Act
-            var users = await service.GetAllProductCategoriesAsync();
-            var actual = users.Count();
+            var products = await service.GetAllProductCategoriesAsync();
+            var actual = products.Count();
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -72,10 +65,10 @@ namespace ShopOfThings.Tests.Business
             var service = await CreateService();
             const string expected = "ProductDescription6";
             //Act
-            var users = await service.GetAllAsync();
-            var userId = users.Last().Id;
-            var user = await service.GetByIdAsync(userId);
-            var actual = user.ProductDescription;
+            var products = await service.GetAllAsync();
+            var productId = products.Last().Id;
+            var product = await service.GetByIdAsync(productId);
+            var actual = product.ProductDescription;
             //Assert
             Assert.AreEqual(expected, actual);
         }

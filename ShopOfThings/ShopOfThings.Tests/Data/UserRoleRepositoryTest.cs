@@ -1,15 +1,8 @@
 ﻿using Data.Data;
 using Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShopOfThings.Tests.UnitTestHelpers;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using Data.Interfaces;
-
 
 namespace ShopOfThings.Tests.Data
 {
