@@ -24,7 +24,7 @@ namespace ShopOfThings.Tests.Business
         {
             //Arrange
             var service = await CreateService();
-            const int expected = 2;
+            const int expected = 6;
             //Act
             var products = await service.GetAllAsync();
             var actual = products.Count();
