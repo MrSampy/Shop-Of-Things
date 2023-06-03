@@ -41,11 +41,7 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("User with such nickname or email already exists!");
             }
-            var userRole = UnitOfWork.UserRoleRepository.GetAllAsync().Result.FirstOrDefault(x=>x.UserRoleName.Equals("Customer"));
-            if (userRole == null) 
-            {
-                throw new ShopOfThingsException("User role not found!");
-            }
+            var userRole = UnitOfWork.UserRoleRepository.GetAllAsync().Result.FirstOrDefault(x=>x.UserRoleName.Equals("Customer")) ?? throw new ShopOfThingsException("User role not found!");
             model.UserRoleName = userRole.UserRoleName;
             model.UserRoleId = userRole.Id;
             model.Password = SecurePasswordHasher.Hash(model.Password);
@@ -69,11 +65,7 @@ namespace Business.Services
 
         public async Task DeleteAsync(Guid modelId)
         {
-            var user = await UnitOfWork.UserRepository.GetByIdAsync(modelId);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
+            _ = await UnitOfWork.UserRepository.GetByIdAsync(modelId) ?? throw new ShopOfThingsException("User not found!");
             await UnitOfWork.UserRepository.DeleteByIdAsync(modelId);
         }
 
@@ -92,30 +84,18 @@ namespace Business.Services
         public async Task<UserModel> GetByIdAsync(Guid id)
         {
             var user = await UnitOfWork.UserRepository.GetByIdAsync(id);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
-            return Mapper.Map<UserModel>(user);
+            return user == null ? throw new ShopOfThingsException("User not found!") : Mapper.Map<UserModel>(user);
         }
 
         public async Task DeleteUserRoleAsync(Guid usserRoleId)
         {
-            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync(usserRoleId);
-            if (userRole == null)
-            {
-                throw new ShopOfThingsException("User role not found!");
-            }
+            _ = await UnitOfWork.UserRoleRepository.GetByIdAsync(usserRoleId) ?? throw new ShopOfThingsException("User role not found!");
             await UnitOfWork.UserRoleRepository.DeleteByIdAsync(usserRoleId);
         }
 
         public async Task UpdateAsync(UserModel model)
         {
-            var user = await UnitOfWork.UserRepository.GetByIdAsync(model.Id);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
+            var user = await UnitOfWork.UserRepository.GetByIdAsync(model.Id) ?? throw new ShopOfThingsException("User not found!");
             if (model.UserRoleId == null || string.IsNullOrEmpty(model.Email)
                 || string.IsNullOrEmpty(model.Name) || string.IsNullOrEmpty(model.SecondName)
                 || string.IsNullOrEmpty(model.NickName) || string.IsNullOrEmpty(model.Password))
@@ -139,11 +119,7 @@ namespace Business.Services
             {
                 throw new ShopOfThingsException("User with such nickname or email already exists!");
             }
-            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync((Guid)model.UserRoleId);
-            if (userRole == null)
-            {
-                throw new ShopOfThingsException("User role not found!");
-            }
+            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync((Guid)model.UserRoleId) ?? throw new ShopOfThingsException("User role not found!");
             if (!userRole.UserRoleName.Equals(model.UserRoleName))
             {
                 throw new ShopOfThingsException("User role name can`t be empty!");
@@ -157,11 +133,7 @@ namespace Business.Services
 
         public async Task UpdatUserRoleAsync(UserRoleModel userRoleModel)
         {
-            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync(userRoleModel.Id);
-            if (userRole == null)
-            {
-                throw new ShopOfThingsException("User role not found!");
-            }
+            var userRole = await UnitOfWork.UserRoleRepository.GetByIdAsync(userRoleModel.Id) ?? throw new ShopOfThingsException("User role not found!");
             if (string.IsNullOrEmpty(userRoleModel.UserRoleName))
             {
                 throw new ShopOfThingsException("Wrong data for user role!");
@@ -178,50 +150,36 @@ namespace Business.Services
         public async Task<bool> VerifyPassword(Guid userId, string password)
         {
             var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
-            return SecurePasswordHasher.Verify(password,user.Password);
+            return user == null ? throw new ShopOfThingsException("User not found!") : SecurePasswordHasher.Verify(password,user.Password);
         }
 
         public async Task<bool> LogIn(string nickName, string password) 
         {
             var user = UnitOfWork.UserRepository.GetAllAsync().Result.FirstOrDefault(x=>x.NickName.Equals(nickName));
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
-            return await VerifyPassword(user.Id,password);
+            return user == null ? throw new ShopOfThingsException("User not found!") : await VerifyPassword(user.Id,password);
         }
 
         public async Task<IEnumerable<ReceiptModel>> GetReceiptsByUserId(Guid userId)
         {
             var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
-            return Mapper.Map<IEnumerable<ReceiptModel>>(UnitOfWork.ReceiptRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
+            return user == null
+                ? throw new ShopOfThingsException("User not found!")
+                : Mapper.Map<IEnumerable<ReceiptModel>>(UnitOfWork.ReceiptRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
         }
 
         public async Task<IEnumerable<ProductModel>> GetProductsByUserId(Guid userId)
         {
             var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
-            return Mapper.Map<IEnumerable<ProductModel>>(UnitOfWork.ProductRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
+            return user == null
+                ? throw new ShopOfThingsException("User not found!")
+                : Mapper.Map<IEnumerable<ProductModel>>(UnitOfWork.ProductRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
         }
         public async Task<IEnumerable<OrderModel>> GetOrdersByUserId(Guid userId)
         {
             var user = await UnitOfWork.UserRepository.GetByIdAsync(userId);
-            if (user == null)
-            {
-                throw new ShopOfThingsException("User not found!");
-            }
-            return Mapper.Map<IEnumerable<OrderModel>>(UnitOfWork.OrderRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
+            return user == null
+                ? throw new ShopOfThingsException("User not found!")
+                : Mapper.Map<IEnumerable<OrderModel>>(UnitOfWork.OrderRepository.GetAllAsync().Result.Where(x => x.UserId.Equals(userId)));
         }
 
         public Task<UserRoleModel> GetUserRoleByUserNickName(string nickName) 
