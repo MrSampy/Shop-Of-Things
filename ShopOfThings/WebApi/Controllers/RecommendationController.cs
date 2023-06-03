@@ -9,6 +9,7 @@ namespace WebApi.Controllers
     [Authorize(Roles = "Admin,Customer")]
     [Route("api/user/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "recommendation")]
     public class RecommendationController
     {
         readonly IRecommendationService recommendationService;

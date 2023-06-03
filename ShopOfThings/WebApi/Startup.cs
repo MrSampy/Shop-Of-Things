@@ -59,11 +59,55 @@ namespace WebApi
             services.AddSwaggerGen(swagger =>
             {
                 //This is to generate the Default UI of Swagger Documentation
-                swagger.SwaggerDoc("v1", new OpenApiInfo
+                swagger.SwaggerDoc("order", new OpenApiInfo
                 {
                     Version = "v1",
                     Title = "JWT Token Authentication API",
-                    Description = "ASP.NET Core 5.0 Web API"
+                    Description = "ASP.NET Core 5.0 Web API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "itsfinniii"
+                    }
+                });
+                swagger.SwaggerDoc("user", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "JWT Token Authentication API",
+                    Description = "ASP.NET Core 5.0 Web API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "itsfinniii"
+                    }
+                });
+                swagger.SwaggerDoc("product", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "JWT Token Authentication API",
+                    Description = "ASP.NET Core 5.0 Web API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "itsfinniii"
+                    }
+                });
+                swagger.SwaggerDoc("receipt", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "JWT Token Authentication API",
+                    Description = "ASP.NET Core 5.0 Web API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "itsfinniii"
+                    }
+                });
+                swagger.SwaggerDoc("recommendation", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "JWT Token Authentication API",
+                    Description = "ASP.NET Core 5.0 Web API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "itsfinniii"
+                    }
                 });
                 // To Enable authorization using Swagger (JWT)
                 swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -132,7 +176,14 @@ namespace WebApi
 
                 app.UseSwagger();
 
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/order/swagger.json", "order");
+                    c.SwaggerEndpoint("/swagger/user/swagger.json", "user");
+                    c.SwaggerEndpoint("/swagger/product/swagger.json", "prdocut");
+                    c.SwaggerEndpoint("/swagger/receipt/swagger.json", "receipt");
+                    c.SwaggerEndpoint("/swagger/recommendation/swagger.json", "recommendation");
+                });
             }
 
             app.UseHttpsRedirection();

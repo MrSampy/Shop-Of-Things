@@ -9,6 +9,7 @@ namespace WebApi.Controllers
     [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "receipt")]
     public class ReceiptController
     {
         readonly IReceiptService receiptService;

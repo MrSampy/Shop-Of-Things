@@ -14,6 +14,8 @@ namespace WebApi.Controllers
     [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "user")]
+
     public class UserController
     {
         readonly IUserService userService;

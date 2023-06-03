@@ -11,6 +11,7 @@ namespace WebApi.Controllers
     [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "order")]
     public class OrderController
     {
         readonly IOrderService orderService;

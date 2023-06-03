@@ -10,6 +10,8 @@ namespace WebApi.Controllers
     [Authorize(Roles = "Customer")]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "product")]
+
     public class ProductController
     {
         readonly IProductService productService;
