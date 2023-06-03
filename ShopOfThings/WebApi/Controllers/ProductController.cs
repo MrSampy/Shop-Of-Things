@@ -1,9 +1,7 @@
 ﻿using Business.Interfaces;
 using Business.Models;
-using Business.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
 
 namespace WebApi.Controllers
 {
