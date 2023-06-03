@@ -11,6 +11,7 @@ namespace Business.Services
     {
         public IUnitOfWork UnitOfWork;
         public IMapper Mapper;
+        private const int ThirdPartOfProductsInOrder = 3;
         public RecommendationService(IUnitOfWork unitOfWork, IMapper createMapperProfile)
         {
             UnitOfWork = unitOfWork;
@@ -26,7 +27,7 @@ namespace Business.Services
                 foreach (var orderDetail in user.Orders.ToList()[orderId].OrderDetails) 
                 {
                     result.AddRange(UnitOfWork.ProductRepository.GetAllAsync().Result.Where(x=>!result.Any(y=>y.Id.Equals(x.Id))
-                    && x.ProductCategoryId.Equals(orderDetail.Product.ProductCategoryId) && !x.UserId.Equals(user.Id) && x.Amount!=0));
+                    && x.ProductCategoryId.Equals(orderDetail.Product.ProductCategoryId) && !x.UserId.Equals(user.Id) && x.Amount != 0));
                 }                
             }
 
@@ -38,7 +39,7 @@ namespace Business.Services
             var user = await UnitOfWork.UserRepository.GetByIdAsync(userId) ?? throw new ShopOfThingsException("User not found!");
 
             var receipts = UnitOfWork.ReceiptRepository.GetAllAsync().Result.Where(receipt => !receipt.UserId.Equals(userId) &&
-             user.Products.ToList().Intersect(receipt.ReceiptDetails.Select(x => x.Product).ToList()).Count() > receipt.ReceiptDetails.Count/3).ToList();
+             user.Products.ToList().Intersect(receipt.ReceiptDetails.Select(x => x.Product).ToList()).Count() > receipt.ReceiptDetails.Count / ThirdPartOfProductsInOrder).ToList();
 
             var result = new List<RecommendationReceiptsModel>();
 

@@ -12,6 +12,8 @@ namespace Business.Services
     {
         public IUnitOfWork UnitOfWork;
         public IMapper Mapper;
+        private const int MaxAge = 150;
+        private const int MinAge = 0;
         public UserService(IUnitOfWork unitOfWork, IMapper createMapperProfile)
         {
             UnitOfWork = unitOfWork;
@@ -26,7 +28,7 @@ namespace Business.Services
                 throw new ShopOfThingsException("Wrong data for user!");
             }
             var age = DateTime.Today.Year - model.BirthDate.Year;
-            if (age <= 0 || age >= 150) 
+            if (MinAge <= 0 || age >= MaxAge) 
             {
                 throw new ShopOfThingsException("Wrong birth date for user!");
             }
@@ -103,7 +105,7 @@ namespace Business.Services
                 throw new ShopOfThingsException("Wrong data for user!");
             }
             var age = DateTime.Today.Year - model.BirthDate.Year;
-            if (age <= 0 || age >= 150)
+            if (age <= MinAge || age >= MaxAge)
             {
                 throw new ShopOfThingsException("Wrong birth date for user!");
             }
