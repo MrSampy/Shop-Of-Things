@@ -13,7 +13,11 @@ Website that offers affordable products and enables users to create recipes inst
     - Product recommendation based on the ones you bought.
     - Recipe recommendations based on the foods you have.
     - Using of GUID instead of int one.
+  
 ## Architecture
+![Image1](./ShopOfThings/lmages/photo_2023-06-03_19-55-37.jpg)
+
+![Image2](./ShopOfThings/lmages/photo_2023-06-03_19-55-38.jpg)
 
 ## CI
 [![.NET](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml/badge.svg)](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml)
