@@ -137,21 +137,5 @@ namespace WebApi.Controllers
             }
             return new OkResult();
         }
-
-        // Put: api/receipt/details
-        [Authorize(Roles = "Admin,Customer")]
-        [HttpPut("details")]
-        public async Task<ActionResult> UpdateDetails([FromBody] ReceiptDetailModel receiptDetail)
-        {
-            try
-            {
-                await receiptService.UpdatReceiptDetailAsync(receiptDetail);
-            }
-            catch (Exception ex)
-            {
-                return new BadRequestObjectResult(ex.Message);
-            }
-            return new OkResult();
-        }
     }
 }
