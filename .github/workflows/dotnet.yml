@@ -28,12 +28,5 @@ jobs:
       run: dotnet build --no-restore
       working-directory: ShopOfThings/
     - name: Test
-      run: dotnet test --logger "trx;LogFileName=TestOutputResults.xml"
+      run: dotnet test --no-build --verbosity normal
       working-directory: ShopOfThings/ShopOfThings.Tests/
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: /home/runner/work/ShopOfThings/ShopOfThings.Tests/TestResults/TestOutputResults.xml    # Path to test results
-        reporter: jest-junit  
