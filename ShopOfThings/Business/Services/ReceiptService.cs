@@ -75,7 +75,7 @@ namespace Business.Services
             var receipt = await UnitOfWork.ReceiptRepository.GetByIdAsync(receipttId);
             return receipt == null
                 ? throw new ShopOfThingsException("Receipt not found!")
-                : Mapper.Map<IEnumerable<ReceiptDetailModel>>(receipt);
+                : Mapper.Map<IEnumerable<ReceiptDetailModel>>(receipt.ReceiptDetails);
         }
 
         public async Task RemoveProductAsync(Guid receiptId, Guid productId, decimal amount)
@@ -122,19 +122,6 @@ namespace Business.Services
             }
             _ = await UnitOfWork.UserRepository.GetByIdAsync((Guid)model.UserId) ?? throw new ShopOfThingsException("User not found!");
             UnitOfWork.ReceiptRepository.Update(Mapper.Map<Receipt>(model));
-        }
-
-        public async Task UpdatReceiptDetailAsync(ReceiptDetailModel receiptDetailModel)
-        {
-            _ = await UnitOfWork.ReceiptDetailRepository.GetByIdAsync(receiptDetailModel.Id) ?? throw new ShopOfThingsException("Receipt detail not found!");
-            if (receiptDetailModel.ProductId == Guid.Empty || receiptDetailModel.ReceiptId == Guid.Empty || receiptDetailModel.Amount <= 0) 
-            {
-                throw new ShopOfThingsException("Wrong data for receipt detail!");
-            }
-            _ = await UnitOfWork.ReceiptRepository.GetByIdAsync((Guid)receiptDetailModel.ReceiptId) ?? throw new ShopOfThingsException("Receipt not found!");
-            _ = await UnitOfWork.ProductRepository.GetByIdAsync((Guid)receiptDetailModel.ProductId) ?? throw new ShopOfThingsException("Product not found!");
-            UnitOfWork.ReceiptDetailRepository.Update(Mapper.Map<ReceiptDetail>(receiptDetailModel));
-
         }
     }
 }

@@ -8,7 +8,5 @@ namespace Business.Interfaces
         Task RemoveProductAsync(Guid receiptId, Guid productId, decimal amount);
         Task RemoveProductByIdAsync(Guid productId, Guid receiptId);
         Task<IEnumerable<ReceiptDetailModel>> GetReceiptDetailsAsync(Guid receiptId);
-
-        Task UpdatReceiptDetailAsync(ReceiptDetailModel receiptDetailModel);
     }
 }
