@@ -119,7 +119,7 @@ namespace WebApi.Controllers
 
         // GET: api/user/id/receipts
         [Authorize(Roles = "Admin,Customer")]
-        [HttpGet("user/{id:Guid}/receipts")]
+        [HttpGet("{id:Guid}/receipts")]
         public async Task<ActionResult<IEnumerable<ReceiptModel>>> GetReceiptsByUserId(Guid userId)
         {
             return new ObjectResult(await userService.GetReceiptsByUserId(userId));
@@ -127,7 +127,7 @@ namespace WebApi.Controllers
 
         // GET: api/user/id/products
         [Authorize(Roles = "Admin,Customer")]
-        [HttpGet("user/{id:Guid}/products")]
+        [HttpGet("{id:Guid}/products")]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByUserId(Guid userId)
         {
             return new ObjectResult(await userService.GetProductsByUserId(userId));
@@ -135,7 +135,7 @@ namespace WebApi.Controllers
 
         // GET: api/user/id/orders
         [Authorize(Roles = "Admin,Customer")]
-        [HttpGet("user/{id:Guid}/orders")]
+        [HttpGet("{id:Guid}/orders")]
         public async Task<ActionResult<IEnumerable<OrderModel>>> GetOrdersByUserId(Guid userId)
         {
             return new ObjectResult(await userService.GetOrdersByUserId(userId));
