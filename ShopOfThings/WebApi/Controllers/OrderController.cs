@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "order")]
@@ -40,7 +40,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/order/id/fullPrice
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}/fullPrice")]
         public async Task<ActionResult<OrderPriceModel>> GetFullPrice(Guid id)
         {
@@ -48,7 +48,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/order/id/details
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}/details")]
         public async Task<ActionResult<OrderModel>> GetOrderDetails(Guid id)
         {
@@ -63,7 +63,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/order
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpPost]
         public async Task<ActionResult> Add([FromBody] OrderModel model)
         {
@@ -94,7 +94,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/order/id/products/add/productId/quantity
-        [Authorize(Roles = "Admin,Customer")]
+       // [Authorize(Roles = "Admin,Customer")]
         [HttpPost("{id:Guid}/products/add/{productId:Guid}/{quantity:decimal}")]
         public async Task<ActionResult> AddProductToOrder(Guid id, Guid productId, decimal quantity)
         {
@@ -110,7 +110,7 @@ namespace WebApi.Controllers
         }
 
         // Post: api/order/id/products/remove/productId/quantity
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpPost("{id:Guid}/products/remove/{productId:Guid}/{quantity:decimal}")]
         public async Task<ActionResult> RemoveQuantityOfProductFromOrder(Guid id, Guid productId, decimal quantity)
         {
@@ -126,7 +126,7 @@ namespace WebApi.Controllers
         }
 
         // Put: api/order
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] OrderModel model)
         {
@@ -172,7 +172,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/order/id
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> Delete(Guid id)
         {
@@ -203,7 +203,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/order/id/product/remove/productId
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}/products/remove/{productId:Guid}")]
         public async Task<ActionResult> RemoveProductFromOrder(Guid id, Guid productId)
         {

@@ -2,14 +2,14 @@
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "user")]
-
     public class UserController
     {
         readonly IUserService userService;
@@ -20,12 +20,13 @@ namespace WebApi.Controllers
         }
 
         // GET: api/user
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> Get()
         {
             return new ObjectResult(await userService.GetAllAsync());
         }
-
+        
         // GET: api/user/id
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<UserModel>> Get(Guid id)
@@ -71,7 +72,7 @@ namespace WebApi.Controllers
         }
 
         // Put: api/user
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpPut]
         public async Task<ActionResult> UpdateUser([FromBody] UserModel model)
         {
@@ -102,7 +103,7 @@ namespace WebApi.Controllers
         }
 
         // Delete: api/user/id
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
@@ -118,7 +119,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/user/id/receipts
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}/receipts")]
         public async Task<ActionResult<IEnumerable<ReceiptModel>>> GetReceiptsByUserId(Guid userId)
         {
@@ -126,7 +127,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/user/id/products
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}/products")]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByUserId(Guid userId)
         {
@@ -134,7 +135,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/user/id/orders
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         [HttpGet("{id:Guid}/orders")]
         public async Task<ActionResult<IEnumerable<OrderModel>>> GetOrdersByUserId(Guid userId)
         {

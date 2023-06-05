@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Roles = "Admin,Customer")]
+    //[Authorize(Roles = "Admin,Customer")]
     [Route("api/user/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "recommendation")]
@@ -20,7 +20,7 @@ namespace WebApi.Controllers
 
         // GET: api/user/recommendation/id/products
         [HttpGet("{id:Guid}/products")]
-        public async Task<ActionResult<IEnumerable<ProductModel>>> Get(Guid id)
+        public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByRecent(Guid id)
         {
             return new ObjectResult(await recommendationService.GetProductsByRecent(id));
         }
