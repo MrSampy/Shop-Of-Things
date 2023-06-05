@@ -69,7 +69,6 @@ namespace ShopOfThings.Tests.Integration
             string bearerAuth = "Bearer " + token.Token;
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Add("Authorization", bearerAuth);
-            var a = 
         }
 
     }
