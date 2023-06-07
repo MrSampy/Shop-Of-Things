@@ -18,7 +18,7 @@ namespace WebApi
         {
             Configuration = configuration;
         }
-        private string[] controllers = new string[] { "order", "user", "product", "receipt", "recommendation" };
+        private string[] controllers = new string[] { "order", "user", "product", "receipt", "recommendation", "statistic" };
         public IConfiguration Configuration { get; }
 
         public async void ConfigureServices(IServiceCollection services)
@@ -48,6 +48,8 @@ namespace WebApi
             services.AddTransient<IReceiptService, ReceiptService>();
 
             services.AddTransient<IOrderService, OrderService>();
+
+            services.AddTransient<IStatisticService, StatisticService>();
 
             services.AddTransient<IRecommendationService, RecommendationService>();
 
