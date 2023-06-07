@@ -4,7 +4,6 @@ using Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 
 namespace WebApi.Controllers
 {
@@ -21,18 +20,36 @@ namespace WebApi.Controllers
             this.statisticService = statisticService;
         }
 
-        // GET: api/statistic/avproductcategory/productCategoryId
-        [HttpGet("avproductcategory/{productCategoryId:Guid}")]
+        // Post: api/statistic/avproductcategory/productCategoryId
+        [HttpPost("avproductcategory/{productCategoryId:Guid}")]
         public async Task<ActionResult<decimal>> GetAverageOfProductCategory(Guid productCategoryId)
         {
-            return new ObjectResult(await statisticService.GetAverageOfProductCategory(productCategoryId));
+            decimal result;
+            try
+            {
+                result = await statisticService.GetAverageOfProductCategory(productCategoryId);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+            return new ObjectResult(result);
         }
 
-        // GET: api/statistic/incomeofcategoryperiod/productCategoryId
-        [HttpGet("incomeofcategoryperiod/{productCategoryId:Guid}")]
-        public async Task<ActionResult<decimal>> GetIncomeOfCategoryInPeriod([FromQuery] ProductsInPeriodModel productsInPeriodModel)
+        // Post: api/statistic/incomeofcategoryperiod/productCategoryId
+        [HttpPost("incomeofcategoryperiod")]
+        public async Task<ActionResult<decimal>> GetIncomeOfCategoryInPeriod([FromBody] ProductsInPeriodModel productsInPeriodModel)
         {
-            return new ObjectResult(await statisticService.GetIncomeOfCategoryInPeriod(productsInPeriodModel.ProductCategoryId, productsInPeriodModel.StartDate, productsInPeriodModel.EndDate));
+            decimal result;
+            try 
+            {
+                result = await statisticService.GetIncomeOfCategoryInPeriod(productsInPeriodModel.ProductCategoryId, productsInPeriodModel.StartDate, productsInPeriodModel.EndDate);
+            }
+            catch (Exception ex) 
+            {
+                return new BadRequestObjectResult(ex.Message);            
+            }
+            return new ObjectResult(result);
         }
 
         // GET: api/statistic/mostactiveuser
