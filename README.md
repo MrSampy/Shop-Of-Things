@@ -25,7 +25,7 @@ Website that offers affordable products and enables users to create recipes inst
 ![Image2](./ShopOfThings/lmages/photo_2023-06-03_19-55-38.jpg)
 
 ## How to test
-
+[File](https://github.com/MrSampy/Shop-Of-Things/blob/main/TESTING.md) with instructions.
 
 ## CI
 [![.NET](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml/badge.svg)](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml)
