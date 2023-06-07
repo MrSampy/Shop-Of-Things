@@ -30,9 +30,9 @@ namespace WebApi.Controllers
 
         // GET: api/statistic/incomeofcategoryperiod/productCategoryId
         [HttpGet("incomeofcategoryperiod/{productCategoryId:Guid}")]
-        public async Task<ActionResult<decimal>> GetIncomeOfCategoryInPeriod(Guid productCategoryId, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        public async Task<ActionResult<decimal>> GetIncomeOfCategoryInPeriod([FromQuery] ProductsInPeriodModel productsInPeriodModel)
         {
-            return new ObjectResult(await statisticService.GetIncomeOfCategoryInPeriod(productCategoryId,startDate,endDate));
+            return new ObjectResult(await statisticService.GetIncomeOfCategoryInPeriod(productsInPeriodModel.ProductCategoryId, productsInPeriodModel.StartDate, productsInPeriodModel.EndDate));
         }
 
         // GET: api/statistic/mostactiveuser
