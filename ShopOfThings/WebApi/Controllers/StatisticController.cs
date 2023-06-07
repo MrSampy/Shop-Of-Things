@@ -3,6 +3,8 @@ using Business.Models;
 using Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WebApi.Controllers
 {
@@ -49,7 +51,7 @@ namespace WebApi.Controllers
 
         // GET: api/statistic/productincategories
         [HttpGet("productincategories")]
-        public async Task<ActionResult<Dictionary<ProductCategoryModel, int>>> GetNumberOfProductsInCategories()
+        public async Task<ActionResult<List<ProductCategoryNumberModel>>> GetNumberOfProductsInCategories()
         {
             return new ObjectResult(await statisticService.GetNumberOfProductsInCategories());
         }

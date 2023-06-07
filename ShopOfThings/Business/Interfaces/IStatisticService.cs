@@ -9,7 +9,7 @@ namespace Business.Interfaces
 {
     public interface IStatisticService
     {
-        public Task<Dictionary<ProductCategoryModel, int>> GetNumberOfProductsInCategories();
+        public Task<List<ProductCategoryNumberModel>> GetNumberOfProductsInCategories();
         public Task<IEnumerable<ProductModel>> GetMostPopularProducts();
         public Task<decimal> GetIncomeOfCategoryInPeriod(Guid productCategoryId, DateTime startDate, DateTime endDate);
         public Task<decimal> GetAverageOfProductCategory(Guid productCategoryId);

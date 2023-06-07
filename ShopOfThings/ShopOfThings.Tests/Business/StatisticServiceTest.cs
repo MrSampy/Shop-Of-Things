@@ -118,7 +118,7 @@ namespace ShopOfThings.Tests.Business
             //Assert
             foreach (var productCategory in productCategories) 
             {
-                Assert.AreEqual(productCategory.Products.Count(),actual.First(x=>x.Key.Id.Equals(productCategory.Id)).Value);
+                Assert.AreEqual(productCategory.Products.Count(),actual.First(x=>x.CategoryName.Equals(productCategory.ProductCategoryName)).Number);
             }
         }
 

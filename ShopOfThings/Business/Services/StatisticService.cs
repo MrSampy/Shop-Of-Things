@@ -50,10 +50,9 @@ namespace Business.Services
                 .GroupBy(x => x.Product).Select(g => new { Product = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Select(x => x.Product)));
         }
 
-        public Task<Dictionary<ProductCategoryModel, int>> GetNumberOfProductsInCategories()
+        public Task<List<ProductCategoryNumberModel>> GetNumberOfProductsInCategories()
         {
-            return Task.FromResult(UnitOfWork.ProductRepository.GetAllAsync().Result.GroupBy(x => x.ProductCategory).Select(g => new { ProductCategory = g.Key, Count = g.Count() })
-                .ToDictionary(keySelector: k => Mapper.Map<ProductCategoryModel>(k.ProductCategory), elementSelector: e => e.Count));
+            return Task.FromResult(UnitOfWork.ProductRepository.GetAllAsync().Result.GroupBy(x => x.ProductCategory).Select(g => new ProductCategoryNumberModel { CategoryName = g.Key.ProductCategoryName, Number = g.Count() }).ToList() );
         }
 
         public Task<List<UserAgeCategoryModel>> GetNumberOfUsersOfEveryAgeCategory()
