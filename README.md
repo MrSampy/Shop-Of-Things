@@ -27,8 +27,12 @@ Website that offers affordable products and enables users to create recipes inst
 ## How to test
 [File](https://github.com/MrSampy/Shop-Of-Things/blob/main/TESTING.md) with instructions.
 
-## CI
-[![.NET](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml/badge.svg)](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml)
+## CI/CD
+[![.NET](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml/badge.svg)](https://github.com/MrSampy/Shop-Of-Things/actions/workflows/dotnet.yml)</br>
+Short instruction for docker:
+- docker build -t 'image-name' . --no-cache
+- docker run -p 5000:80 -t 'image-name'
+- Link http://localhost:5000/swagger you will have an ability to test api
 
 ### Requirements
 - NET 6.0 SDK
