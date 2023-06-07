@@ -40,7 +40,6 @@ namespace WebApi.Controllers
 
         // POST: api/login
         [AllowAnonymous]
-        [ApiExplorerSettings(GroupName = "user")]
         [HttpPost("login")]
         public async Task<ActionResult> LogIn([FromBody] LogInModel logInModel)
         {

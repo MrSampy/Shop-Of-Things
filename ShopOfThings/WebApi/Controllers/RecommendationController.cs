@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers
 {
     //[Authorize(Roles = "Admin,Customer")]
+    [Authorize]
     [Route("api/user/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "recommendation")]

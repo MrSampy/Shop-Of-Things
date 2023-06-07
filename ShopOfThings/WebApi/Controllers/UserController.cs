@@ -7,6 +7,7 @@ using System.Security.Claims;
 namespace WebApi.Controllers
 {
     //[Authorize(Roles = "Admin")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "user")]

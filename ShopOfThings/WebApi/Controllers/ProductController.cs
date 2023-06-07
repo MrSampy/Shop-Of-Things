@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers
 {
     //[Authorize(Roles = "Customer")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "product")]
