@@ -14,6 +14,6 @@ namespace Business.Interfaces
         public Task<decimal> GetIncomeOfCategoryInPeriod(Guid productCategoryId, DateTime startDate, DateTime endDate);
         public Task<decimal> GetAverageOfProductCategory(Guid productCategoryId);
         public Task<List<UserAgeCategoryModel>> GetNumberOfUsersOfEveryAgeCategory();
-        public Task<ActtiveUsersModel> GetMostActtiveUsers();
+        public Task<ActiveUsersModel> GetMostActtiveUsers();
     }
 }

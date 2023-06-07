@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Models
 {
-    public class ActtiveUsersModel
+    public class ActiveUsersModel
     {
         public Guid UserIdWithMostReceipts { set; get; }
         public Guid UserIdWithMostOrders { set; get; }

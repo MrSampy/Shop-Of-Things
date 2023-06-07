@@ -37,7 +37,7 @@ namespace WebApi.Controllers
 
         // GET: api/statistic/mostactiveuser
         [HttpGet("mostactiveuser")]
-        public async Task<ActionResult<ActtiveUsersModel>> GetMostActtiveUsers()
+        public async Task<ActionResult<ActiveUsersModel>> GetMostActtiveUsers()
         {
             return new ObjectResult(await statisticService.GetMostActtiveUsers());
         }

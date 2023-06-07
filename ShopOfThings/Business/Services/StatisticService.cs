@@ -34,9 +34,9 @@ namespace Business.Services
                 .Select(x => x.Quantity * x.Product.Price).Sum();
         }
 
-        public Task<ActtiveUsersModel> GetMostActtiveUsers()
+        public Task<ActiveUsersModel> GetMostActtiveUsers()
         {
-            return Task.FromResult(new ActtiveUsersModel
+            return Task.FromResult(new ActiveUsersModel
             {
                 UserIdWithMostOrders = UnitOfWork.OrderRepository.GetAllAsync().Result.GroupBy(x=>x.UserId).Select(g=>new { UserId = g.Key, Count = g.Count() }).OrderByDescending(x=>x.Count).First().UserId,
                 UserIdWithMostProducts = UnitOfWork.ProductRepository.GetAllAsync().Result.GroupBy(x => x.UserId).Select(g => new { UserId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).First().UserId,
