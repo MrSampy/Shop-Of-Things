@@ -4,7 +4,7 @@
 ![Image1](./ShopOfThings/lmages/Testing/1.jpg)
 
 ## 2.Then you need to add to out link "/swagger/index.html"
-![Image2](./ItemMarketplace/Images/2.jpg)
+![Image2](./ShopOfThings/lmages/Testing/2.jpg)
 
 ## 3.Then you can choose, the controller you want to test
 ![Image3](./ShopOfThings/lmages/Testing/3.jpg)
